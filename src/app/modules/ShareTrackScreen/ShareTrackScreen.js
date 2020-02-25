@@ -73,7 +73,7 @@ class ShareTrackScreen extends Component {
     } = this.state;
 
     if (trackInfo === null) {
-      return (<Redirect to="/t" />);
+      return (<Redirect to="/" />);
     }
 
     return (
