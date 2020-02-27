@@ -1,4 +1,5 @@
-import React, { Component } from 'react';
+import React, { Component, Fragment } from 'react';
+import Helmet from 'react-helmet';
 import { Redirect } from 'react-router';
 
 import {
@@ -48,6 +49,9 @@ class ShareTrackScreen extends Component {
     if (links.apple) {
       list.push(<MediaLink href={links.apple} target="_blank">Apple Music</MediaLink>);
     }
+    if (links.vk) {
+      list.push(<MediaLink href={links.vk} target="_blank">VK</MediaLink>);
+    }
     if (links.boom) {
       list.push(<MediaLink href={links.boom} target="_blank">Boom</MediaLink>);
     }
@@ -77,28 +81,36 @@ class ShareTrackScreen extends Component {
     }
 
     return (
-      <Root artPath={trackInfo.id}>
-        <InfoContainer>
-          <InfoWrapper>
-            <InfoRow>
-              <Author>
-                <AuthorSpan>
-                  {trackInfo.artist}
-                </AuthorSpan>
-              </Author>
-              <Title>
-                <TitleSpan>
-                  {trackInfo.name}
-                </TitleSpan>
-              </Title>
-            </InfoRow>
-            <InfoRow>
-              {this.renderLinks()}
-            </InfoRow>
-          </InfoWrapper>
-        </InfoContainer>
-      </Root>
-    )
+      <Fragment>
+        <Helmet>
+          <title>{`${trackInfo.name} by ${trackInfo.artist}`}</title>
+          <meta property="og:image" content={`/art/${trackInfo.id}/artwork.jpg`} />
+          <meta property="og:image:width" content="1200" />
+          <meta property="og:image:height" content="1200" />
+        </Helmet>
+        <Root artPath={trackInfo.id}>
+          <InfoContainer>
+            <InfoWrapper>
+              <InfoRow>
+                <Author>
+                  <AuthorSpan>
+                    {trackInfo.artist}
+                  </AuthorSpan>
+                </Author>
+                <Title>
+                  <TitleSpan>
+                    {trackInfo.name}
+                  </TitleSpan>
+                </Title>
+              </InfoRow>
+              <InfoRow>
+                {this.renderLinks()}
+              </InfoRow>
+            </InfoWrapper>
+          </InfoContainer>
+        </Root>
+      </Fragment>
+    );
   }
 }
 

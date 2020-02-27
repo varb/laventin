@@ -5,7 +5,8 @@ import styled, { css } from 'styled-components';
 // const hover = '#63FFB9';
 // const accent = '#282828';
 const background = 'rgba(0,0,0,0.6)';
-const hover = '#1A936F';
+const hover = '#FF9B71';
+const hoverColor = '#2f1f18';
 const accent = '#f1f1f1';
 
 export const Root = styled.div`
@@ -32,7 +33,7 @@ export const Root = styled.div`
       background-position: 50%;
     `}
 
-    filter: grayscale(0.8) blur(6px);
+    filter: blur(7px);
 
     pointer-events: none;
   }
@@ -52,9 +53,8 @@ export const Root = styled.div`
 `;
 
 export const InfoContainer = styled.div`
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  /* display: flex;
+  justify-content: center; */
 
   position: relative;
   z-index: 100;
@@ -62,7 +62,7 @@ export const InfoContainer = styled.div`
   max-width: 500px;
   min-height: 100vh;
   margin: 0 auto;
-  padding: 30px 20px 20%;
+  padding: 80px 20px 20%;
 `;
 
 export const InfoWrapper = styled.div`
@@ -106,6 +106,7 @@ export const LinksList = styled.div`
 `;
 
 export const MediaLink = styled.a`
+  position: relative;
   padding: 0 1px;
   background-color: ${background};
   color: inherit;
@@ -113,8 +114,19 @@ export const MediaLink = styled.a`
   font-size: 24px;
   text-decoration: none;
 
+  &::before {
+    content: '';
+    position: absolute;
+    bottom: -1px;
+    left: 0;
+    width: 100%;
+    height: 3px;
+    background-color: ${hover};
+  }
+
   &:hover {
     background-color: ${hover};
+    color: ${hoverColor};
   }
 
   &:not(:last-child) {
