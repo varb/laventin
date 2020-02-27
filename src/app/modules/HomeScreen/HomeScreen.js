@@ -24,7 +24,11 @@ class HomeScreen extends Component {
               <Title>Laventin</Title>
               <LinksList>
                 {filteredList.map((track, index) => (
-                  <MediaLink to={`/t/${track.id}`} as={Link}>{track.name}</MediaLink>
+                  <MediaLink
+                    key={index}
+                    to={`/t/${track.id}`}
+                    as={Link}
+                  >{track.name}</MediaLink>
                 ))}
               </LinksList>
             </InfoWrapper>

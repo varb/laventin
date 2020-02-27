@@ -15,6 +15,7 @@ import {
   AuthorSpan,
 } from './ShareTrackScreenStyles';
 import { trackList } from '../../data/tracklist';
+import { setGoal } from '../../helpers/analytics';
 
 
 class ShareTrackScreen extends Component {
@@ -38,6 +39,10 @@ class ShareTrackScreen extends Component {
     this.setState({ trackInfo });
   }
 
+  onLinkClick = (e) => {
+    setGoal(e.target.dataset.targetId);
+  }
+
   renderLinks = () => {
     const {
       links,
@@ -47,25 +52,25 @@ class ShareTrackScreen extends Component {
     let list = [];
 
     if (links.apple) {
-      list.push(<MediaLink href={links.apple} target="_blank">Apple Music</MediaLink>);
+      list.push(<MediaLink href={links.apple} onClick={this.onLinkClick} data-target-id="apple" target="_blank">Apple Music</MediaLink>);
     }
     if (links.vk) {
-      list.push(<MediaLink href={links.vk} target="_blank">VK</MediaLink>);
+      list.push(<MediaLink href={links.vk} onClick={this.onLinkClick} data-target-id="vk" target="_blank">VK</MediaLink>);
     }
     if (links.boom) {
-      list.push(<MediaLink href={links.boom} target="_blank">Boom</MediaLink>);
+      list.push(<MediaLink href={links.boom} onClick={this.onLinkClick} data-target-id="boom" target="_blank">Boom</MediaLink>);
     }
     if (links.soundcloud) {
-      list.push(<MediaLink href={links.soundcloud} target="_blank">SoundCloud</MediaLink>);
+      list.push(<MediaLink href={links.soundcloud} onClick={this.onLinkClick} data-target-id="sc" target="_blank">SoundCloud</MediaLink>);
     }
     if (links.spotify) {
-      list.push(<MediaLink href={links.spotify} target="_blank">Spotify</MediaLink>);
+      list.push(<MediaLink href={links.spotify} onClick={this.onLinkClick} data-target-id="spotify" target="_blank">Spotify</MediaLink>);
     }
     if (links.yandex) {
-      list.push(<MediaLink href={links.yandex} target="_blank">Yandex.Music</MediaLink>);
+      list.push(<MediaLink href={links.yandex} onClick={this.onLinkClick} data-target-id="yandex" target="_blank">Yandex.Music</MediaLink>);
     }
     if (links.itunes) {
-      list.push(<MediaLink href={links.itunes} target="_blank">iTunes</MediaLink>);
+      list.push(<MediaLink href={links.itunes} onClick={this.onLinkClick} data-target-id="itunes" target="_blank">iTunes</MediaLink>);
     }
 
     return list.length > 0 ? <LinksList>{list}</LinksList> : null;
