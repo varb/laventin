@@ -111,7 +111,7 @@ export const MediaLink = styled.a`
   background-color: ${background};
   color: inherit;
   font-weight: 600;
-  font-size: 24px;
+  font-size: ${(p) => p.small ? 20 : 24}px;
   text-decoration: none;
 
   &::before {

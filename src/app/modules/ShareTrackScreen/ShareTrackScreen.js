@@ -1,6 +1,7 @@
 import React, { Component, Fragment } from 'react';
 import Helmet from 'react-helmet';
 import { Redirect } from 'react-router';
+import { Link } from 'react-router-dom';
 
 import {
   Root,
@@ -110,6 +111,9 @@ class ShareTrackScreen extends Component {
               </InfoRow>
               <InfoRow>
                 {this.renderLinks()}
+              </InfoRow>
+              <InfoRow>
+                <MediaLink to="/" as={Link} small>Back to home page</MediaLink>
               </InfoRow>
             </InfoWrapper>
           </InfoContainer>

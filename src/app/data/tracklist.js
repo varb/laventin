@@ -14,21 +14,19 @@ export const trackList = [
     },
   }, {
     id: 'rising',
-    active: false,
+    active: true,
     name: 'Rising',
     artist: 'Varb',
     links: {
       soundcloud: 'https://soundcloud.com/laventin/rising',
-      vk: '',
     },
   }, {
     id: 'snow',
-    active: false,
+    active: true,
     name: 'Snow',
     artist: 'Varb',
     links: {
       soundcloud: 'https://soundcloud.com/laventin/snow',
-      vk: '',
     },
   },
 ];
