@@ -55,6 +55,9 @@ class ShareTrackScreen extends Component {
     if (links.apple) {
       list.push(<MediaLink href={links.apple} onClick={this.onLinkClick} data-target-id="apple" target="_blank">Apple Music</MediaLink>);
     }
+    if (links.spotify) {
+      list.push(<MediaLink href={links.spotify} onClick={this.onLinkClick} data-target-id="spotify" target="_blank">Spotify</MediaLink>);
+    }
     if (links.vk) {
       list.push(<MediaLink href={links.vk} onClick={this.onLinkClick} data-target-id="vk" target="_blank">VK</MediaLink>);
     }
@@ -63,9 +66,6 @@ class ShareTrackScreen extends Component {
     }
     if (links.soundcloud) {
       list.push(<MediaLink href={links.soundcloud} onClick={this.onLinkClick} data-target-id="sc" target="_blank">SoundCloud</MediaLink>);
-    }
-    if (links.spotify) {
-      list.push(<MediaLink href={links.spotify} onClick={this.onLinkClick} data-target-id="spotify" target="_blank">Spotify</MediaLink>);
     }
     if (links.yandex) {
       list.push(<MediaLink href={links.yandex} onClick={this.onLinkClick} data-target-id="yandex" target="_blank">Yandex.Music</MediaLink>);
