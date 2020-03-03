@@ -58,7 +58,7 @@ class ShareTrackScreen extends Component {
           const musicStoreInfo = musicStores[key];
           list.push(
             <MediaLink
-              href={links.apple}
+              href={links[key]}
               onClick={this.onLinkClick}
               data-target-id={musicStoreInfo.id}
               target="_blank"
