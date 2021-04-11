@@ -9,23 +9,21 @@ import store from './app/core/store';
 import HomeScreen from './app/modules/HomeScreen';
 import ShareTrackScreen from './app/modules/ShareTrackScreen';
 
-class App  extends React.Component {
-  render() {
-    return (
-      <Fragment>
-        <Helmet>
-          <link href="https://fonts.googleapis.com/css?family=Montserrat:400,600,700&display=swap" rel="stylesheet" />
-        </Helmet>
-        <Provider store={store}>
-          <ConnectedRouter history={history}>
-            <Route path="/" exact render={(p) => <HomeScreen {...p} />} />
-            <Route path="/t" exact render={() => <Redirect to="/" />} />
-            <Route path="/t/:id" render={(p) => <ShareTrackScreen {...p} />} />
-          </ConnectedRouter>
-        </Provider>
-      </Fragment>
-    );
-  }
+function App() {
+  return (
+    <Fragment>
+      <Helmet>
+        <link href="https://fonts.googleapis.com/css?family=Montserrat:400,600,700&display=swap" rel="stylesheet" />
+      </Helmet>
+      <Provider store={store}>
+        <ConnectedRouter history={history}>
+          <Route path="/" exact component={HomeScreen} />
+          <Route path="/t" exact render={() => <Redirect to="/" />} />
+          <Route path="/t/:id" component={ShareTrackScreen} />
+        </ConnectedRouter>
+      </Provider>
+    </Fragment>
+  );
 }
 
 export default App;

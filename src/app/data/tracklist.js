@@ -46,10 +46,10 @@ export const trackList = [
       soundcloud: 'https://soundcloud.com/laventin/night-lights',
       boom: 'https://vk.cc/apCABH',
       yandex: 'https://music.yandex.ru/album/10024559/track/63165652',
-      google: 'https://play.google.com/store/music/album?id=B4rimeyl6qiz3yk53xqdkdy5vou&tid=song-T7fmmgalixiixecrzk6gxx2vjze&hl=en_US',
       itunes: 'https://music.apple.com/ru/album/night-lights-single/1500734346',
     },
-  }, {
+  },
+  {
     id: 'rising',
     active: true,
     name: 'Rising',
@@ -57,7 +57,8 @@ export const trackList = [
     links: {
       soundcloud: 'https://soundcloud.com/laventin/rising',
     },
-  }, {
+  },
+  {
     id: 'snow',
     active: true,
     name: 'Snow',

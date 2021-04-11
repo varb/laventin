@@ -1,4 +1,4 @@
-import React, { Component, Fragment } from 'react';
+import React, { useCallback } from 'react';
 import { Link } from 'react-router-dom';
 
 import {
@@ -11,32 +11,27 @@ import {
 } from './HomeScreenStyles';
 import { trackList } from '../../data/tracklist';
 
+const filteredList = trackList.filter((item) => item.active);
 
-class HomeScreen extends Component {
-  render() {
-    const filteredList = trackList.filter((item) => item.active);
-
-    return (
-      <Fragment>
-        <Root>
-          <InfoContainer>
-            <InfoWrapper>
-              <Title>Laventin</Title>
-              <LinksList>
-                {filteredList.map((track, index) => (
-                  <MediaLink
-                    key={index}
-                    to={`/t/${track.id}`}
-                    as={Link}
-                  >{track.name}</MediaLink>
-                ))}
-              </LinksList>
-            </InfoWrapper>
-          </InfoContainer>
-        </Root>
-      </Fragment>
-    )
-  }
+function HomeScreen() {
+  return (
+    <Root>
+      <InfoContainer>
+        <InfoWrapper>
+          <Title>Laventin</Title>
+          <LinksList>
+            {filteredList.map((track, index) => (
+              <MediaLink
+                key={index}
+                to={`/t/${track.id}`}
+                as={Link}
+              >{track.name}</MediaLink>
+            ))}
+          </LinksList>
+        </InfoWrapper>
+      </InfoContainer>
+    </Root>
+  )
 }
 
 export default HomeScreen;
