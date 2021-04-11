@@ -21,7 +21,7 @@ import { setGoal } from '../../helpers/analytics';
 
 class ShareTrackScreen extends Component {
   state = {
-    trackInfo: 0
+    trackInfo: null
   }
 
   componentDidMount() {
