@@ -41,7 +41,10 @@ class ShareTrackScreen extends Component {
   }
 
   onLinkClick = (e) => {
-    setGoal(e.target.dataset.targetId);
+    setGoal(e.target.dataset.targetId, {
+      trackId: this.state.trackInfo.id,
+      name: this.state.trackInfo.name,
+    });
   }
 
   renderLinks = () => {
