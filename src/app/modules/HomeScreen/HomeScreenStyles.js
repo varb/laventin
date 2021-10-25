@@ -1,89 +1,81 @@
 import styled, { css } from 'styled-components';
 
-
-// const background = '#fff';
-// const hover = '#63FFB9';
-// const accent = '#282828';
 const background = 'rgba(0,0,0,0.6)';
-const hover = '#FF9B71';
-const hoverColor = '#2f1f18';
-const accent = '#f1f1f1';
+const accent = '#CD50AD';
 
 export const Root = styled.div`
   position: relative;
   min-height: 100vh;
   overflow: hidden;
+`;
 
-  &::before {
-    content: '';
-    position: absolute;
-    top: -30px;
-    left: -30px;
-    z-index: 20;
+export const Logo = styled.div`
+  width: 100%;
+  height: 104px;
+  background-image: url('./art/logo.svg');
+  background-size: 87px;
+  background-repeat: no-repeat;
+  background-position: center;
+`;
 
-    width: calc(100% + 60px);
-    height: calc(100% + 60px);
-
-    /* width: 100%;
-    height: 100%; */
-
-    background: url('/bg.jpg');
-    background-size: cover;
-    background-position: 50% 0;
-
-    filter: blur(10px);
-
-    pointer-events: none;
-  }
+export const MainBgCover = styled.div`
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: -1;
+  width: 100%;
+  height: 300px;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
 
   &::after {
     content: '';
     position: absolute;
     top: 0;
     left: 0;
-    z-index: 50;
-
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0,0,0,.35);
-    pointer-events: none;
+    bottom: 0;
+    right: 0;
+    background-image: linear-gradient(180deg, rgba(0, 0, 0, 0) 0%, #1C1421 100%);
   }
 `;
 
+export const LastReleaseInfo = styled.div`
+  margin-top: 140px;
+  margin-bottom: 30px;
+`;
+
+export const LastReleaseTitle = styled.div`
+  font-size: 28px;
+  font-weight: 900;
+  margin-bottom: 5px;
+`;
+
+export const LastReleaseAuthor = styled.div`
+  font-size: 16px;
+  font-weight: 600;
+  color: ${accent};
+`;
+
+export const SectionWrapper = styled.div`
+  margin-bottom: 50px;
+`;
+
 export const InfoContainer = styled.div`
-  /* display: flex; */
-  /* align-items: center; */
-  /* justify-content: center; */
-
-  position: relative;
-  z-index: 100;
-
   max-width: 500px;
   min-height: 100vh;
   margin: 0 auto;
-  padding: 80px 20px 40px;
+  padding: 0 30px 60px;
 `;
 
 export const InfoWrapper = styled.div`
-  color: ${accent};
+  color: #fff;
 `;
 
 export const InfoRow = styled.div`
   &:not(:last-child) {
     margin-bottom: 40px;
   }
-`;
-
-export const Author = styled.h1`
-  margin: 0 0 5px;
-  font-size: 18px;
-  font-weight: 600;
-  letter-spacing: 3px;
-  word-spacing: 1px;
-  text-transform: uppercase;
-`;
-export const AuthorSpan = styled.span`
-  background-color: ${background};
 `;
 
 export const Title = styled.h1`
@@ -99,42 +91,47 @@ export const TitleSpan = styled.span`
   background-color: ${background};
 `;
 
-export const SubTitle = styled.h3`
+export const SubTitle = styled.h2`
   margin: 0 0 30px;
-  font-size: 28px;
-  font-weight: 600;
+  color: ${accent};
+  font-size: 24px;
+  font-weight: 900;
+  text-align: center;
 `;
 
 export const LinksList = styled.div`
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
+  display: grid;
+  grid-gap: 20px;
 `;
 
-export const MediaLink = styled.a`
-  position: relative;
-  padding: 0 1px;
+export const TrackLink = styled.a`
+  display: flex;
+  align-items: center;
+  padding: 20px;
+
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  border-radius: 15px;
   color: inherit;
-  font-weight: 600;
-  font-size: 24px;
   text-decoration: none;
+`;
 
-  &::before {
-    content: '';
-    position: absolute;
-    bottom: -1px;
-    left: 0;
-    width: 100%;
-    height: 3px;
-    background-color: ${hover};
-  }
+export const TrackTitle = styled.div`
+  margin-bottom: 2px;
+  font-size: 16px;
+  font-weight: 800;
+  line-height: 20px;
+`;
 
-  &:hover {
-    background-color: ${hover};
-    color: ${hoverColor};
-  }
+export const TrackArtist = styled.div`
+  color: rgba(255, 255, 255, 0.7);
+  font-size: 12px;
+  font-weight: 600;
+  line-height: 15px;
+`;
 
-  &:not(:last-child) {
-    margin-bottom: 15px;
-  }
+export const TrackArtwork = styled.img`
+  width: 50px;
+  height: 50px;
+  border-radius: 5px;
+  margin-right: 20px;
 `;

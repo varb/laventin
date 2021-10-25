@@ -7,7 +7,5 @@ export const setGoal = (name, params = null) => {
   if (!ym && !name) return;
   const metrikaId = YANDEX_METRICA_ID;
 
-  console.info('setGoal', name, params, process.env.NODE_ENV);
-
   ym(metrikaId, 'reachGoal', name, params);
 };

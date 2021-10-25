@@ -27,13 +27,18 @@ export const musicStores = {
     id: 'itunes',
     title: 'iTunes',
   },
-  google: {
-    id: 'gplay',
-    title: 'Google Play',
-  },
 };
 
 export const trackList = [
+  {
+    id: 'lovely',
+    active: false,
+    name: 'Lovely',
+    artist: 'Laventin & Hissumi',
+    links: {
+      soundcloud: 'https://soundcloud.com/laventin/lovely/s-1pASmzC2MLI?si=bdd05c056ba74f77bdc779f1ac54d52f',
+    },
+  },
   {
     id: 'night-lights',
     active: true,

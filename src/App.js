@@ -13,12 +13,12 @@ function App() {
   return (
     <Fragment>
       <Helmet>
-        <link href="https://fonts.googleapis.com/css?family=Montserrat:400,600,700&display=swap" rel="stylesheet" />
+        <link href="https://fonts.googleapis.com/css?family=Montserrat:400,600,700,800,900&display=swap" rel="stylesheet" />
       </Helmet>
       <Provider store={store}>
         <ConnectedRouter history={history}>
           <Route path="/" exact component={HomeScreen} />
-          <Route path="/t" exact render={() => <Redirect to="/" />} />
+          {/* <Route path="/t" exact render={() => <Redirect to="/" />} /> */}
           <Route path="/t/:id" component={ShareTrackScreen} />
         </ConnectedRouter>
       </Provider>
