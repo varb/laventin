@@ -4,17 +4,21 @@ import { Root, Link } from './styled';
 
 const list = [
   {
+    title: 'SoundCloud',
+    url: 'https://soundcloud.com/laventin',
+    iconName: 'soundCloud',
+  }, {
     title: 'Instagram',
     url: 'https://www.instagram.com/lavent.in/',
     iconName: 'instagram',
   }, {
-    title: 'VK',
-    url: 'https://vk.com/laventinmusic',
-    iconName: 'vk',
-  }, {
     title: 'Telegram',
     url: 'https://t.me/laventinmusic',
     iconName: 'telegram',
+  }, {
+    title: 'VK',
+    url: 'https://vk.com/laventinmusic',
+    iconName: 'vk',
   },
 ];
 
