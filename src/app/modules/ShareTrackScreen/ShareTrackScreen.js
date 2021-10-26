@@ -37,8 +37,6 @@ class ShareTrackScreen extends Component {
       }
     }
 
-    console.log('componentDidMount', id, trackList, trackInfo);
-
     this.setState({ trackInfo });
   }
 
@@ -80,8 +78,6 @@ class ShareTrackScreen extends Component {
     const {
       trackInfo,
     } = this.state;
-
-    console.log('render', trackInfo);
 
     if (trackInfo === null) {
       return null;

@@ -2,30 +2,37 @@ export const musicStores = {
   apple: {
     id: 'apple',
     title: 'Apple Music',
+    icon: 'appleMusic',
   },
   spotify: {
     id: 'spotify',
     title: 'Spotify',
+    icon: 'spotify',
   },
   vk: {
     id: 'vk',
     title: 'VK',
+    icon: 'vk',
   },
   boom: {
     id: 'boom',
     title: 'Boom',
+    icon: 'boomMusic',
   },
   soundcloud: {
     id: 'sc',
     title: 'SoundCloud',
+    icon: 'soundCloud',
   },
   yandex: {
     id: 'yandex',
     title: 'Yandex.Music',
+    icon: 'yandexMusic',
   },
   itunes: {
     id: 'itunes',
     title: 'iTunes',
+    icon: 'iTunes',
   },
 };
 

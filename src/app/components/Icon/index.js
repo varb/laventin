@@ -4,11 +4,23 @@ import { Root } from './styled';
 import vk from './icons/VkIcon';
 import instagram from './icons/InstagramIcon';
 import telegram from './icons/TelegramIcon';
+import appleMusic from './icons/AppleMusicIcon';
+import boomMusic from './icons/BoomMusicIcon';
+import iTunes from './icons/iTunesIcon';
+import soundCloud from './icons/SoundCloudIcon';
+import spotify from './icons/SpotifyIcon';
+import yandexMusic from './icons/YandexMusicIcon';
 
 export const icons = {
   vk,
   instagram,
   telegram,
+  appleMusic,
+  boomMusic,
+  iTunes,
+  soundCloud,
+  spotify,
+  yandexMusic,
 };
 
 // Make icon aliases

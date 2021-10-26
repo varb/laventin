@@ -45,6 +45,21 @@ export const LastReleaseInfo = styled.div`
   margin-bottom: 30px;
 `;
 
+export const LastReleaseLabel = styled.div`
+  width: fit-content;
+  margin-bottom: 5px;
+  padding: 2px 8px;
+
+  background: #CD50AD;
+  border-radius: 10px;
+  color: #fff;
+  font-size: 10px;
+  font-weight: 700;
+  line-height: 12px;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+`;
+
 export const LastReleaseTitle = styled.div`
   font-size: 28px;
   font-weight: 900;
@@ -113,6 +128,12 @@ export const TrackLink = styled.a`
   border-radius: 15px;
   color: inherit;
   text-decoration: none;
+  transition-property: border-color;
+  transition-duration: .2s;
+
+  &:hover {
+    border-color: rgba(255, 255, 255, 1);
+  }
 `;
 
 export const TrackTitle = styled.div`

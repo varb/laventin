@@ -1,8 +1,9 @@
 import React, { useCallback } from 'react';
-import { List, Link } from './styled';
+import { List, Link, LinkIcon } from './styled';
 // import { trackList, musicStores } from '../../data/tracklist';
 import { musicStores } from '../../data/tracklist';
 import { setGoal } from '../../helpers/analytics';
+import Icon from '../Icon';
 
 export default function StreamingLinks(props) {
   const {
@@ -36,7 +37,12 @@ export default function StreamingLinks(props) {
             onClick={onLinkClick}
             data-target-id={musicStoreInfo.id}
             target="_blank"
-          >{musicStoreInfo.title}</Link>
+          >
+            <LinkIcon>
+              <Icon name={musicStoreInfo.icon} />
+            </LinkIcon>
+            {musicStoreInfo.title}
+          </Link>
         );
       }
     }

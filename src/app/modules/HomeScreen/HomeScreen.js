@@ -18,6 +18,7 @@ import {
   TrackTitle,
   TrackArtist,
   TrackArtwork,
+  LastReleaseLabel,
 } from './HomeScreenStyles';
 import { trackList } from '../../data/tracklist';
 import StreamingLinks from '../../components/StreamingLinks';
@@ -28,7 +29,6 @@ const filteredList = trackList.filter((item) => item.active);
 const lastRelease = filteredList[0];
 
 function HomeScreen() {
-  console.log('lastRelease', lastRelease);
   return (
     <Root>
       <InfoContainer>
@@ -37,6 +37,7 @@ function HomeScreen() {
 
           <MainBgCover style={{ backgroundImage: `url('/art/${lastRelease.id}/bg-layer.jpg')` }} />
           <LastReleaseInfo>
+            <LastReleaseLabel>Last release</LastReleaseLabel>
             <LastReleaseTitle>{lastRelease.name}</LastReleaseTitle>
             <LastReleaseAuthor>{lastRelease.artist}</LastReleaseAuthor>
           </LastReleaseInfo>
