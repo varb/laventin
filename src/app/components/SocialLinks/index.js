@@ -26,7 +26,7 @@ export default function SocialLinks() {
   return (
     <Root>
       {list.map((link, index) => (
-        <Link href={link.url} target="_blank">
+        <Link href={link.url} target="_blank" key={link.iconName}>
           <Icon name={link.iconName} />
         </Link>
       ))}

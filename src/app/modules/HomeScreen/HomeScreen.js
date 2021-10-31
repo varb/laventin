@@ -33,11 +33,11 @@ function HomeScreen() {
     <Root>
       <InfoContainer>
         <InfoWrapper>
-          <Logo />
+          {/* <Logo /> */}
 
-          <MainBgCover style={{ backgroundImage: `url('/art/${lastRelease.id}/bg-layer.jpg')` }} />
+          <MainBgCover />
           <LastReleaseInfo>
-            <LastReleaseLabel>Last release</LastReleaseLabel>
+            <LastReleaseLabel>New release</LastReleaseLabel>
             <LastReleaseTitle>{lastRelease.name}</LastReleaseTitle>
             <LastReleaseAuthor>{lastRelease.artist}</LastReleaseAuthor>
           </LastReleaseInfo>
@@ -65,7 +65,7 @@ function HomeScreen() {
             </LinksList>
           </SectionWrapper>
 
-          <SubTitle>Social</SubTitle>
+          <SubTitle>Socials</SubTitle>
           <SocialLinks />
 
         </InfoWrapper>

@@ -1,27 +1,41 @@
-import React, { Fragment } from 'react';
+import React, { Fragment, useEffect } from 'react';
 import Helmet from 'react-helmet';
-import { Route, Redirect } from 'react-router';
-import { Provider } from 'react-redux';
-import { ConnectedRouter } from 'connected-react-router';
+import { BrowserRouter as Router, Switch, Route, Redirect } from 'react-router-dom';
+// import { Provider } from 'react-redux';
+import { ThemeProvider } from 'styled-components';
+// import { ConnectedRouter } from 'connected-react-router';
 
-import history from './app/core/history';
-import store from './app/core/store';
+import theme from './app/theme';
+import ScrollToTop from './app/components/ScrollToTop';
 import HomeScreen from './app/modules/HomeScreen';
 import ShareTrackScreen from './app/modules/ShareTrackScreen';
 
+// _loaded
+
 function App() {
+
+  useEffect(() => {
+    setTimeout(() => {
+      document.body.classList.add('_loaded');
+    }, 1000);
+  }, []);
+
   return (
     <Fragment>
       <Helmet>
         <link href="https://fonts.googleapis.com/css?family=Montserrat:400,600,700,800,900&display=swap" rel="stylesheet" />
       </Helmet>
-      <Provider store={store}>
-        <ConnectedRouter history={history}>
-          <Route path="/" exact component={HomeScreen} />
-          {/* <Route path="/t" exact render={() => <Redirect to="/" />} /> */}
-          <Route path="/t/:id" component={ShareTrackScreen} />
-        </ConnectedRouter>
-      </Provider>
+      <ThemeProvider theme={theme.darkNeon}>
+        <Router>
+          <ScrollToTop>
+            <Switch>
+              <Route path="/" exact component={HomeScreen} />
+              <Redirect from="/t" to="/" exact />
+              <Route path="/t/:id" component={ShareTrackScreen} />
+            </Switch>
+          </ScrollToTop>
+        </Router>
+      </ThemeProvider>
     </Fragment>
   );
 }

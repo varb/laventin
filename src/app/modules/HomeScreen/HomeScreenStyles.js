@@ -7,12 +7,21 @@ export const Root = styled.div`
   position: relative;
   min-height: 100vh;
   overflow: hidden;
+
+  opacity: 0;
+  transition: opacity 600ms 1000ms ease-out;
+  /* transition-delay: 1000ms;
+  transition-property: opacity; */
+
+  ._loaded & {
+    opacity: 1;
+  }
 `;
 
 export const Logo = styled.div`
   width: 100%;
   height: 104px;
-  background-image: url('./art/logo.svg');
+  background-image: url('/art/logo.svg');
   background-size: 87px;
   background-repeat: no-repeat;
   background-position: center;
@@ -24,9 +33,11 @@ export const MainBgCover = styled.div`
   left: 0;
   z-index: -1;
   width: 100%;
-  height: 300px;
+  min-height: 300px;
+  padding-bottom: 42%;
+  background-image: url('/bg.jpg');
   background-size: cover;
-  background-position: center;
+  background-position: top center;
   background-repeat: no-repeat;
 
   &::after {
@@ -36,28 +47,28 @@ export const MainBgCover = styled.div`
     left: 0;
     bottom: 0;
     right: 0;
-    background-image: linear-gradient(180deg, rgba(0, 0, 0, 0) 0%, #1C1421 100%);
+    background-image: linear-gradient(180deg, rgba(0, 0, 0, 0.1) 0%, #1C1421 100%);
   }
 `;
 
 export const LastReleaseInfo = styled.div`
-  margin-top: 140px;
+  margin-top: 220px;
   margin-bottom: 30px;
 `;
 
 export const LastReleaseLabel = styled.div`
   width: fit-content;
   margin-bottom: 5px;
-  padding: 2px 8px;
+  padding: 4px 9px;
 
-  background: #CD50AD;
+  background: ${(p) => p.theme.colors.secondary.main};
   border-radius: 10px;
   color: #fff;
-  font-size: 10px;
-  font-weight: 700;
+  font-size: 12px;
+  font-weight: 600;
   line-height: 12px;
-  letter-spacing: 0.05em;
-  text-transform: uppercase;
+  /* letter-spacing: 0.05em; */
+  /* text-transform: uppercase; */
 `;
 
 export const LastReleaseTitle = styled.div`
@@ -124,15 +135,16 @@ export const TrackLink = styled.a`
   align-items: center;
   padding: 20px;
 
-  border: 1px solid rgba(255, 255, 255, 0.25);
-  border-radius: 15px;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-radius: 20px;
   color: inherit;
   text-decoration: none;
-  transition-property: border-color;
+  transition-property: border-color, box-shadow;
   transition-duration: .2s;
 
   &:hover {
-    border-color: rgba(255, 255, 255, 1);
+    border-color: rgb(205 80 173);
+    box-shadow: 0 0 10px rgb(205 80 173 / 50%), inset 0 0 5px rgb(205 80 173 / 50%);
   }
 `;
 
