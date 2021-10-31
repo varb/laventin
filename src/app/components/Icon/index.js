@@ -1,5 +1,5 @@
 import React, { PureComponent } from 'react';
-import { Root } from './styled';
+import { Root } from './styles';
 
 import vk from './icons/VkIcon';
 import instagram from './icons/InstagramIcon';
