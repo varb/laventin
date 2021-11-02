@@ -1,10 +1,7 @@
 import React, { Fragment, useEffect } from 'react';
-import Helmet from 'react-helmet';
 import { BrowserRouter as Router, Switch, Route, Redirect } from 'react-router-dom';
 import WebFont from 'webfontloader';
-// import { Provider } from 'react-redux';
 import { ThemeProvider } from 'styled-components';
-// import { ConnectedRouter } from 'connected-react-router';
 
 import theme from './app/theme';
 import ScrollToTop from './app/components/ScrollToTop';

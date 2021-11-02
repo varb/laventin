@@ -2,15 +2,6 @@ import styled, { css } from 'styled-components';
 import { PageWrap } from '../../components/Layout/styles';
 import { H1, H3 } from '../../components/Typography';
 
-
-// const background = '#fff';
-// const hover = '#63FFB9';
-// const accent = '#282828';
-const background = 'rgba(0,0,0,0.6)';
-const hover = '#FF9B71';
-const hoverColor = '#2f1f18';
-const accent = '#f1f1f1';
-
 export const Root = styled.div`
   position: relative;
   min-height: 100vh;
@@ -98,33 +89,4 @@ export const Title = styled(H1)`
 `;
 
 export const Author = styled(H3)`
-`;
-
-export const MediaLink = styled.a`
-  position: relative;
-  padding: 0 1px;
-  background-color: ${background};
-  color: inherit;
-  font-weight: 600;
-  font-size: ${(p) => p.small ? 20 : 24}px;
-  text-decoration: none;
-
-  &::before {
-    content: '';
-    position: absolute;
-    bottom: -1px;
-    left: 0;
-    width: 100%;
-    height: 3px;
-    background-color: ${hover};
-  }
-
-  &:hover {
-    background-color: ${hover};
-    color: ${hoverColor};
-  }
-
-  &:not(:last-child) {
-    margin-bottom: 15px;
-  }
 `;

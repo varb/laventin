@@ -1,38 +1,30 @@
-import React, { Component, Fragment } from 'react';
+import React, { Fragment } from 'react';
 import Helmet from 'react-helmet';
-import { Link, useParams } from 'react-router-dom';
+import { Redirect, useParams } from 'react-router-dom';
 
 import {
   Root,
   Title,
   InfoContainer,
   InfoRow,
-  MediaLink,
   Author,
   ArtworkCover,
   ControlTopBar,
-  ShareButton,
+  // ShareButton,
   ArtworkWrapper,
   ArtworkContainer,
 } from './ShareTrackScreenStyles';
 import StreamingLinks from '../../components/StreamingLinks';
 import useTrackInfo from '../../hooks/useTrackInfo';
 import BackButton from '../../components/BackButton';
-import Icon from '../../components/Icon';
 
 
-function ShareTrackScreen(props) {
-  const {
-    id = null,
-  } = props.match.params;
-
-  console.log('ShareTrackScreen', useParams());
-
+function ShareTrackScreen() {
+  const { id } = useParams();
   const trackInfo = useTrackInfo(id);
 
   if (trackInfo === null) {
-    return null;
-    // return (<Redirect to="/" />);
+    return (<Redirect to="/" />);
   }
 
   return (
