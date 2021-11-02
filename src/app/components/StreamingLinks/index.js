@@ -6,9 +6,7 @@ import { setGoal } from '../../helpers/analytics';
 import Icon from '../Icon';
 
 export default function StreamingLinks(props) {
-  const {
-    trackInfo,
-  } = props;
+  const { trackInfo } = props;
   const { links: trackLinks } = trackInfo;
 
   const onLinkClick = useCallback(

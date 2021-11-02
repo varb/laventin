@@ -1,6 +1,7 @@
 import React, { Fragment, useEffect } from 'react';
 import Helmet from 'react-helmet';
 import { BrowserRouter as Router, Switch, Route, Redirect } from 'react-router-dom';
+import WebFont from 'webfontloader';
 // import { Provider } from 'react-redux';
 import { ThemeProvider } from 'styled-components';
 // import { ConnectedRouter } from 'connected-react-router';
@@ -9,32 +10,48 @@ import theme from './app/theme';
 import ScrollToTop from './app/components/ScrollToTop';
 import HomeScreen from './app/modules/HomeScreen';
 import ShareTrackScreen from './app/modules/ShareTrackScreen';
+import Layout from './app/components/Layout';
 
 // _loaded
 
+const showPageContent = () => {
+  document.body.classList.add('_loaded');
+}
+
 function App() {
 
+  // load fonts
   useEffect(() => {
-    setTimeout(() => {
-      document.body.classList.add('_loaded');
-    }, 1000);
+    const WebFontConfig = {
+      active: function() {
+        showPageContent();
+      },
+      inactive: function() {
+        showPageContent();
+      },
+      google: {
+        families: ['Montserrat:400,600,700,800,900']
+      },
+      timeout: 3000,
+    };
+
+    WebFont.load(WebFontConfig);
   }, []);
 
   return (
     <Fragment>
-      <Helmet>
-        <link href="https://fonts.googleapis.com/css?family=Montserrat:400,600,700,800,900&display=swap" rel="stylesheet" />
-      </Helmet>
       <ThemeProvider theme={theme.darkNeon}>
-        <Router>
-          <ScrollToTop>
-            <Switch>
-              <Route path="/" exact component={HomeScreen} />
-              <Redirect from="/t" to="/" exact />
-              <Route path="/t/:id" component={ShareTrackScreen} />
-            </Switch>
-          </ScrollToTop>
-        </Router>
+        <Layout>
+          <Router>
+            <ScrollToTop>
+              <Switch>
+                <Route path="/" exact component={HomeScreen} />
+                <Redirect from="/t" to="/" exact />
+                <Route path="/t/:id" component={ShareTrackScreen} />
+              </Switch>
+            </ScrollToTop>
+          </Router>
+        </Layout>
       </ThemeProvider>
     </Fragment>
   );

@@ -3,9 +3,6 @@ import { Link } from 'react-router-dom';
 
 import {
   Root,
-  InfoContainer,
-  InfoWrapper,
-  Title,
   LinksList,
   TrackLink,
   Logo,
@@ -23,6 +20,7 @@ import {
 import { trackList } from '../../data/tracklist';
 import StreamingLinks from '../../components/StreamingLinks';
 import SocialLinks from '../../components/SocialLinks';
+import { PageWrap } from '../../components/Layout/styles';
 
 const filteredList = trackList.filter((item) => item.active);
 
@@ -31,45 +29,45 @@ const lastRelease = filteredList[0];
 function HomeScreen() {
   return (
     <Root>
-      <InfoContainer>
-        <InfoWrapper>
-          {/* <Logo /> */}
+      <PageWrap>
+        <Logo />
 
-          <MainBgCover />
-          <LastReleaseInfo>
-            <LastReleaseLabel>New release</LastReleaseLabel>
-            <LastReleaseTitle>{lastRelease.name}</LastReleaseTitle>
-            <LastReleaseAuthor>{lastRelease.artist}</LastReleaseAuthor>
-          </LastReleaseInfo>
+        <MainBgCover />
+        <LastReleaseInfo>
+          <LastReleaseLabel>New release</LastReleaseLabel>
+          <LastReleaseTitle>{lastRelease.name}</LastReleaseTitle>
+          <LastReleaseAuthor>{lastRelease.artist}</LastReleaseAuthor>
+        </LastReleaseInfo>
 
-          <SectionWrapper>
-            <StreamingLinks trackInfo={lastRelease} />
-          </SectionWrapper>
+        <SectionWrapper>
+          <StreamingLinks trackInfo={lastRelease} />
+        </SectionWrapper>
 
-          <SubTitle>Discography</SubTitle>
-          <SectionWrapper>
-            <LinksList>
-              {filteredList.map((track, index) => (
-                <TrackLink
-                  key={index}
-                  to={`/t/${track.id}`}
-                  as={Link}
-                >
-                  <TrackArtwork src={`/art/${track.id}/artwork.jpg`} />
-                  <div>
-                    <TrackTitle>{track.name}</TrackTitle>
-                    <TrackArtist>{track.artist}</TrackArtist>
-                  </div>
-                </TrackLink>
-              ))}
-            </LinksList>
-          </SectionWrapper>
+        <SubTitle>Discography</SubTitle>
+        <SectionWrapper>
+          <LinksList>
+            {filteredList.map((track, index) => (
+              <TrackLink
+                key={index}
+                to={`/t/${track.id}`}
+                as={Link}
+              >
+                <TrackArtwork src={`/art/${track.id}/artwork.jpg`} />
+                <div>
+                  <TrackTitle>{track.name}</TrackTitle>
+                  <TrackArtist>{track.artist}</TrackArtist>
+                </div>
+              </TrackLink>
+            ))}
+          </LinksList>
+        </SectionWrapper>
 
-          <SubTitle>Socials</SubTitle>
+        <SubTitle>Socials</SubTitle>
+        <SectionWrapper>
           <SocialLinks />
+        </SectionWrapper>
 
-        </InfoWrapper>
-      </InfoContainer>
+      </PageWrap>
     </Root>
   )
 }

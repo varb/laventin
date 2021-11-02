@@ -1,30 +1,22 @@
-import styled, { css } from 'styled-components';
-
-const background = 'rgba(0,0,0,0.6)';
-const accent = '#CD50AD';
+import styled from 'styled-components';
+import { H2 } from '../../components/Typography';
 
 export const Root = styled.div`
   position: relative;
   min-height: 100vh;
   overflow: hidden;
-
-  opacity: 0;
-  transition: opacity 600ms 1000ms ease-out;
-  /* transition-delay: 1000ms;
-  transition-property: opacity; */
-
-  ._loaded & {
-    opacity: 1;
-  }
 `;
 
 export const Logo = styled.div`
-  width: 100%;
+  width: 87px;
   height: 104px;
   background-image: url('/art/logo.svg');
   background-size: 87px;
   background-repeat: no-repeat;
-  background-position: center;
+  background-position: 0 50%;
+  filter:
+    drop-shadow(1px -1px 0px ${(p) => p.theme.colors.secondary.main})
+    drop-shadow(-1px 1px 0px ${(p) => p.theme.colors.primary.main});
 `;
 
 export const MainBgCover = styled.div`
@@ -47,12 +39,12 @@ export const MainBgCover = styled.div`
     left: 0;
     bottom: 0;
     right: 0;
-    background-image: linear-gradient(180deg, rgba(0, 0, 0, 0.1) 0%, #1C1421 100%);
+    background-image: linear-gradient(180deg, rgba(0, 0, 0, 0.1) 0%, ${(p) => p.theme.colors.background.default} 100%);
   }
 `;
 
 export const LastReleaseInfo = styled.div`
-  margin-top: 220px;
+  margin-top: 115px;
   margin-bottom: 30px;
 `;
 
@@ -80,22 +72,11 @@ export const LastReleaseTitle = styled.div`
 export const LastReleaseAuthor = styled.div`
   font-size: 16px;
   font-weight: 600;
-  color: ${accent};
+  color: ${(p) => p.theme.colors.primary.main};
 `;
 
 export const SectionWrapper = styled.div`
   margin-bottom: 50px;
-`;
-
-export const InfoContainer = styled.div`
-  max-width: 500px;
-  min-height: 100vh;
-  margin: 0 auto;
-  padding: 0 30px 60px;
-`;
-
-export const InfoWrapper = styled.div`
-  color: #fff;
 `;
 
 export const InfoRow = styled.div`
@@ -104,24 +85,8 @@ export const InfoRow = styled.div`
   }
 `;
 
-export const Title = styled.h1`
-  margin: 0 0 60px;
-  font-size: 40px;
-  font-weight: 600;
-  letter-spacing: 6px;
-  word-spacing: 8px;
-  /* text-align: center; */
-  text-transform: uppercase;
-`;
-export const TitleSpan = styled.span`
-  background-color: ${background};
-`;
-
-export const SubTitle = styled.h2`
+export const SubTitle = styled(H2)`
   margin: 0 0 30px;
-  color: ${accent};
-  font-size: 24px;
-  font-weight: 900;
   text-align: center;
 `;
 

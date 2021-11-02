@@ -10,6 +10,8 @@ import iTunes from './icons/iTunesIcon';
 import soundCloud from './icons/SoundCloudIcon';
 import spotify from './icons/SpotifyIcon';
 import yandexMusic from './icons/YandexMusicIcon';
+import chevronLeft from './icons/ChevronLeftIcon';
+import share from './icons/ShareIcon';
 
 export const icons = {
   vk,
@@ -21,6 +23,8 @@ export const icons = {
   soundCloud,
   spotify,
   yandexMusic,
+  chevronLeft,
+  share,
 };
 
 // Make icon aliases

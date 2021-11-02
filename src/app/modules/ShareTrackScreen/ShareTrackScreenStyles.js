@@ -1,4 +1,6 @@
 import styled, { css } from 'styled-components';
+import { PageWrap } from '../../components/Layout/styles';
+import { H1, H3 } from '../../components/Typography';
 
 
 // const background = '#fff';
@@ -13,96 +15,82 @@ export const Root = styled.div`
   position: relative;
   min-height: 100vh;
   overflow: hidden;
+`;
+
+export const InfoContainer = styled(PageWrap)`
+  position: relative;
+  z-index: 100;
+`;
+
+export const ControlTopBar = styled(PageWrap)`
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  padding: 24px 20px 20px;
+`;
+
+export const ShareButton = styled.div`
+  font-size: 26px;
+  color: ${(p) => p.theme.colors.text.secondary};
+  transition: color .2s;
+
+  &:hover {
+    color: ${(p) => p.theme.colors.text.primary};
+  }
+`;
+
+export const InfoRow = styled.div`
+  text-align: center;
+
+  &:not(:last-child) {
+    margin-bottom: 30px;
+  }
+`;
+
+export const ArtworkCoverWrap = styled.div`
+  position: relative;
+  margin-bottom: 30px;
+  padding: 0 35px;
 
   &::before {
     content: '';
     position: absolute;
-    top: -30px;
-    left: -30px;
-    z-index: 20;
+    top: 50%;
+    left: 50%;
+    z-index: -1;
 
-    width: calc(100% + 60px);
-    height: calc(100% + 60px);
-
-    /* width: 100%;
-    height: 100%; */
+    width: 80%;
+    height: 80%;
 
     ${(p) => p.artPath && css`
-      background: url('/art/${p.artPath}/bg-layer.jpg');
-      background-size: cover;
+      background: url(${p.artPath});
+      background-size: contain;
       background-position: 50%;
+      background-repeat: no-repeat;
+      /* filter: blur(50px) brightness(0.65); */
+      filter: blur(100px) brightness(0.8);
     `}
 
-    filter: blur(7px);
-
     pointer-events: none;
-  }
-
-  &::after {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    z-index: 50;
-
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0,0,0,.35);
-    pointer-events: none;
+    transform: translate(-50%, -50%);
   }
 `;
 
-export const InfoContainer = styled.div`
-  /* display: flex;
-  justify-content: center; */
-
-  position: relative;
-  z-index: 100;
-
-  max-width: 500px;
-  min-height: 100vh;
+export const ArtworkCover = styled.img`
+  display: block;
+  max-width: 100%;
   margin: 0 auto;
-  padding: 80px 20px 20%;
+
+  box-shadow: 0px 10px 30px rgba(0, 0, 0, 0.5);
+  border-radius: 15px;
 `;
 
-export const InfoWrapper = styled.div`
-  color: ${accent};
+export const Title = styled(H1)`
+  margin-bottom: 5px;
 `;
 
-export const InfoRow = styled.div`
-  &:not(:last-child) {
-    margin-bottom: 40px;
-  }
-`;
-
-export const Author = styled.h1`
-  margin: 0 0 5px;
-  font-size: 18px;
-  font-weight: 600;
-  letter-spacing: 3px;
-  word-spacing: 1px;
-  text-transform: uppercase;
-`;
-export const AuthorSpan = styled.span`
-  background-color: ${background};
-`;
-
-export const Title = styled.h1`
-  margin: 0;
-  font-size: 40px;
-  font-weight: 600;
-  letter-spacing: 6px;
-  word-spacing: 8px;
-  text-transform: uppercase;
-`;
-export const TitleSpan = styled.span`
-  background-color: ${background};
-`;
-
-export const LinksList = styled.div`
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
+export const Author = styled(H3)`
 `;
 
 export const MediaLink = styled.a`

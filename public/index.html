@@ -52,13 +52,14 @@
         height: 100vh;
 
         animation: showLoader .1s cubic-bezier(0.4, 0.0, 0.2, 1);
-        transition: height var(--fadein-anim-duration) cubic-bezier(0.4, 0.06, 0.55, 1);
+        transition-property: height, opacity;
+        transition-duration: var(--fadein-anim-duration);
+        transition-timing-function: cubic-bezier(0.4, 0.06, 0.55, 1);
         overflow: hidden;
       }
 
       #preloader svg {
         height: 32px;
-        transition: height var(--fadein-anim-duration);
       }
 
       #preloader::after {
@@ -71,23 +72,12 @@
 
         animation: load var(--fadein-anim-duration) cubic-bezier(0.4, 0.0, 0.2, 1) infinite;
         background: linear-gradient(90deg, rgba(28, 20, 33, 0.5) 33.16%, rgba(28, 20, 33, 0) 51.33%, rgba(28, 20, 33, 0.5) 66.65%);
-        opacity: 1;
-        transition: opacity .6s;
         transform: translateX(-50%);
       }
 
       ._loaded #preloader {
-        height: 103px;
         pointer-events: none;
-      }
-
-      ._loaded #preloader::after {
         opacity: 0;
-        pointer-events: none;
-      }
-
-      ._loaded #preloader svg {
-        height: 23px;
       }
 
       @keyframes showLoader {
