@@ -48,10 +48,14 @@ export const InfoRow = styled.div`
   }
 `;
 
-export const ArtworkCoverWrap = styled.div`
-  position: relative;
-  margin-bottom: 30px;
+export const ArtworkWrapper = styled.div`
   padding: 0 35px;
+  margin-bottom: 30px;
+`;
+
+export const ArtworkContainer = styled.div`
+  position: relative;
+  padding-bottom: 100%;
 
   &::before {
     content: '';
@@ -78,9 +82,12 @@ export const ArtworkCoverWrap = styled.div`
 `;
 
 export const ArtworkCover = styled.img`
+  position: absolute;
+  top: 0;
+  left: 0;
   display: block;
   max-width: 100%;
-  margin: 0 auto;
+  margin: 0;
 
   box-shadow: 0px 10px 30px rgba(0, 0, 0, 0.5);
   border-radius: 15px;

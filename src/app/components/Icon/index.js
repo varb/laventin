@@ -12,6 +12,7 @@ import spotify from './icons/SpotifyIcon';
 import yandexMusic from './icons/YandexMusicIcon';
 import chevronLeft from './icons/ChevronLeftIcon';
 import share from './icons/ShareIcon';
+import albumCover from './icons/AlbumCoverIcon';
 
 export const icons = {
   vk,
@@ -25,6 +26,7 @@ export const icons = {
   yandexMusic,
   chevronLeft,
   share,
+  albumCover,
 };
 
 // Make icon aliases

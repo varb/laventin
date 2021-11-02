@@ -10,9 +10,10 @@ import {
   MediaLink,
   Author,
   ArtworkCover,
-  ArtworkCoverWrap,
   ControlTopBar,
   ShareButton,
+  ArtworkWrapper,
+  ArtworkContainer,
 } from './ShareTrackScreenStyles';
 import StreamingLinks from '../../components/StreamingLinks';
 import useTrackInfo from '../../hooks/useTrackInfo';
@@ -51,9 +52,11 @@ function ShareTrackScreen(props) {
         </ControlTopBar>
         <InfoContainer>
           <InfoRow>
-            <ArtworkCoverWrap artPath={`/art/${trackInfo.id}/artwork.jpg`}>
-              <ArtworkCover src={`/art/${trackInfo.id}/artwork.jpg`} />
-            </ArtworkCoverWrap>
+            <ArtworkWrapper>
+              <ArtworkContainer artPath={`/art/${trackInfo.id}/artwork.jpg`}>
+                <ArtworkCover src={`/art/${trackInfo.id}/artwork.jpg`} />
+              </ArtworkContainer>
+            </ArtworkWrapper>
             <Title>{trackInfo.name}</Title>
             <Author>{trackInfo.artist}</Author>
           </InfoRow>
