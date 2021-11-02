@@ -4,13 +4,13 @@ import { H1, H3 } from '../../components/Typography';
 
 export const Root = styled.div`
   position: relative;
-  min-height: 100vh;
   overflow: hidden;
 `;
 
 export const InfoContainer = styled(PageWrap)`
   position: relative;
   z-index: 100;
+  margin-bottom: 50px;
 `;
 
 export const ControlTopBar = styled(PageWrap)`
