@@ -55,16 +55,15 @@ export const ArtworkContainer = styled.div`
     left: 50%;
     z-index: -1;
 
-    width: 80%;
-    height: 80%;
+    width: 90%;
+    height: 90%;
 
     ${(p) => p.artPath && css`
       background: url(${p.artPath});
       background-size: contain;
       background-position: 50%;
       background-repeat: no-repeat;
-      /* filter: blur(50px) brightness(0.65); */
-      filter: blur(100px) brightness(0.8);
+      filter: blur(60px) brightness(0.5);
     `}
 
     pointer-events: none;
