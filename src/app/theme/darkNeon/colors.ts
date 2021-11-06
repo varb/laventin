@@ -1,3 +1,5 @@
+import { DefaultThemeColors } from '../';
+
 export default {
   primary: {
     main: '#CD50AD',
@@ -12,4 +14,4 @@ export default {
     primary: '#fff',
     secondary: 'rgba(255, 255, 255, 0.7)',
   },
-}
+} as DefaultThemeColors;
