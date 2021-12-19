@@ -1,4 +1,12 @@
-export const musicStores = {
+interface IMusicStores {
+  [key: string]: {
+    id: string,
+    title: string,
+    icon: string,
+  }
+}
+
+export const musicStores: IMusicStores = {
   apple: {
     id: 'apple',
     title: 'Apple Music',
@@ -36,14 +44,26 @@ export const musicStores = {
   },
 };
 
-export const trackList = [
+type MusicStores = typeof musicStores;
+
+interface ITrackItem {
+  id: string,
+  active: boolean,
+  name: string,
+  artist: string,
+  links: {
+    [key: keyof typeof musicStores]: string
+  }
+}
+
+export const trackList: ITrackItem[] = [
   {
     id: 'lovely',
-    active: false,
+    active: true,
     name: 'Lovely',
     artist: 'Laventin & Hissumi',
     links: {
-      soundcloud: 'https://soundcloud.com/laventin/lovely/s-1pASmzC2MLI?si=bdd05c056ba74f77bdc779f1ac54d52f',
+      soundcloud: 'https://soundcloud.com/laventin/lovely/',
     },
   },
   {

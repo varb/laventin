@@ -16,7 +16,7 @@ export default function StreamingLinks(props) {
         name: trackInfo.name,
       });
     },
-    []
+    [trackInfo]
   );
 
   if (!trackLinks) return null;
