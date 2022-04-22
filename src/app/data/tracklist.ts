@@ -63,7 +63,7 @@ export const trackList: ITrackItem[] = [
     name: 'Lovely',
     artist: 'Laventin & Hissumi',
     links: {
-      soundcloud: 'https://soundcloud.com/laventin/lovely/',
+      soundcloud: 'https://soundcloud.com/laventin/lovely?si=498cb57e15aa4cfd92563d1d2a223345&utm_source=clipboard&utm_medium=text&utm_campaign=social_sharing',
     },
   },
   {
