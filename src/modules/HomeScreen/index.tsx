@@ -33,7 +33,7 @@ function HomeScreen() {
 
         <MainBgCover />
         <LastReleaseInfo>
-          <LastReleaseLabel>New release</LastReleaseLabel>
+          <LastReleaseLabel>Last release</LastReleaseLabel>
           <LastReleaseTitle>{lastRelease.name}</LastReleaseTitle>
           <LastReleaseAuthor>{lastRelease.artist}</LastReleaseAuthor>
         </LastReleaseInfo>

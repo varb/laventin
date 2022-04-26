@@ -1,4 +1,3 @@
-import React, { Fragment } from 'react';
 import Helmet from 'react-helmet';
 import { Navigate, useParams } from 'react-router-dom';
 
@@ -17,6 +16,7 @@ import {
 import StreamingLinks from '../../components/StreamingLinks';
 import useTrackInfo from '../../hooks/useTrackInfo';
 import BackButton from '../../components/BackButton';
+// import Icon from 'components/Icon';
 
 
 function ShareTrackScreen() {
@@ -28,13 +28,14 @@ function ShareTrackScreen() {
   }
 
   return (
-    <Fragment>
+    <>
       <Helmet>
         <title>{`${trackInfo.name} by ${trackInfo.artist}`}</title>
         <meta property="og:image" content={`/art/${trackInfo.id}/artwork.jpg`} />
         <meta property="og:image:width" content="1200" />
         <meta property="og:image:height" content="1200" />
       </Helmet>
+
       <Root>
         <ControlTopBar>
           <BackButton to="/" />
@@ -42,6 +43,7 @@ function ShareTrackScreen() {
             <Icon name="share" />
           </ShareButton> */}
         </ControlTopBar>
+
         <InfoContainer>
           <InfoRow>
             <ArtworkWrapper>
@@ -52,12 +54,13 @@ function ShareTrackScreen() {
             <Title>{trackInfo.name}</Title>
             <Author>{trackInfo.artist}</Author>
           </InfoRow>
+
           <InfoRow>
             <StreamingLinks trackInfo={trackInfo} />
           </InfoRow>
         </InfoContainer>
       </Root>
-    </Fragment>
+    </>
   );
 }
 

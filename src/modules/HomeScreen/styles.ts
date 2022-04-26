@@ -14,9 +14,9 @@ export const Logo = styled.div`
   background-size: 87px;
   background-repeat: no-repeat;
   background-position: 0 50%;
-  filter:
+  /* filter:
     drop-shadow(1px -1px 0px ${(p) => p.theme.colors.secondary.main})
-    drop-shadow(-1px 1px 0px ${(p) => p.theme.colors.primary.main});
+    drop-shadow(-1px 1px 0px ${(p) => p.theme.colors.primary.main}); */
 `;
 
 export const MainBgCover = styled.div`

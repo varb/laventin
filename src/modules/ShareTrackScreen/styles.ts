@@ -13,7 +13,7 @@ export const InfoContainer = styled(PageWrap)`
   margin-bottom: 50px;
 `;
 
-export const ControlTopBar = styled(PageWrap)`
+export const ControlTopBar = styled.div`
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -22,8 +22,9 @@ export const ControlTopBar = styled(PageWrap)`
 `;
 
 export const ShareButton = styled.div`
-  font-size: 26px;
+  padding-right: 4px;
   color: ${(p) => p.theme.colors.text.secondary};
+  font-size: 26px;
   transition: color .2s;
 
   &:hover {
