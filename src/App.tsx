@@ -1,12 +1,12 @@
 import { BrowserRouter, Route, Navigate, Routes } from 'react-router-dom';
 import { ThemeProvider } from 'styled-components';
 
-import theme from './app/theme';
-// import ScrollToTop from './app/components/ScrollToTop';
-import HomeScreen from './app/modules/HomeScreen';
-import ShareTrackScreen from './app/modules/ShareTrackScreen';
-import Layout from './app/components/Layout';
-import useWebFont from './app/hooks/useWebFont';
+import theme from 'theme';
+// import ScrollToTop from 'components/ScrollToTop';
+import HomeScreen from 'modules/HomeScreen';
+import ShareTrackScreen from 'modules/ShareTrackScreen';
+import Layout from 'components/Layout';
+import useWebFont from 'hooks/useWebFont';
 
 function App() {
   useWebFont();
