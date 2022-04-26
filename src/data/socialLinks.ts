@@ -1,8 +1,6 @@
-import React from 'react';
-import Icon from '../Icon';
-import { Root, Link } from './styled';
+import { SocialLink } from 'types/socialLinks';
 
-const list = [
+export const socialLinks: SocialLink[] = [
   {
     title: 'SoundCloud',
     url: 'https://soundcloud.com/laventin',
@@ -21,15 +19,3 @@ const list = [
     iconName: 'vk',
   },
 ];
-
-export default function SocialLinks() {
-  return (
-    <Root>
-      {list.map((link, index) => (
-        <Link href={link.url} target="_blank" key={link.iconName}>
-          <Icon name={link.iconName} />
-        </Link>
-      ))}
-    </Root>
-  )
-}
