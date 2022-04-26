@@ -1,20 +1,29 @@
 import React, { useCallback } from 'react';
 import { List, Link, LinkIcon } from './styled';
-// import { trackList, musicStores } from '../../data/tracklist';
-import { musicStores } from '../../data/tracklist';
-import { setGoal } from '../../helpers/analytics';
+import { musicStores } from 'data/tracklist';
+import { setGoal } from 'helpers/analytics';
 import Icon from '../Icon';
+import { MusicStores, TrackItem } from 'types/tracklist';
 
-export default function StreamingLinks(props) {
+type StreamingLinksProps = {
+  trackInfo: TrackItem
+};
+
+export default function StreamingLinks(props: StreamingLinksProps): React.ReactElement | null {
   const { trackInfo } = props;
   const { links: trackLinks } = trackInfo;
 
   const onLinkClick = useCallback(
-    (e) => {
-      setGoal(e.target.dataset.targetId, {
-        trackId: trackInfo.id,
-        name: trackInfo.name,
-      });
+    (e: React.MouseEvent<HTMLAnchorElement>) => {
+      const { targetId } = e.currentTarget.dataset;
+
+      console.log('onLinkClick', targetId);
+      if (targetId) {
+        setGoal(targetId, {
+          trackId: trackInfo.id,
+          name: trackInfo.name,
+        });
+      }
     },
     [trackInfo]
   );
@@ -26,12 +35,12 @@ export default function StreamingLinks(props) {
   for (const key in trackLinks) {
     if (trackLinks.hasOwnProperty(key)) {
       if (key in musicStores) {
-        const musicStoreInfo = musicStores[key];
+        const musicStoreInfo = musicStores[key as keyof MusicStores];
 
         list.push(
           <Link
             key={key}
-            href={trackLinks[key]}
+            href={trackLinks[key as keyof MusicStores]}
             onClick={onLinkClick}
             data-target-id={musicStoreInfo.id}
             target="_blank"

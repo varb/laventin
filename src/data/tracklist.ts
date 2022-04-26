@@ -1,20 +1,4 @@
-type StoreInfo = {
-  id: string,
-  title: string,
-  icon: string,
-}
-
-enum MusicStoresEnum {
-  apple = "apple",
-  spotify = "spotify",
-  vk = "vk",
-  boom = "boom",
-  soundcloud = "soundcloud",
-  yandex = "yandex",
-  itunes = "itunes",
-}
-
-type MusicStores = Record<MusicStoresEnum, StoreInfo>
+import { MusicStoresEnum, MusicStores, TrackItem } from 'types/tracklist';
 
 export const musicStores: MusicStores = {
   [MusicStoresEnum.apple]: {
@@ -53,14 +37,6 @@ export const musicStores: MusicStores = {
     icon: 'iTunes',
   },
 };
-
-interface TrackItem {
-  id: string,
-  active: boolean,
-  name: string,
-  artist: string,
-  links: Partial<Record<MusicStoresEnum, string>>
-}
 
 export const trackList: TrackItem[] = [
   {
