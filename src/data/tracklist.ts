@@ -1,62 +1,68 @@
-interface IMusicStores {
-  [key: string]: {
-    id: string,
-    title: string,
-    icon: string,
-  }
+type StoreInfo = {
+  id: string,
+  title: string,
+  icon: string,
 }
 
-export const musicStores: IMusicStores = {
-  apple: {
-    id: 'apple',
+enum MusicStoresEnum {
+  apple = "apple",
+  spotify = "spotify",
+  vk = "vk",
+  boom = "boom",
+  soundcloud = "soundcloud",
+  yandex = "yandex",
+  itunes = "itunes",
+}
+
+type MusicStores = Record<MusicStoresEnum, StoreInfo>
+
+export const musicStores: MusicStores = {
+  [MusicStoresEnum.apple]: {
+    id: MusicStoresEnum.apple,
     title: 'Apple Music',
     icon: 'appleMusic',
   },
-  spotify: {
-    id: 'spotify',
+  [MusicStoresEnum.spotify]: {
+    id: MusicStoresEnum.spotify,
     title: 'Spotify',
     icon: 'spotify',
   },
-  vk: {
-    id: 'vk',
+  [MusicStoresEnum.vk]: {
+    id: MusicStoresEnum.vk,
     title: 'VK',
     icon: 'vk',
   },
-  boom: {
-    id: 'boom',
+  [MusicStoresEnum.boom]: {
+    id: MusicStoresEnum.boom,
     title: 'Boom',
     icon: 'boomMusic',
   },
-  soundcloud: {
-    id: 'sc',
+  [MusicStoresEnum.soundcloud]: {
+    id: MusicStoresEnum.soundcloud,
     title: 'SoundCloud',
     icon: 'soundCloud',
   },
-  yandex: {
-    id: 'yandex',
+  [MusicStoresEnum.yandex]: {
+    id: MusicStoresEnum.yandex,
     title: 'Yandex.Music',
     icon: 'yandexMusic',
   },
-  itunes: {
-    id: 'itunes',
+  [MusicStoresEnum.itunes]: {
+    id: MusicStoresEnum.itunes,
     title: 'iTunes',
     icon: 'iTunes',
   },
 };
 
-type MusicStores = typeof musicStores;
-
-interface ITrackItem {
+interface TrackItem {
   id: string,
   active: boolean,
   name: string,
   artist: string,
-  links: {
-    [key: keyof typeof musicStores]: string
-  }
+  links: Partial<Record<MusicStoresEnum, string>>
 }
 
-export const trackList: ITrackItem[] = [
+export const trackList: TrackItem[] = [
   {
     id: 'lovely',
     active: true,
