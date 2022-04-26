@@ -1,7 +1,7 @@
 import { useMemo } from 'react';
 import { trackList } from '../data/tracklist';
 
-export default (id: string) =>
+export default (id?: string) =>
   useMemo(() => {
     if (!id) return null;
 

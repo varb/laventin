@@ -44,7 +44,7 @@ export const ArtworkWrapper = styled.div`
   margin-bottom: 30px;
 `;
 
-export const ArtworkContainer = styled.div`
+export const ArtworkContainer = styled.div<{ artPath?: string }>`
   position: relative;
   padding-bottom: 100%;
 

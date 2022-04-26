@@ -13,14 +13,14 @@ import {
   // ShareButton,
   ArtworkWrapper,
   ArtworkContainer,
-} from './ShareTrackScreenStyles';
+} from './styles';
 import StreamingLinks from '../../components/StreamingLinks';
 import useTrackInfo from '../../hooks/useTrackInfo';
 import BackButton from '../../components/BackButton';
 
 
 function ShareTrackScreen() {
-  const { id } = useParams();
+  const { id } = useParams<'id'>();
   const trackInfo = useTrackInfo(id);
 
   if (trackInfo === null) {
