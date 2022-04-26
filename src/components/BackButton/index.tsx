@@ -1,4 +1,3 @@
-import React from 'react';
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 import Icon from '../Icon';
@@ -24,7 +23,12 @@ export const IconWrap = styled.div`
   font-size: 26px;
 `;
 
-export default function BackButton(props) {
+interface BackButtonProps {
+  to?: string,
+  text?: string,
+}
+
+export default function BackButton(props: BackButtonProps) {
   const { to = '/', text = 'Back' } = props;
 
   return (

@@ -1,4 +1,3 @@
-import React from 'react'
 import { TextLink } from '../Typography'
 import styled from 'styled-components';
 
