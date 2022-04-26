@@ -16,14 +16,13 @@ import {
   TrackArtist,
   TrackArtwork,
   LastReleaseLabel,
-} from './HomeScreenStyles';
+} from './styles';
 import { trackList } from '../../data/tracklist';
 import StreamingLinks from '../../components/StreamingLinks';
 import SocialLinks from '../../components/SocialLinks';
 import { PageWrap } from '../../components/Layout/styles';
 
 const filteredList = trackList.filter((item) => item.active);
-
 const lastRelease = filteredList[0];
 
 function HomeScreen() {
