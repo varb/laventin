@@ -1,6 +1,6 @@
 import React, { Fragment } from 'react';
 import Helmet from 'react-helmet';
-import { Redirect, useParams } from 'react-router-dom';
+import { Navigate, useParams } from 'react-router-dom';
 
 import {
   Root,
@@ -24,7 +24,7 @@ function ShareTrackScreen() {
   const trackInfo = useTrackInfo(id);
 
   if (trackInfo === null) {
-    return (<Redirect to="/" />);
+    return (<Navigate replace to="/" />);
   }
 
   return (

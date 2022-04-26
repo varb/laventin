@@ -1,12 +1,12 @@
-import React from 'react';
+import { Outlet } from 'react-router-dom';
 import Footer from '../Footer';
 import { GlobalStyle, PageLayout, PageWrap } from './styles';
 
-function Layout(props) {
+function Layout() {
   return (
     <PageLayout>
       <GlobalStyle />
-      {props.children}
+      <Outlet />
       <PageWrap>
         <Footer />
       </PageWrap>
