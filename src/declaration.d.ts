@@ -1,4 +1,11 @@
-declare module 'react-svg-unique-id';
+declare module 'react-svg-unique-id' {
+  interface SVGUniqueIDProps {
+    children?: React.ReactNode
+  }
+
+  function SVGUniqueID({ children }: SVGUniqueIDProps): JSX.Element
+};
+
 declare module 'webfontloader' {
   export interface WebFontConfig {
     loading?: () => void,

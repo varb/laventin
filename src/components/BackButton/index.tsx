@@ -1,6 +1,6 @@
+import ChevronLeftIcon from 'components/Icon/icons/ChevronLeftIcon';
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
-import Icon from '../Icon';
 
 export const Root = styled.div`
   display: flex;
@@ -34,7 +34,7 @@ export default function BackButton(props: BackButtonProps) {
   return (
     <Root to={to} as={Link}>
       <IconWrap>
-        <Icon name="chevronLeft" />
+        <ChevronLeftIcon />
       </IconWrap>
       {text}
     </Root>
