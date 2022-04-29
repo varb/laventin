@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { H2 } from '../../components/Typography';
+import { H2 } from 'components/Typography';
 
 export const Root = styled.div`
   position: relative;
