@@ -2,23 +2,10 @@ import styled, { css } from 'styled-components';
 import { PageWrap } from '../../components/Layout/styles';
 import { H1, H3 } from '../../components/Typography';
 
-export const Root = styled.div`
-  position: relative;
-  overflow: hidden;
-`;
-
-export const InfoContainer = styled(PageWrap)`
+export const Root = styled(PageWrap)`
   position: relative;
   z-index: 100;
   margin-bottom: 50px;
-`;
-
-export const ControlTopBar = styled.div`
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-
-  padding: 24px 20px 20px;
 `;
 
 export const ShareButton = styled.div`

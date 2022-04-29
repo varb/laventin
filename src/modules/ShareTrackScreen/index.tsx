@@ -1,21 +1,18 @@
 import Helmet from 'react-helmet';
 import { Navigate, useParams } from 'react-router-dom';
 
+import StreamingLinks from 'components/StreamingLinks';
+import useTrackInfo from 'hooks/useTrackInfo';
 import {
   Root,
   Title,
-  InfoContainer,
   InfoRow,
   Author,
   ArtworkCover,
-  ControlTopBar,
   // ShareButton,
   ArtworkWrapper,
   ArtworkContainer,
 } from './styles';
-import StreamingLinks from '../../components/StreamingLinks';
-import useTrackInfo from '../../hooks/useTrackInfo';
-import BackButton from '../../components/BackButton';
 // import Icon from 'components/Icon';
 
 
@@ -37,28 +34,19 @@ function ShareTrackScreen() {
       </Helmet>
 
       <Root>
-        <ControlTopBar>
-          <BackButton to="/" />
-          {/* <ShareButton>
-            <Icon name="share" />
-          </ShareButton> */}
-        </ControlTopBar>
+        <InfoRow>
+          <ArtworkWrapper>
+            <ArtworkContainer artPath={`/art/${trackInfo.id}/artwork.jpg`}>
+              <ArtworkCover src={`/art/${trackInfo.id}/artwork.jpg`} />
+            </ArtworkContainer>
+          </ArtworkWrapper>
+          <Title>{trackInfo.name}</Title>
+          <Author>{trackInfo.artist}</Author>
+        </InfoRow>
 
-        <InfoContainer>
-          <InfoRow>
-            <ArtworkWrapper>
-              <ArtworkContainer artPath={`/art/${trackInfo.id}/artwork.jpg`}>
-                <ArtworkCover src={`/art/${trackInfo.id}/artwork.jpg`} />
-              </ArtworkContainer>
-            </ArtworkWrapper>
-            <Title>{trackInfo.name}</Title>
-            <Author>{trackInfo.artist}</Author>
-          </InfoRow>
-
-          <InfoRow>
-            <StreamingLinks trackInfo={trackInfo} />
-          </InfoRow>
-        </InfoContainer>
+        <InfoRow>
+          <StreamingLinks trackInfo={trackInfo} />
+        </InfoRow>
       </Root>
     </>
   );
