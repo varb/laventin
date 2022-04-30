@@ -53,7 +53,8 @@ export const LastReleaseLabel = styled.div`
   margin-bottom: 5px;
   padding: 4px 9px;
 
-  background: ${(p) => p.theme.colors.secondary.main};
+  /* background: ${(p) => p.theme.colors.secondary.main}; */
+  background: linear-gradient(45deg, #DE4BB8 -3.45%, #3185FC 109.36%);
   border-radius: 10px;
   color: #fff;
   font-size: 12px;
@@ -101,7 +102,7 @@ export const TrackLink = styled.a`
   padding: 20px;
 
   border: 1px solid rgba(255, 255, 255, 0.15);
-  border-radius: 20px;
+  border-radius: 16px;
   color: inherit;
   text-decoration: none;
   transition-property: border-color, box-shadow;

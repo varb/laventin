@@ -2,7 +2,7 @@ import { DefaultThemeColors } from '../';
 
 export default {
   primary: {
-    main: '#CD50AD',
+    main: '#DE4BB8',
   },
   secondary: {
     main: '#3185FC',
