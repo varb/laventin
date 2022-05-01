@@ -24,11 +24,13 @@ function ShareTrackScreen() {
     return (<Navigate replace to="/" />);
   }
 
+  const trackArtworkPath = `/art/${trackInfo.id}/artwork.jpg`;
+
   return (
     <>
       <Helmet>
         <title>{`${trackInfo.name} by ${trackInfo.artist}`}</title>
-        <meta property="og:image" content={`/art/${trackInfo.id}/artwork.jpg`} />
+        <meta property="og:image" content={trackArtworkPath} />
         <meta property="og:image:width" content="1200" />
         <meta property="og:image:height" content="1200" />
       </Helmet>
@@ -36,8 +38,8 @@ function ShareTrackScreen() {
       <Root>
         <InfoRow>
           <ArtworkWrapper>
-            <ArtworkContainer artPath={`/art/${trackInfo.id}/artwork.jpg`}>
-              <ArtworkCover src={`/art/${trackInfo.id}/artwork.jpg`} />
+            <ArtworkContainer artPath={trackArtworkPath}>
+              <ArtworkCover src={trackArtworkPath} />
             </ArtworkContainer>
           </ArtworkWrapper>
           <Title>{trackInfo.name}</Title>

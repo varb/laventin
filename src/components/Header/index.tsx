@@ -1,5 +1,5 @@
 import ChevronLeftIcon from 'components/Icon/icons/ChevronLeftIcon';
-import { useMatch } from 'react-router-dom';
+import { useMatch, useNavigate } from 'react-router-dom';
 import {
   Root,
   Logo,
@@ -9,13 +9,18 @@ import {
 
 export default function Header() {
   const isHomePage = useMatch('/');
+  const navigate = useNavigate();
+
+  const onBackButtonClick = () => {
+    navigate(-1);
+  }
 
   return (
     <Root>
       {isHomePage ? (
         <Logo />
       ) : (
-        <TopBarLink to='/'>
+        <TopBarLink onClick={onBackButtonClick}>
           <IconWrap>
             <ChevronLeftIcon />
           </IconWrap>
