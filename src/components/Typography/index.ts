@@ -26,6 +26,7 @@ export const H3 = styled.h3`
 
 export const TextLink = styled.a`
   color: ${(p) => p.theme.colors.primary.main};
+  cursor: pointer;
   text-decoration: underline;
 
   &:hover {

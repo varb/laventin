@@ -6,11 +6,12 @@ export const Root = styled.div`
   justify-content: space-between;
 `;
 
-export const TopBarLink = styled(Link)`
+export const TopBarLink = styled.div`
   display: flex;
   align-items: center;
   padding: 24px 20px 20px;
 
+  cursor: pointer;
   color: ${(p) => p.theme.colors.text.secondary};
   font-weight: bold;
   font-size: 14px;
