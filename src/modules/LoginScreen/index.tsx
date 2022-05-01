@@ -1,15 +1,13 @@
 import React from 'react'
 import { useNavigate } from 'react-router';
-import { getAuth, signInWithEmailAndPassword } from 'firebase/auth';
 
-import firebaseApp from 'network';
 import { PageWrap } from 'components/Layout/styles';
 import { H1 } from 'components/Typography';
 import { useAuth } from 'providers/AuthProvider';
 
 export default function LoginScreen() {
   const navigate = useNavigate();
-  const { setUser } = useAuth();
+  const { signIn } = useAuth();
 
   const onSubmit = async (e: React.BaseSyntheticEvent) => {
     e.preventDefault();
@@ -17,16 +15,8 @@ export default function LoginScreen() {
     const formElements = e.target.elements as HTMLFormControlsCollection & Record<string, HTMLInputElement>;
     const email = formElements.email.value;
     const password = formElements.password.value;
-    const auth = getAuth(firebaseApp);
-    const userCredential = await signInWithEmailAndPassword(auth, email, password);
 
-    if (!userCredential) {
-      console.error(userCredential);
-      return;
-    }
-
-    // console.log('onSubmit', userCredential.user);
-    setUser(userCredential.user);
+    await signIn(email, password);
     navigate('/');
   };
 
