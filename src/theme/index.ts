@@ -18,6 +18,10 @@ export type DefaultThemeColors = {
 
 declare module 'styled-components' {
   export interface DefaultTheme {
+    indents: {
+      base: number,
+      calc: (n: number) => string,
+    }
     colors: DefaultThemeColors
   }
 }

@@ -5,9 +5,15 @@ import colors from './colors';
 // import keyframes from './keyframes'
 // import animation from './animation'
 
+const indents = {
+  base: 8,
+  calc: (indent: number) => `${indent * indents.base}px`
+}
+
 
 export default {
   colors,
+  indents,
   // typography,
   // breakpoints,
   // media,
