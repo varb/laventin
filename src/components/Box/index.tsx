@@ -12,7 +12,7 @@ interface StyleBox {
 type StylesBoxProps = Partial<StyleBox>
 
 interface BoxProps {
-  children?: JSX.Element;
+  children?: React.ReactNode;
 }
 
 const StyledBox = styled.div<StylesBoxProps>`
