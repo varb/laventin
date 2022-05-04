@@ -5,19 +5,12 @@ import StreamingLinks from 'components/StreamingLinks';
 import SocialLinks from 'components/SocialLinks';
 import { PageWrap } from 'components/Layout/styles';
 import {
-  Root,
-  LinksList,
-  TrackLink,
-  Logo,
   MainBgCover,
   LastReleaseInfo,
   LastReleaseTitle,
   LastReleaseAuthor,
   SubTitle,
   SectionWrapper,
-  TrackTitle,
-  TrackArtist,
-  TrackArtwork,
   LastReleaseLabel,
 } from './styles';
 import TracksList from 'components/TracksList';

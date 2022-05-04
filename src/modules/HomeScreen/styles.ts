@@ -1,24 +1,6 @@
 import styled from 'styled-components';
 import { H2 } from 'components/Typography';
 
-export const Root = styled.div`
-  position: relative;
-  min-height: 100vh;
-  overflow: hidden;
-`;
-
-export const Logo = styled.div`
-  width: 87px;
-  height: 104px;
-  background-image: url('/art/logo.svg');
-  background-size: 87px;
-  background-repeat: no-repeat;
-  background-position: 0 50%;
-  /* filter:
-    drop-shadow(1px -1px 0px ${(p) => p.theme.colors.secondary.main})
-    drop-shadow(-1px 1px 0px ${(p) => p.theme.colors.primary.main}); */
-`;
-
 export const MainBgCover = styled.div`
   position: absolute;
   top: 0;
@@ -89,48 +71,4 @@ export const InfoRow = styled.div`
 export const SubTitle = styled(H2)`
   margin: 0 0 30px;
   text-align: center;
-`;
-
-export const LinksList = styled.div`
-  display: grid;
-  grid-gap: 20px;
-`;
-
-export const TrackLink = styled.a`
-  display: flex;
-  align-items: center;
-  padding: 20px;
-
-  border: 1px solid rgba(255, 255, 255, 0.15);
-  border-radius: 16px;
-  color: inherit;
-  text-decoration: none;
-  transition-property: border-color, box-shadow;
-  transition-duration: .2s;
-
-  &:hover {
-    border-color: rgb(205 80 173);
-    box-shadow: 0 0 10px rgb(205 80 173 / 50%), inset 0 0 5px rgb(205 80 173 / 50%);
-  }
-`;
-
-export const TrackTitle = styled.div`
-  margin-bottom: 2px;
-  font-size: 16px;
-  font-weight: 800;
-  line-height: 20px;
-`;
-
-export const TrackArtist = styled.div`
-  color: rgba(255, 255, 255, 0.7);
-  font-size: 12px;
-  font-weight: 600;
-  line-height: 15px;
-`;
-
-export const TrackArtwork = styled.img`
-  width: 50px;
-  height: 50px;
-  border-radius: 5px;
-  margin-right: 20px;
 `;
