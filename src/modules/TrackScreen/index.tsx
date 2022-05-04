@@ -1,5 +1,5 @@
 import Helmet from 'react-helmet';
-import { Navigate, useParams } from 'react-router-dom';
+import { Navigate, useParams, Link } from 'react-router-dom';
 
 import StreamingLinks from 'components/StreamingLinks';
 import useTrackInfo from 'hooks/useTrackInfo';
@@ -13,12 +13,16 @@ import {
   ArtworkWrapper,
   ArtworkContainer,
 } from './styles';
+import { useAuth } from 'providers/AuthProvider';
+import { TextLink } from 'components/Typography';
+import Box from 'components/Box';
 // import Icon from 'components/Icon';
 
 
-function ShareTrackScreen() {
+function TrackScreen() {
   const { id } = useParams<'id'>();
   const trackInfo = useTrackInfo(id);
+  const { user } = useAuth();
 
   if (trackInfo === null) {
     return (<Navigate replace to="/" />);
@@ -36,6 +40,9 @@ function ShareTrackScreen() {
       </Helmet>
 
       <Root>
+        <Box mb={3}>
+          <TextLink to='edit' as={Link}>Edit track</TextLink>
+        </Box>
         <InfoRow>
           <ArtworkWrapper>
             <ArtworkContainer artPath={trackArtworkPath}>
@@ -54,4 +61,4 @@ function ShareTrackScreen() {
   );
 }
 
-export default ShareTrackScreen;
+export default TrackScreen;

@@ -24,12 +24,12 @@ export default function LoginScreen() {
     <PageWrap>
       <form onSubmit={onSubmit}>
         <H1>Login</H1>
-        <div>
+        <label>
           <input type="email" name="email" id="email" placeholder='email' />
-        </div>
-        <div>
-          <input type="password" name="pass" id="password" placeholder='password' />
-        </div>
+        </label>
+        <label>
+          <input type="password" name="password" id="password" placeholder='password' />
+        </label>
         <div>
           <button type="submit">Войти</button>
         </div>

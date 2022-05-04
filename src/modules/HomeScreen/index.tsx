@@ -20,11 +20,16 @@ import {
   TrackArtwork,
   LastReleaseLabel,
 } from './styles';
+import TracksList from 'components/TracksList';
+import { TextLink } from 'components/Typography';
+import { useAuth } from 'providers/AuthProvider';
 
 const filteredList = trackList.filter((item) => item.active);
 const lastRelease = filteredList[0];
 
 function HomeScreen() {
+  const { user } = useAuth();
+
   return (
     <PageWrap>
 
@@ -41,21 +46,10 @@ function HomeScreen() {
 
       <SubTitle>Discography</SubTitle>
       <SectionWrapper>
-        <LinksList>
-          {filteredList.map((track, index) => (
-            <TrackLink
-              key={index}
-              to={`/t/${track.id}`}
-              as={Link}
-            >
-              <TrackArtwork src={`/art/${track.id}/artwork.jpg`} />
-              <div>
-                <TrackTitle>{track.name}</TrackTitle>
-                <TrackArtist>{track.artist}</TrackArtist>
-              </div>
-            </TrackLink>
-          ))}
-        </LinksList>
+        <TracksList />
+        {user && (
+          <TextLink as={Link} to='/t'>All tracks</TextLink>
+        )}
       </SectionWrapper>
 
       <SubTitle>Socials</SubTitle>

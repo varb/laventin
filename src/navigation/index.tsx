@@ -1,9 +1,13 @@
-import { BrowserRouter, Route, Navigate, Routes } from 'react-router-dom';
+import { BrowserRouter, Route, Routes } from 'react-router-dom';
 
 import Layout from 'components/Layout';
 import HomeScreen from 'modules/HomeScreen';
-import ShareTrackScreen from 'modules/ShareTrackScreen';
+import TrackScreen from 'modules/TrackScreen';
 import LoginScreen from 'modules/LoginScreen';
+import TrackListScreen from 'modules/TrackListScreen';
+import NewTrackScreen from 'modules/NewTrackScreen';
+import EditTrackScreen from 'modules/EditTrackScreen';
+import PrivateRoute from './PrivateRoute';
 
 export default function AppRouter() {
   return (
@@ -12,8 +16,20 @@ export default function AppRouter() {
         <Route path='/' element={<Layout />}>
           <Route index element={<HomeScreen />} />
           <Route path='t'>
-            <Route index element={<Navigate replace to='/' />} />
-            <Route path=':id' element={<ShareTrackScreen />} />
+            <Route index element={<TrackListScreen />} />
+            <Route path=':id'>
+              <Route index element={<TrackScreen />} />
+              <Route path='edit' element={
+                <PrivateRoute>
+                  <EditTrackScreen />
+                </PrivateRoute>
+              } />
+            </Route>
+            <Route path='new' element={
+              <PrivateRoute>
+                <NewTrackScreen />
+              </PrivateRoute>
+            } />
           </Route>
           <Route path='login' element={<LoginScreen />} />
         </Route>
