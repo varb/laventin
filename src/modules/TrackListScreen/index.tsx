@@ -1,9 +1,9 @@
-import Helmet from 'react-helmet';
-import { PageWrap } from 'components/Layout/styles'
-import TracksList from 'components/TracksList'
-import { H1, TextLink } from 'components/Typography';
-import { Link } from 'react-router-dom';
-import { useAuth } from 'providers/AuthProvider';
+import Helmet from "react-helmet";
+import { PageWrap } from "components/Layout/styles";
+import TracksList from "components/TracksList";
+import { Typography } from "design-system";
+import { Link } from "react-router-dom";
+import { useAuth } from "providers/AuthProvider";
 
 export default function TrackListScreen() {
   const { user } = useAuth();
@@ -15,12 +15,14 @@ export default function TrackListScreen() {
       </Helmet>
 
       <PageWrap style={{ marginBottom: 32 }}>
-        <H1 style={{ marginBottom: 24 }}>All tracks</H1>
+        <Typography.H1 style={{ marginBottom: 24 }}>All tracks</Typography.H1>
         {user && (
-          <TextLink as={Link} to='new'>Add new track</TextLink>
+          <Typography.TextLink as={Link} to="new">
+            Add new track
+          </Typography.TextLink>
         )}
         <TracksList />
       </PageWrap>
     </>
-  )
+  );
 }

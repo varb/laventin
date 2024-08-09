@@ -1,11 +1,11 @@
-import CreateOrUpdateTrackForm from 'components/CreateOrUpdateTrackForm'
-import { H1 } from 'components/Typography'
+import CreateOrUpdateTrackForm from "components/CreateOrUpdateTrackForm";
+import { Typography } from "design-system";
 
 export default function EditTrackScreen() {
   return (
     <div>
-      <H1>Edit Track</H1>
+      <Typography.H1>Edit Track</Typography.H1>
       <CreateOrUpdateTrackForm />
     </div>
-  )
+  );
 }

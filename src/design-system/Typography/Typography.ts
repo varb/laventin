@@ -1,7 +1,6 @@
-import styled from 'styled-components';
+import styled from "styled-components";
 
 export const H1 = styled.h1`
-  margin: 0;
   color: ${(p) => p.theme.colors.text.primary};
   font-size: 28px;
   font-weight: 900;
@@ -9,19 +8,17 @@ export const H1 = styled.h1`
 `;
 
 export const H2 = styled.h2`
-  margin: 0;
+  color: ${(p) => p.theme.colors.primary.main};
   font-size: 24px;
   font-weight: 900;
   line-height: 29px;
-  color: ${(p) => p.theme.colors.primary.main};
 `;
 
 export const H3 = styled.h3`
-  margin: 0;
+  color: ${(p) => p.theme.colors.primary.main};
   font-size: 16px;
   font-weight: 600;
   line-height: 20px;
-  color: ${(p) => p.theme.colors.primary.main};
 `;
 
 export const TextLink = styled.a`
@@ -33,3 +30,12 @@ export const TextLink = styled.a`
     text-decoration: none;
   }
 `;
+
+const typography = {
+  H1,
+  H2,
+  H3,
+  TextLink,
+};
+
+export default typography;

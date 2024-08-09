@@ -1,8 +1,10 @@
-import Helmet from 'react-helmet';
-import { Navigate, useParams, Link } from 'react-router-dom';
+import Helmet from "react-helmet";
+import { Navigate, useParams, Link } from "react-router-dom";
 
-import StreamingLinks from 'components/StreamingLinks';
-import useTrackInfo from 'hooks/useTrackInfo';
+import { Box, Typography } from "design-system";
+import StreamingLinks from "components/StreamingLinks";
+import useTrackInfo from "hooks/useTrackInfo";
+// import { useAuth } from "providers/AuthProvider";
 import {
   Root,
   Title,
@@ -12,20 +14,15 @@ import {
   // ShareButton,
   ArtworkWrapper,
   ArtworkContainer,
-} from './styles';
-import { useAuth } from 'providers/AuthProvider';
-import { TextLink } from 'components/Typography';
-import Box from 'components/Box';
-// import Icon from 'components/Icon';
-
+} from "./styles";
 
 function TrackScreen() {
-  const { id } = useParams<'id'>();
+  const { id } = useParams<"id">();
   const trackInfo = useTrackInfo(id);
-  const { user } = useAuth();
+  // const { user } = useAuth();
 
   if (trackInfo === null) {
-    return (<Navigate replace to="/" />);
+    return <Navigate replace to="/" />;
   }
 
   const trackArtworkPath = `/art/${trackInfo.id}/artwork.jpg`;
@@ -33,7 +30,7 @@ function TrackScreen() {
   return (
     <>
       <Helmet>
-        <title>{`${trackInfo.name} by ${trackInfo.artist}`}</title>
+        <title>{`${trackInfo.title} by ${trackInfo.artist}`}</title>
         <meta property="og:image" content={trackArtworkPath} />
         <meta property="og:image:width" content="1200" />
         <meta property="og:image:height" content="1200" />
@@ -41,7 +38,9 @@ function TrackScreen() {
 
       <Root>
         <Box mb={3}>
-          <TextLink to='edit' as={Link}>Edit track</TextLink>
+          <Typography.TextLink to="edit" as={Link}>
+            Edit track
+          </Typography.TextLink>
         </Box>
         <InfoRow>
           <ArtworkWrapper>
@@ -49,7 +48,7 @@ function TrackScreen() {
               <ArtworkCover src={trackArtworkPath} />
             </ArtworkContainer>
           </ArtworkWrapper>
-          <Title>{trackInfo.name}</Title>
+          <Title>{trackInfo.title}</Title>
           <Author>{trackInfo.artist}</Author>
         </InfoRow>
 

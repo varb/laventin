@@ -22,8 +22,5 @@ const firebaseApp = initializeApp(firebaseConfig);
 const firebaseAnalytics = getAnalytics(firebaseApp);
 const firebaseDB = getFirestore(firebaseApp);
 
-export {
-  firebaseAnalytics,
-  firebaseDB,
-};
+export { firebaseAnalytics, firebaseDB };
 export default firebaseApp;

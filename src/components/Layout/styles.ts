@@ -1,4 +1,4 @@
-import styled, { createGlobalStyle } from 'styled-components';
+import styled, { createGlobalStyle } from "styled-components";
 
 export const GlobalStyle = createGlobalStyle`
   *, *:after, *:before {
@@ -23,6 +23,14 @@ export const GlobalStyle = createGlobalStyle`
 
   code {
     font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New', monospace;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    margin: 0;
+  }
+
+  button {
+    border: 0;
   }
 
   #root {

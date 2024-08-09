@@ -1,15 +1,17 @@
-import React, { useCallback } from 'react';
-import { List, Link, LinkIcon } from './styled';
-import { musicStores } from 'data/tracklist';
-import { setGoal } from 'helpers/analytics';
-import Icon from '../Icon';
-import { MusicStores, TrackItem } from 'types/tracklist';
+import React, { useCallback } from "react";
+import { List, Link, LinkIcon } from "./styled";
+import { musicStores } from "data/tracklist";
+import { setGoal } from "helpers/analytics";
+import Icon from "../Icon";
+import { MusicStores, TrackItem } from "types/tracklist";
 
 type StreamingLinksProps = {
-  trackInfo: TrackItem
+  trackInfo: TrackItem;
 };
 
-export default function StreamingLinks(props: StreamingLinksProps): React.ReactElement | null {
+export default function StreamingLinks(
+  props: StreamingLinksProps
+): React.ReactElement | null {
   const { trackInfo } = props;
   const { links: trackLinks } = trackInfo;
 
@@ -17,11 +19,11 @@ export default function StreamingLinks(props: StreamingLinksProps): React.ReactE
     (e: React.MouseEvent<HTMLAnchorElement>) => {
       const { targetId } = e.currentTarget.dataset;
 
-      console.log('onLinkClick', targetId);
+      console.log("onLinkClick", targetId);
       if (targetId) {
         setGoal(targetId, {
           trackId: trackInfo.id,
-          name: trackInfo.name,
+          name: trackInfo.title,
         });
       }
     },

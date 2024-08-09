@@ -1,6 +1,6 @@
-import styled, { css } from 'styled-components';
-import { PageWrap } from '../../components/Layout/styles';
-import { H1, H3 } from '../../components/Typography';
+import styled, { css } from "styled-components";
+import { PageWrap } from "../../components/Layout/styles";
+import { Typography } from "design-system";
 
 export const Root = styled(PageWrap)`
   position: relative;
@@ -12,7 +12,7 @@ export const ShareButton = styled.div`
   padding-right: 4px;
   color: ${(p) => p.theme.colors.text.secondary};
   font-size: 26px;
-  transition: color .2s;
+  transition: color 0.2s;
 
   &:hover {
     color: ${(p) => p.theme.colors.text.primary};
@@ -37,7 +37,7 @@ export const ArtworkContainer = styled.div<{ artPath?: string }>`
   padding-bottom: 100%;
 
   &::before {
-    content: '';
+    content: "";
     position: absolute;
     top: 50%;
     left: 50%;
@@ -46,13 +46,15 @@ export const ArtworkContainer = styled.div<{ artPath?: string }>`
     width: 90%;
     height: 90%;
 
-    ${(p) => p.artPath && css`
-      background: url(${p.artPath});
-      background-size: contain;
-      background-position: 50%;
-      background-repeat: no-repeat;
-      filter: blur(60px) brightness(0.5);
-    `}
+    ${(p) =>
+      p.artPath &&
+      css`
+        background: url(${p.artPath});
+        background-size: contain;
+        background-position: 50%;
+        background-repeat: no-repeat;
+        filter: blur(60px) brightness(0.5);
+      `}
 
     pointer-events: none;
     transform: translate(-50%, -50%);
@@ -71,9 +73,8 @@ export const ArtworkCover = styled.img`
   border-radius: 15px;
 `;
 
-export const Title = styled(H1)`
+export const Title = styled(Typography.H1)`
   margin-bottom: 5px;
 `;
 
-export const Author = styled(H3)`
-`;
+export const Author = styled(Typography.H3)``;

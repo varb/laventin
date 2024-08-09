@@ -1,7 +1,8 @@
-import { Link } from 'react-router-dom';
-import styled from 'styled-components';
-import { TextLink } from '../Typography'
-import { useAuth } from 'providers/AuthProvider';
+import { Link } from "react-router-dom";
+import styled from "styled-components";
+
+import { useAuth } from "providers/AuthProvider";
+import { Typography } from "design-system";
 
 export const Root = styled.div`
   display: grid;
@@ -16,25 +17,28 @@ export const Root = styled.div`
 
 export default function Footer() {
   const { user, signOut } = useAuth();
-  const logout = async(e: React.MouseEvent) => {
+  const logout = async (e: React.MouseEvent) => {
     e.preventDefault();
     signOut();
-  }
+  };
 
   return (
     <Root>
       Designed &amp; developed by me
       <div>
-        <TextLink href="http://varb.me" target="_blank">varb.me</TextLink>
+        <Typography.TextLink href="http://varb.me" target="_blank">
+          varb.me
+        </Typography.TextLink>
       </div>
-
       <div>
         {!user ? (
-          <TextLink as={Link} to='login'>Login</TextLink>
+          <Typography.TextLink as={Link} to="login">
+            Login
+          </Typography.TextLink>
         ) : (
-          <TextLink onClick={logout}>Sign out</TextLink>
+          <Typography.TextLink onClick={logout}>Sign out</Typography.TextLink>
         )}
       </div>
     </Root>
-  )
+  );
 }

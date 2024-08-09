@@ -1,5 +1,5 @@
-import styled from 'styled-components';
-import { H2 } from 'components/Typography';
+import styled from "styled-components";
+import { Typography } from "design-system";
 
 export const MainBgCover = styled.div`
   position: absolute;
@@ -9,19 +9,23 @@ export const MainBgCover = styled.div`
   width: 100%;
   min-height: 300px;
   padding-bottom: 42%;
-  background-image: url('/bg.jpg');
+  background-image: url("/bg.jpg");
   background-size: cover;
   background-position: top center;
   background-repeat: no-repeat;
 
   &::after {
-    content: '';
+    content: "";
     position: absolute;
     top: 0;
     left: 0;
     bottom: 0;
     right: 0;
-    background-image: linear-gradient(180deg, rgba(0, 0, 0, 0.1) 0%, ${(p) => p.theme.colors.background.default} 100%);
+    background-image: linear-gradient(
+      180deg,
+      rgba(0, 0, 0, 0.1) 0%,
+      ${(p) => p.theme.colors.background.default} 100%
+    );
   }
 `;
 
@@ -36,7 +40,7 @@ export const LastReleaseLabel = styled.div`
   padding: 4px 9px;
 
   /* background: ${(p) => p.theme.colors.secondary.main}; */
-  background: linear-gradient(45deg, #DE4BB8 -3.45%, #3185FC 109.36%);
+  background: linear-gradient(45deg, #de4bb8 -3.45%, #3185fc 109.36%);
   border-radius: 10px;
   color: #fff;
   font-size: 12px;
@@ -68,7 +72,7 @@ export const InfoRow = styled.div`
   }
 `;
 
-export const SubTitle = styled(H2)`
+export const SubTitle = styled(Typography.H2)`
   margin: 0 0 30px;
   text-align: center;
 `;

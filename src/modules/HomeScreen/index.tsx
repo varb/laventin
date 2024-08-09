@@ -1,9 +1,14 @@
-import { Link } from 'react-router-dom';
+import { Link } from "react-router-dom";
+import { Playlist } from "@phosphor-icons/react";
 
-import { trackList } from 'data/tracklist';
-import StreamingLinks from 'components/StreamingLinks';
-import SocialLinks from 'components/SocialLinks';
-import { PageWrap } from 'components/Layout/styles';
+import { Typography, Button } from "design-system";
+import { trackList } from "data/tracklist";
+import StreamingLinks from "components/StreamingLinks";
+import SocialLinks from "components/SocialLinks";
+import { PageWrap } from "components/Layout/styles";
+import TracksList from "components/TracksList";
+import { useAuth } from "providers/AuthProvider";
+
 import {
   MainBgCover,
   LastReleaseInfo,
@@ -12,10 +17,7 @@ import {
   SubTitle,
   SectionWrapper,
   LastReleaseLabel,
-} from './styles';
-import TracksList from 'components/TracksList';
-import { TextLink } from 'components/Typography';
-import { useAuth } from 'providers/AuthProvider';
+} from "./styles";
 
 const filteredList = trackList.filter((item) => item.active);
 const lastRelease = filteredList[0];
@@ -25,11 +27,10 @@ function HomeScreen() {
 
   return (
     <PageWrap>
-
       <MainBgCover />
       <LastReleaseInfo>
         <LastReleaseLabel>Last release</LastReleaseLabel>
-        <LastReleaseTitle>{lastRelease.name}</LastReleaseTitle>
+        <LastReleaseTitle>{lastRelease.title}</LastReleaseTitle>
         <LastReleaseAuthor>{lastRelease.artist}</LastReleaseAuthor>
       </LastReleaseInfo>
 
@@ -41,17 +42,19 @@ function HomeScreen() {
       <SectionWrapper>
         <TracksList />
         {user && (
-          <TextLink as={Link} to='/t'>All tracks</TextLink>
+          <Typography.TextLink as={Link} to="/t">
+            All tracks
+          </Typography.TextLink>
         )}
+        <Button iconLeft={<Playlist />}>View all tracks</Button>
       </SectionWrapper>
 
       <SubTitle>Socials</SubTitle>
       <SectionWrapper>
         <SocialLinks />
       </SectionWrapper>
-
     </PageWrap>
-  )
+  );
 }
 
 export default HomeScreen;
