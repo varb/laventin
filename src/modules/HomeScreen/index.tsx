@@ -1,13 +1,13 @@
 import { Link } from "react-router-dom";
 import { Playlist } from "@phosphor-icons/react";
 
-import { Typography, Button } from "design-system";
+import { Typography, Button, Layout } from "shared/ui";
 import { trackList } from "data/tracklist";
 import StreamingLinks from "components/StreamingLinks";
 import SocialLinks from "components/SocialLinks";
-import { PageWrap } from "components/Layout/styles";
+// import { PageWrap } from "app/layouts/styles";
 import TracksList from "components/TracksList";
-import { useAuth } from "providers/AuthProvider";
+import { useAuth } from "app/providers/AuthProvider";
 
 import {
   MainBgCover,
@@ -18,7 +18,6 @@ import {
   SectionWrapper,
   LastReleaseLabel,
 } from "./styles";
-
 const filteredList = trackList.filter((item) => item.active);
 const lastRelease = filteredList[0];
 
@@ -26,7 +25,7 @@ function HomeScreen() {
   const { user } = useAuth();
 
   return (
-    <PageWrap>
+    <Layout.PageWrap>
       <MainBgCover />
       <LastReleaseInfo>
         <LastReleaseLabel>Last release</LastReleaseLabel>
@@ -53,7 +52,7 @@ function HomeScreen() {
       <SectionWrapper>
         <SocialLinks />
       </SectionWrapper>
-    </PageWrap>
+    </Layout.PageWrap>
   );
 }
 

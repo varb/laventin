@@ -1,6 +1,6 @@
-import styled, { createGlobalStyle } from "styled-components";
+import { createGlobalStyle } from "styled-components";
 
-export const GlobalStyle = createGlobalStyle`
+const GlobalStyle = createGlobalStyle`
   *, *:after, *:before {
     box-sizing: border-box;
   }
@@ -38,19 +38,4 @@ export const GlobalStyle = createGlobalStyle`
   }
 `;
 
-export const PageWrap = styled.div`
-  max-width: 500px;
-  margin: 0 auto;
-  padding: 0 30px;
-`;
-
-export const PageLayout = styled.div`
-  opacity: 0;
-  transition: opacity 600ms 1000ms ease-out;
-  /* transition-delay: 1000ms;
-  transition-property: opacity; */
-
-  ._loaded & {
-    opacity: 1;
-  }
-`;
+export default GlobalStyle;

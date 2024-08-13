@@ -1,5 +1,3 @@
-import darkNeon from "./darkNeon";
-
 type ColorScheme = {
   lighter: string;
   light: string;
@@ -15,6 +13,7 @@ export type DefaultThemeColors = {
     white: string;
   };
   primary: ColorScheme;
+  accent: ColorScheme;
   secondary: ColorScheme;
   gray: {
     100: string;
@@ -50,7 +49,3 @@ declare module "styled-components" {
     colors: DefaultThemeColors;
   }
 }
-
-export default {
-  darkNeon,
-};

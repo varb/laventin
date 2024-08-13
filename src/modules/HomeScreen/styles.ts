@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { Typography } from "design-system";
+import { Typography } from "shared/ui";
 
 export const MainBgCover = styled.div`
   position: absolute;

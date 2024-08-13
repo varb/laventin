@@ -1,5 +1,6 @@
 import React from "react";
 import styled, { css } from "styled-components";
+import { createTransition } from "shared/theme";
 
 type ButtonVariant = "primary" | "outlined" | "secondary" | "ghost";
 type ButtonSize = "small" | "middle" | "large";
@@ -14,10 +15,31 @@ type IButtonProps = {
 };
 
 const primaryHover = css`
-  box-shadow: 0px 2px 10px ${(p) => p.theme.colors.primary.main};
+  box-shadow: 0px 2px 10px ${(p) => p.theme.colors.primary.main},
+    inset 0 0 0 transparent;
 `;
 
-// type ButtonStyleBySize =
+const primaryActive = css`
+  box-shadow: 0 0 0 transparent,
+    inset 0px 1px 6px ${(p) => p.theme.colors.primary.dark};
+  color: ${(p) => p.theme.colors.gray[100]};
+`;
+
+const primaryDisabled = css`
+  box-shadow: 0 0 0 transparent, inset 0 0 0 transparent;
+  color: ${(p) => p.theme.colors.gray[300]};
+`;
+
+const secondaryHover = css`
+  box-shadow: 0px 2px 10px ${(p) => p.theme.colors.secondary.lighter},
+    inset 0 0 0 transparent;
+`;
+
+const secondaryActive = css`
+  box-shadow: 0 0 0 transparent,
+    inset 0px 1px 6px ${(p) => p.theme.colors.secondary.darker};
+  color: ${(p) => p.theme.colors.gray[800]};
+`;
 
 export const StyledButton = styled.button<Omit<IButtonProps, "children">>`
   display: flex;
@@ -30,15 +52,37 @@ export const StyledButton = styled.button<Omit<IButtonProps, "children">>`
     css`
       width: ${p.width === "full" ? "100%" : p.width};
     `}
+
+  box-shadow: 0 0 0 transparent, inset 0 0 0 transparent;
   color: ${(p) => p.theme.colors.common.foreground};
+
+  ${(p) =>
+    p.onClick &&
+    css`
+      cursor: pointer;
+    `}
+
+  ${createTransition(["box-shadow", "background-image", "color"])}
 
   ${(p) =>
     p.variant === "primary" &&
     css`
-      background-image: linear-gradient(150deg, #de4bb8ff 0%, #bc0fd8ff 100%);
+      background-image: ${(p) => p.theme.colors.gradient.primary};
       background-position: center;
       background-repeat: no-repeat;
       background-size: auto;
+
+      &:hover {
+        ${primaryHover}
+      }
+
+      &:active {
+        ${primaryActive}
+      }
+
+      &:disabled {
+        ${primaryDisabled}
+      }
     `}
 
   ${(p) =>
@@ -95,9 +139,10 @@ export default function Button({
   iconRight,
   children,
   width,
-}: IButtonProps) {
+  ...buttonProps
+}: IButtonProps & React.ButtonHTMLAttributes<HTMLButtonElement>) {
   return (
-    <StyledButton variant={variant} size={size}>
+    <StyledButton variant={variant} size={size} {...buttonProps}>
       {iconLeft && <StyledIcon>{iconLeft}</StyledIcon>}
       {children}
       {iconRight && <StyledIcon>{iconRight}</StyledIcon>}

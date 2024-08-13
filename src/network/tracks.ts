@@ -7,7 +7,7 @@ import {
   limit as fbLimit,
 } from "firebase/firestore";
 import { firebaseDB } from "./firebase";
-import { TrackItem } from "types/tracklist";
+import { TrackItem } from "modules/tracks/model/tracklist";
 
 export const getTracksList = async (props?: {
   isPublic?: boolean;

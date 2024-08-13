@@ -1,4 +1,8 @@
-import { MusicStoresEnum, MusicStores, TrackItem } from "types/tracklist";
+import {
+  MusicStoresEnum,
+  MusicStores,
+  TrackItem,
+} from "modules/tracks/model/tracklist";
 
 export const musicStores: MusicStores = {
   [MusicStoresEnum.apple]: {

@@ -1,8 +1,8 @@
 import { Link } from "react-router-dom";
 import styled from "styled-components";
 
-import { useAuth } from "providers/AuthProvider";
-import { Typography } from "design-system";
+import { useAuth } from "app/providers/AuthProvider";
+import { Typography } from "shared/ui";
 
 export const Root = styled.div`
   display: grid;

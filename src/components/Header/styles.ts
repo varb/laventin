@@ -1,5 +1,4 @@
-import { Link } from 'react-router-dom';
-import styled from 'styled-components';
+import styled from "styled-components";
 
 export const Root = styled.div`
   display: flex;
@@ -17,7 +16,7 @@ export const TopBarLink = styled.div`
   font-size: 14px;
   line-height: 17px;
   text-transform: uppercase;
-  transition: color .2s;
+  transition: color 0.2s;
   text-decoration: none;
 
   &:hover {
@@ -30,7 +29,7 @@ export const Logo = styled.div`
   width: 87px;
   height: 104px;
   margin-left: 30px;
-  background-image: url('/art/logo.svg');
+  background-image: url("/art/logo.svg");
   background-size: 87px;
   background-repeat: no-repeat;
   background-position: 0 50%;

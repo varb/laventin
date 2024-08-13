@@ -1,5 +1,5 @@
 import CreateOrUpdateTrackForm from "components/CreateOrUpdateTrackForm";
-import { Typography } from "design-system";
+import { Typography } from "shared/ui";
 
 export default function EditTrackScreen() {
   return (

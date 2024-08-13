@@ -14,11 +14,12 @@ import {
   // ShareButton,
   ArtworkWrapper,
   ArtworkContainer,
-} from "./styles";
+} from "./TrackPage.styles";
 
-function TrackScreen() {
+export function TrackPage() {
   const { id } = useParams<"id">();
   const trackInfo = useTrackInfo(id);
+
   // const { user } = useAuth();
 
   if (trackInfo === null) {
@@ -30,7 +31,9 @@ function TrackScreen() {
   return (
     <>
       <Helmet>
-        <title>{`${trackInfo.title} by ${trackInfo.artist}`}</title>
+        <title>
+          {trackInfo.title} by {trackInfo.artist}
+        </title>
         <meta property="og:image" content={trackArtworkPath} />
         <meta property="og:image:width" content="1200" />
         <meta property="og:image:height" content="1200" />
@@ -59,5 +62,3 @@ function TrackScreen() {
     </>
   );
 }
-
-export default TrackScreen;

@@ -1,6 +1,6 @@
 import { useState } from "react";
-import { TrackFormData } from "types/tracklist";
 import { getStorage } from "firebase/storage";
+import { TrackFormData } from "modules/tracks/model/tracklist";
 
 interface CreateOrUpdateTrackFormProps {
   onSubmit?: (formData: TrackFormData) => void;

@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { getTracksList } from "network/tracks";
-import { TrackItem } from "types/tracklist";
+import { TrackItem } from "modules/tracks/model/tracklist";
 
 export const useTracksList = (
   networkProps?: Parameters<typeof getTracksList>[0]

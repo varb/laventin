@@ -14,6 +14,13 @@ export default {
     darker: "#340929",
   },
   secondary: {
+    lighter: "#F4ECF9",
+    light: "#EFD9FC",
+    main: "#C489E6",
+    dark: "#885BA4",
+    darker: "#846C93",
+  },
+  accent: {
     lighter: "#C3DBFE",
     light: "#81B5FD",
     main: "#3185FC",
@@ -31,7 +38,12 @@ export default {
     "800": "#453F4B",
     "900": "#2E2A32",
   },
-  gradient: { primary: "", primaryDisabled: "", secondary: "" },
+  gradient: {
+    primary: "linear-gradient(150deg, #de4bb8ff 0%, #bc0fd8ff 100%)",
+    primaryDisabled:
+      "linear-gradient(126.91deg, #989096 24.33%, #786F76 75.67%)",
+    secondary: "linear-gradient(113.88deg, #F4ECF9 29.51%, #EFD9FC 70.49%)",
+  },
   background: {
     default: "#1C1421",
   },

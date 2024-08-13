@@ -1,9 +1,8 @@
 import React from "react";
 import { useNavigate } from "react-router";
 
-import { PageWrap } from "components/Layout/styles";
-import { Typography } from "design-system";
-import { useAuth } from "providers/AuthProvider";
+import { Typography, Layout } from "shared/ui";
+import { useAuth } from "app/providers/AuthProvider";
 
 export default function LoginScreen() {
   const navigate = useNavigate();
@@ -22,7 +21,7 @@ export default function LoginScreen() {
   };
 
   return (
-    <PageWrap>
+    <Layout.PageWrap>
       <form onSubmit={onSubmit}>
         <Typography.H1>Login</Typography.H1>
         <label>
@@ -40,6 +39,6 @@ export default function LoginScreen() {
           <button type="submit">Войти</button>
         </div>
       </form>
-    </PageWrap>
+    </Layout.PageWrap>
   );
 }

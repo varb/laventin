@@ -1,9 +1,9 @@
 import React, { useCallback } from "react";
 import { List, Link, LinkIcon } from "./styled";
 import { musicStores } from "data/tracklist";
-import { setGoal } from "helpers/analytics";
+import { setGoal } from "shared/helpers/analytics";
 import Icon from "../Icon";
-import { MusicStores, TrackItem } from "types/tracklist";
+import { MusicStores, TrackItem } from "modules/tracks/model/tracklist";
 
 type StreamingLinksProps = {
   trackInfo: TrackItem;
