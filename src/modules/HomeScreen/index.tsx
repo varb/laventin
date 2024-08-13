@@ -7,7 +7,7 @@ import StreamingLinks from "components/StreamingLinks";
 import SocialLinks from "components/SocialLinks";
 // import { PageWrap } from "app/layouts/styles";
 import TracksList from "components/TracksList";
-import { useAuth } from "app/providers/AuthProvider";
+import { useAuth } from "app/providers";
 
 import {
   MainBgCover,

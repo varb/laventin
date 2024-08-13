@@ -2,7 +2,7 @@ import React from "react";
 import { useNavigate } from "react-router";
 
 import { Typography, Layout } from "shared/ui";
-import { useAuth } from "app/providers/AuthProvider";
+import { useAuth } from "app/providers";
 
 export default function LoginScreen() {
   const navigate = useNavigate();

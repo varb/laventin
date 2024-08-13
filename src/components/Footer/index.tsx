@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 import styled from "styled-components";
 
-import { useAuth } from "app/providers/AuthProvider";
+import { useAuth } from "app/providers";
 import { Typography } from "shared/ui";
 
 export const Root = styled.div`

@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 
 import { Layout, Typography } from "shared/ui";
 import TracksList from "components/TracksList";
-import { useAuth } from "app/providers/AuthProvider";
+import { useAuth } from "app/providers";
 
 export default function TrackListScreen() {
   const { user } = useAuth();

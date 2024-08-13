@@ -1,10 +1,4 @@
-import {
-  createContext,
-  useContext,
-  useEffect,
-  useLayoutEffect,
-  useState,
-} from "react";
+import { createContext, useContext, useLayoutEffect, useState } from "react";
 import { User } from "firebase/auth";
 import { authUser, loginUser, logoutUser } from "network/user";
 
@@ -28,7 +22,7 @@ export const AuthContext = createContext<UserContext>({
 export const AuthConsumer = AuthContext.Consumer;
 export const useAuth = () => useContext(AuthContext);
 
-export default function AuthProvider({ children }: AuthProviderProps) {
+export function AuthProvider({ children }: AuthProviderProps) {
   const [currentUser, setCurrentUser] = useState<UserType>(null);
 
   useLayoutEffect(() => {
