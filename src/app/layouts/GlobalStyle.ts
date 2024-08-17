@@ -35,6 +35,19 @@ const GlobalStyle = createGlobalStyle`
 
   #root {
     min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+
+    opacity: 0;
+    transition: opacity 600ms 1000ms ease-out;
+
+    ._loaded & {
+      opacity: 1;
+    }
+  }
+
+  main {
+    flex-grow: 1;
   }
 `;
 

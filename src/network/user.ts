@@ -1,20 +1,29 @@
-import firebaseApp from "network/firebase";
+import firebaseApp from "shared/api/firebase";
 import {
   getAuth,
   signOut as firebaseSignOut,
   signInWithEmailAndPassword,
   User,
   UserCredential,
-} from 'firebase/auth';
+} from "firebase/auth";
 
 const auth = getAuth(firebaseApp);
 
-export async function authUser(onAuth: (user: User | null) => void): Promise<void> {
+export async function authUser(
+  onAuth: (user: User | null) => void
+): Promise<void> {
   await auth.onAuthStateChanged(onAuth);
 }
 
-export async function loginUser(email: string, password: string): Promise<UserCredential> {
-  const userCredential = await signInWithEmailAndPassword(auth, email, password);
+export async function loginUser(
+  email: string,
+  password: string
+): Promise<UserCredential> {
+  const userCredential = await signInWithEmailAndPassword(
+    auth,
+    email,
+    password
+  );
 
   if (!userCredential) {
     console.error(userCredential);

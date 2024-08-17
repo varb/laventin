@@ -1,4 +1,4 @@
-import Footer from "./Footer";
-import Header from "./Header";
+import Footer from "../widgets/Footer/Footer";
+import Header from "../widgets/Header/Header";
 
 export { Footer, Header };

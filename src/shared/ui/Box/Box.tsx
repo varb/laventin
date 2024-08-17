@@ -7,6 +7,12 @@ interface StyleBox {
   mr: number;
   my: number;
   mx: number;
+  pt: number;
+  pb: number;
+  pl: number;
+  pr: number;
+  py: number;
+  px: number;
 }
 
 type StylesBoxProps = Partial<StyleBox>;
@@ -47,6 +53,38 @@ const StyledBox = styled.div<StylesBoxProps>`
     p.mr &&
     css`
       margin-right: ${p.theme.indents.calc(p.mr)};
+    `}
+  ${(p) =>
+    p.py &&
+    css`
+      margin-top: ${p.theme.indents.calc(p.py)};
+      margin-bottom: ${p.theme.indents.calc(p.py)};
+    `}
+  ${(p) =>
+    p.px &&
+    css`
+      margin-left: ${p.theme.indents.calc(p.px)};
+      margin-right: ${p.theme.indents.calc(p.px)};
+    `}
+  ${(p) =>
+    p.pt &&
+    css`
+      margin-top: ${p.theme.indents.calc(p.pt)};
+    `}
+  ${(p) =>
+    p.pb &&
+    css`
+      margin-bottom: ${p.theme.indents.calc(p.pb)};
+    `}
+  ${(p) =>
+    p.pl &&
+    css`
+      margin-left: ${p.theme.indents.calc(p.pl)};
+    `}
+  ${(p) =>
+    p.pr &&
+    css`
+      margin-right: ${p.theme.indents.calc(p.pr)};
     `}
 `;
 

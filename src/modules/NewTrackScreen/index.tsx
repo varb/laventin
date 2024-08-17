@@ -6,7 +6,7 @@ import { collection, doc, addDoc, setDoc } from "firebase/firestore";
 import { Box, Typography, Layout } from "shared/ui";
 import CreateOrUpdateTrackForm from "components/CreateOrUpdateTrackForm";
 import { TrackFormData } from "modules/tracks/model/tracklist";
-import { firebaseDB } from "network/firebase";
+import { firebaseDB } from "shared/api/firebase";
 
 export default function NewTrackScreen() {
   const [isLoading, setIsLoading] = useState<boolean>(false);

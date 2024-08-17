@@ -1,0 +1,36 @@
+import styled from "styled-components";
+
+export const Root = styled.div`
+  display: flex;
+  justify-content: space-between;
+`;
+
+export const TopBarLink = styled.div`
+  display: flex;
+  align-items: center;
+  padding: 24px 20px 20px;
+
+  cursor: pointer;
+  color: ${(p) => p.theme.colors.text.secondary};
+  font-weight: bold;
+  font-size: 14px;
+  line-height: 17px;
+  text-transform: uppercase;
+  transition: color 0.2s;
+  text-decoration: none;
+
+  &:hover {
+    color: ${(p) => p.theme.colors.text.primary};
+  }
+`;
+
+export const Logo = styled.div`
+  display: block;
+  width: 87px;
+  height: 104px;
+  margin-left: 30px;
+  background-image: url("/art/logo.svg");
+  background-size: 87px;
+  background-repeat: no-repeat;
+  background-position: 0 50%;
+`;

@@ -2,8 +2,8 @@ import { ThemeProvider } from "styled-components";
 
 import { darkNeon } from "shared/theme";
 import useWebFont from "shared/hooks/useWebFont";
-import AppRouter from "app/router";
-import { AppProvider, AuthProvider } from "app/providers";
+import AppRouter from "app/routes";
+import { AppProvider, AuthProvider } from "shared/providers";
 
 function App() {
   useWebFont();

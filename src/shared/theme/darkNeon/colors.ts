@@ -1,4 +1,4 @@
-import { DefaultThemeColors } from "../";
+import { DefaultThemeColors } from "shared/theme";
 
 export default {
   common: {
@@ -36,7 +36,7 @@ export default {
     "600": "#736C7A",
     "700": "#5C5562",
     "800": "#453F4B",
-    "900": "#2E2A32",
+    "900": "#2E2933",
   },
   gradient: {
     primary: "linear-gradient(150deg, #de4bb8ff 0%, #bc0fd8ff 100%)",

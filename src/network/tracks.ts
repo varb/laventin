@@ -6,7 +6,7 @@ import {
   where,
   limit as fbLimit,
 } from "firebase/firestore";
-import { firebaseDB } from "./firebase";
+import { firebaseDB } from "../shared/api/firebase";
 import { TrackItem } from "modules/tracks/model/tracklist";
 
 export const getTracksList = async (props?: {

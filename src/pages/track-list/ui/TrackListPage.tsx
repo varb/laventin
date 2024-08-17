@@ -5,7 +5,7 @@ import { Layout, Typography } from "shared/ui";
 import TracksList from "components/TracksList";
 import { useAuth } from "shared/providers";
 
-export default function TrackListScreen() {
+export default function TrackListPage() {
   const { user } = useAuth();
 
   return (
@@ -15,7 +15,7 @@ export default function TrackListScreen() {
       </Helmet>
 
       <Layout.PageWrap style={{ marginBottom: 32 }}>
-        <Typography.H1 style={{ marginBottom: 24 }}>All tracks</Typography.H1>
+        <Typography.H1 style={{ marginBottom: 24 }}>Discography</Typography.H1>
         {user && (
           <Typography.TextLink as={Link} to="new">
             Add new track
