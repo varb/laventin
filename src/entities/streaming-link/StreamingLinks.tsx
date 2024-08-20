@@ -2,7 +2,6 @@ import React, { useCallback, useMemo } from "react";
 import { List, Link, LinkIcon } from "./StreamingLinks.styles";
 import { musicStores } from "data/tracklist";
 import { setGoal } from "shared/helpers/analytics";
-import Icon from "../../components/Icon";
 import { MusicStores, TrackItem } from "modules/tracks/model/tracklist";
 
 type StreamingLinksProps = {
@@ -46,9 +45,7 @@ export default function StreamingLinks(
               data-target-id={musicStoreInfo.id}
               target="_blank"
             >
-              <LinkIcon>
-                <Icon name={musicStoreInfo.icon} />
-              </LinkIcon>
+              <LinkIcon>{musicStoreInfo.icon}</LinkIcon>
               {musicStoreInfo.title}
             </Link>
           );
