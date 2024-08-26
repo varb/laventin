@@ -1,55 +1,76 @@
 import { lazy, Suspense } from "react";
-import { BrowserRouter, Route, Routes,  } from "react-router-dom";
+import { createBrowserRouter, RouterProvider } from "react-router-dom";
 
 import Layout from "app/layouts";
 
-import TrackListScreen from "modules/TrackListScreen";
-import NewTrackScreen from "modules/NewTrackScreen";
-import EditTrackScreen from "modules/EditTrackScreen";
 import PrivateRoute from "./PrivateRoute";
 import { RouteNames } from "shared/model/route-names";
+import HomePage from "pages/home";
 
-const HomePage = lazy(() => import("pages/home"));
-const TrackPage = lazy(() => import("pages/track"));
+const TrackPage = lazy(() =>
+  import("pages/track").then(({ TrackPage }) => ({
+    default: TrackPage,
+  }))
+);
+const EditTrackPage = lazy(() =>
+  import("pages/track").then(({ EditTrackPage }) => ({
+    default: EditTrackPage,
+  }))
+);
+const TrackListPage = lazy(() =>
+  import("pages/track-list").then(({ TrackListPage }) => ({
+    default: TrackListPage,
+  }))
+);
+const AddTrackPage = lazy(() =>
+  import("pages/track-list").then(({ AddTrackPage }) => ({
+    default: AddTrackPage,
+  }))
+);
 const SignInPage = lazy(() => import("pages/sign-in"));
 const NotFoundPage = lazy(() => import("pages/not-found"));
 
-
+const router = createBrowserRouter([
+  {
+    id: "root",
+    path: RouteNames.root,
+    element: <Layout />,
+    children: [
+      { index: true, element: <HomePage /> },
+      {
+        path: RouteNames.tracks,
+        element: <TrackListPage />,
+      },
+      {
+        path: RouteNames.addTrack,
+        element: (
+          <PrivateRoute>
+            <AddTrackPage />
+          </PrivateRoute>
+        ),
+      },
+      {
+        path: `${RouteNames.tracks}/:id`,
+        element: <TrackPage />,
+      },
+      {
+        path: `${RouteNames.tracks}/:id/edit`,
+        element: (
+          <PrivateRoute>
+            <EditTrackPage />
+          </PrivateRoute>
+        ),
+      },
+      { path: RouteNames.signIn, element: <SignInPage /> },
+      { path: "*", element: <NotFoundPage /> },
+    ],
+  },
+]);
 
 export default function AppRouter() {
   return (
     <Suspense fallback={null}>
-      <BrowserRouter>
-        <Routes>
-          <Route path={RouteNames.root} element={<Layout />}>
-            <Route index element={<HomePage />} />
-            <Route path="t">
-              <Route index element={<TrackListScreen />} />
-              <Route path=":id">
-                <Route index element={<TrackPage />} />
-                <Route
-                  path="edit"
-                  element={
-                    <PrivateRoute>
-                      <EditTrackScreen />
-                    </PrivateRoute>
-                  }
-                />
-              </Route>
-              <Route
-                path="new"
-                element={
-                  <PrivateRoute>
-                    <NewTrackScreen />
-                  </PrivateRoute>
-                }
-              />
-            </Route>
-            <Route path={RouteNames.signIn} element={<SignInPage />} />
-            <Route path="*" element={<NotFoundPage />} />
-          </Route>
-        </Routes>
-      </BrowserRouter>
+      <RouterProvider router={router} />
     </Suspense>
   );
 }

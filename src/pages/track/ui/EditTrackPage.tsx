@@ -1,7 +1,11 @@
-import React from "react";
+import CreateOrUpdateTrackForm from "components/CreateOrUpdateTrackForm";
+import { Typography } from "shared/ui";
 
-type Props = {};
-
-export default function EditTrackPage({}: Props) {
-  return <div>EditTrackPage</div>;
+export default function EditTrackPage() {
+  return (
+    <div>
+      <Typography.H1>Edit Track</Typography.H1>
+      <CreateOrUpdateTrackForm />
+    </div>
+  );
 }
