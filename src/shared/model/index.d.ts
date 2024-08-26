@@ -1,25 +1,17 @@
-declare module 'react-svg-unique-id' {
-  interface SVGUniqueIDProps {
-    children?: React.ReactNode
-  }
-
-  function SVGUniqueID({ children }: SVGUniqueIDProps): JSX.Element
-};
-
-declare module 'webfontloader' {
+declare module "webfontloader" {
   export interface WebFontConfig {
-    loading?: () => void,
-    active?: () => void,
-    inactive?: () => void,
-    fontloading?: (familyName, fvd) => void,
-    fontactive?: (familyName, fvd) => void,
-    fontinactive?: (familyName, fvd)=>  void,
-    classes: boolean,
-    timeout?: number,
+    loading?: () => void;
+    active?: () => void;
+    inactive?: () => void;
+    fontloading?: (familyName, fvd) => void;
+    fontactive?: (familyName, fvd) => void;
+    fontinactive?: (familyName, fvd) => void;
+    classes: boolean;
+    timeout?: number;
     // google: {
     //   families: ['Montserrat:400,600,700,800,900']
     // },
-  };
+  }
 
-  export function load(WebFontConfig): void
+  export function load(WebFontConfig): void;
 }
