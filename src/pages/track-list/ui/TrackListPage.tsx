@@ -2,8 +2,9 @@ import Helmet from "react-helmet";
 import { Link } from "react-router-dom";
 
 import { Layout, Typography } from "shared/ui";
-import TracksList from "components/TracksList";
+import { TrackList } from "entities/track";
 import { useAuth } from "shared/providers";
+import { RouteNames } from "shared/model/route-names";
 
 export default function TrackListPage() {
   const { user } = useAuth();
@@ -17,11 +18,12 @@ export default function TrackListPage() {
       <Layout.PageWrap style={{ marginBottom: 32 }}>
         <Typography.H1 style={{ marginBottom: 24 }}>Discography</Typography.H1>
         {user && (
-          <Typography.TextLink as={Link} to="new">
+          <Typography.TextLink as={Link} to={RouteNames.addTrack}>
             Add new track
           </Typography.TextLink>
         )}
-        <TracksList />
+
+        <TrackList />
       </Layout.PageWrap>
     </>
   );

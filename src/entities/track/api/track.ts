@@ -6,10 +6,19 @@ import {
   where,
   limit as fbLimit,
 } from "firebase/firestore";
-import { firebaseDB } from "../shared/api/firebase";
-import { TrackItem } from "modules/tracks/model/tracklist";
+import { firebaseDB } from "shared/api/firebase";
+import { TrackItem } from "../model/track.types";
 
-export const getTracksList = async (props?: {
+/**
+ * Retrieves a list of tracks from the Firestore database.
+ *
+ * @param {object} props - Optional properties to filter the track list.
+ * @param {boolean} props.isPublic - Whether to only include public tracks.
+ * @param {number} props.limit - The maximum number of tracks to return.
+ *
+ * @return {TrackItem[]} An array of track items.
+ */
+export const getTrackList = async (props?: {
   isPublic?: boolean;
   limit?: number;
 }) => {

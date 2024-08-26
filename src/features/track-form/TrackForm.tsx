@@ -1,8 +1,8 @@
 import { useState } from "react";
 import { getStorage } from "firebase/storage";
-import { TrackFormData } from "modules/tracks/model/tracklist";
+import { TrackFormData } from "entities/track";
 
-interface CreateOrUpdateTrackFormProps {
+interface TrackFormProps {
   onSubmit?: (formData: TrackFormData) => void;
 }
 
@@ -20,13 +20,11 @@ const defaultFormData: TrackFormData = {
   releaseDate: new Date(),
 };
 
-export default function CreateOrUpdateTrackForm({
-  onSubmit,
-}: CreateOrUpdateTrackFormProps) {
+export default function TrackForm({ onSubmit }: TrackFormProps) {
   const [formData, setFormData] = useState<TrackFormData>(defaultFormData);
 
-  const storage = getStorage();
-  console.log(storage);
+  // const storage = getStorage();
+  // console.log(storage);
 
   const onFormSubmit = (e: React.BaseSyntheticEvent) => {
     e.preventDefault();

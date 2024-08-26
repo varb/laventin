@@ -1,11 +1,7 @@
 import { Link } from "react-router-dom";
 import { Playlist } from "@phosphor-icons/react";
 
-/**
- * @deprecated imports
- */
-import { trackList } from "data/tracklist";
-import TracksList from "components/TracksList";
+import { TrackList, trackList } from "entities/track";
 
 import { StreamingLinks } from "entities/streaming-link";
 import { SocialLinks } from "entities/social-link";
@@ -44,7 +40,8 @@ function HomePage() {
 
       <SubTitle>Discography</SubTitle>
       <SectionWrapper>
-        <TracksList />
+        <TrackList limit={5} />
+
         {user && (
           <Typography.TextLink as={Link} to="/t">
             All tracks

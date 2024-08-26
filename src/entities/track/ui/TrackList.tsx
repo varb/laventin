@@ -1,19 +1,21 @@
 import { Link } from "react-router-dom";
 
+import { RouteNames } from "shared/model/route-names";
 import {
   LinksList,
   TrackLink,
   TrackArtist,
   TrackArtwork,
   TrackTitle,
-} from "./styles";
-import { useTracksList } from "modules/tracks/hooks/useTrackList";
-import { RouteNames } from "shared/model/route-names";
+} from "./TrackList.styles";
+import { useTrackList } from "../lib/useTrackList";
 
-interface TracksListProps {}
+type TrackListProps = {
+  limit?: number;
+};
 
-export default function TracksList() {
-  const { data: trackList } = useTracksList();
+export default function TrackList({ limit }: TrackListProps) {
+  const { data: trackList } = useTrackList({ limit });
 
   console.log("TracksList", trackList);
 

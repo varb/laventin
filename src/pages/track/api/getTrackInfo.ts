@@ -1,6 +1,7 @@
 import { doc, getDoc } from "firebase/firestore";
+
+import { TrackItem } from "entities/track";
 import { firebaseDB } from "shared/api";
-import { TrackItem } from "modules/tracks/model/tracklist";
 
 export const getTrackInfo = async (trackId?: string) => {
   if (!trackId) return null;

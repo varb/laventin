@@ -1,6 +1,6 @@
 import { createContext, useContext, useLayoutEffect, useState } from "react";
 import { User } from "firebase/auth";
-import { authUser, loginUser, logoutUser } from "network/user";
+import { authUser, loginUser, logoutUser } from "shared/api/user";
 
 interface AuthProviderProps {
   children: React.ReactElement;
@@ -9,8 +9,8 @@ interface AuthProviderProps {
 type UserType = User | null;
 interface UserContext {
   user: UserType;
-  signOut: () => Promise<void>;
   signIn: (email: string, password: string) => Promise<void>;
+  signOut: () => Promise<void>;
 }
 
 export const AuthContext = createContext<UserContext>({

@@ -1,8 +1,9 @@
 import React, { useCallback, useMemo } from "react";
 import { List, Link, LinkIcon } from "./StreamingLinks.styles";
-import { musicStores } from "data/tracklist";
+import { musicStores } from "./model/musicStores";
+/** #TODO: cross-import */
+import { MusicStores, TrackItem } from "entities/track";
 import { setGoal } from "shared/helpers/analytics";
-import { MusicStores, TrackItem } from "modules/tracks/model/tracklist";
 
 type StreamingLinksProps = {
   trackInfo: TrackItem;

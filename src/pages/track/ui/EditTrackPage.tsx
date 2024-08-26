@@ -1,11 +1,11 @@
-import CreateOrUpdateTrackForm from "components/CreateOrUpdateTrackForm";
 import { Typography } from "shared/ui";
+import { EditTrackForm } from "widgets/EditTrackForm";
 
 export default function EditTrackPage() {
   return (
     <div>
       <Typography.H1>Edit Track</Typography.H1>
-      <CreateOrUpdateTrackForm />
+      <EditTrackForm />
     </div>
   );
 }

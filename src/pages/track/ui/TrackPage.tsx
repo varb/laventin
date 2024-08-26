@@ -2,10 +2,10 @@ import { useEffect, useState } from "react";
 import Helmet from "react-helmet";
 import { Navigate, useParams, Link } from "react-router-dom";
 
-import { Box, Typography } from "shared/ui";
+import { TrackItem } from "entities/track";
 import { StreamingLinks } from "entities/streaming-link";
-// import useTrackInfo from "shared/hooks/useTrackInfo";
-// import { useAuth } from "providers/AuthProvider";
+import { Box, Typography } from "shared/ui";
+
 import {
   Root,
   Title,
@@ -17,7 +17,6 @@ import {
   ArtworkContainer,
 } from "./TrackPage.styles";
 import { getTrackInfo } from "../api/getTrackInfo";
-import { TrackItem } from "modules/tracks/model/tracklist";
 
 export const useTrackInfo = (
   networkProps: Parameters<typeof getTrackInfo>[0]
