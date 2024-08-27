@@ -1,6 +1,7 @@
 import { useAuth } from "shared/providers";
 import { useLocation } from "react-router";
 import { Navigate } from "react-router-dom";
+import { RouteNames } from "shared/model/route-names";
 
 export default function PrivateRoute({ children }: { children: JSX.Element }) {
   const { user } = useAuth();
@@ -11,6 +12,6 @@ export default function PrivateRoute({ children }: { children: JSX.Element }) {
   return user ? (
     children
   ) : (
-    <Navigate to="/login" state={{ from: location }} replace />
+    <Navigate to={RouteNames.signIn} state={{ from: location }} replace />
   );
 }

@@ -1,17 +1,22 @@
 import { Link } from "react-router-dom";
 import styled from "styled-components";
+import { SignIn, SignOut } from "@phosphor-icons/react";
 
 import { useAuth } from "shared/providers";
-import { Typography } from "shared/ui";
+import { Button, Typography } from "shared/ui";
 import { RouteNames } from "shared/model/route-names";
 
-export const Root = styled.div`
+export const Root = styled.footer`
   display: grid;
-  grid-gap: 5px;
+  gap: ${(p) => p.theme.indents.calc(1)};
   padding-bottom: ${(p) => p.theme.indents.calc(8)};
 
   color: ${(p) => p.theme.colors.text.secondary};
   font-size: 12px;
+`;
+
+export const StyledAuthButton = styled(Button)`
+  margin-left: -12px;
 `;
 
 export default function Footer() {
@@ -31,11 +36,24 @@ export default function Footer() {
       </div>
       <div>
         {!user ? (
-          <Typography.TextLink as={Link} to={RouteNames.signIn}>
-            Login
-          </Typography.TextLink>
+          <StyledAuthButton
+            forwardedAs={Link}
+            to={RouteNames.signIn}
+            variant="ghost"
+            size="small"
+            iconRight={<SignIn />}
+          >
+            Sign In
+          </StyledAuthButton>
         ) : (
-          <Typography.TextLink onClick={logout}>Sign out</Typography.TextLink>
+          <StyledAuthButton
+            variant="ghost"
+            size="small"
+            iconLeft={<SignOut />}
+            onClick={logout}
+          >
+            Sign out
+          </StyledAuthButton>
         )}
       </div>
     </Root>

@@ -36,6 +36,10 @@ export const TextLink = styled.a`
   &:hover {
     text-decoration: none;
   }
+
+  &:active {
+    color: ${(p) => p.theme.colors.primary.dark};
+  }
 `;
 
 const typography = {
