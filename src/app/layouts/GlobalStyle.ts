@@ -12,11 +12,9 @@ const GlobalStyle = createGlobalStyle`
   body {
     min-height: 100%;
     margin: 0;
-    background-color: ${(p) => p.theme.colors.background.default};
-    color: ${(p) => p.theme.colors.text.primary};
-    font-family: 'Montserrat', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-      'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-      sans-serif;
+    background-color: ${(p) => p.theme.colors.common.background};
+    color: ${(p) => p.theme.colors.common.foreground};
+    font-family: ${(p) => p.theme.typography.fontFamily.regular};
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
   }
@@ -27,10 +25,12 @@ const GlobalStyle = createGlobalStyle`
 
   h1, h2, h3, h4, h5, h6 {
     margin: 0;
+    font-family: ${(p) => p.theme.typography.fontFamily.primary};
   }
 
   button {
     border: 0;
+    font-weight: 600;
   }
 
   #root {
