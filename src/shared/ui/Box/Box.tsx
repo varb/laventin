@@ -1,96 +1,112 @@
 import styled, { css } from "styled-components";
 
-interface StyleBox {
-  mt: number;
-  mb: number;
-  ml: number;
-  mr: number;
-  my: number;
-  mx: number;
-  pt: number;
-  pb: number;
-  pl: number;
-  pr: number;
-  py: number;
-  px: number;
-}
-
-type StylesBoxProps = Partial<StyleBox>;
-
-interface BoxProps {
+export interface BoxProps {
   children?: React.ReactNode;
+  className?: string;
+  mt?: number;
+  mb?: number;
+  ml?: number;
+  mr?: number;
+  my?: number;
+  mx?: number;
+  pt?: number;
+  pb?: number;
+  pl?: number;
+  pr?: number;
+  py?: number;
+  px?: number;
 }
 
-const StyledBox = styled.div<StylesBoxProps>`
+export type StyledBoxProps = GetStyledComponentProps<
+  BoxProps,
+  "children" | "className"
+>;
+
+const StyledBox = styled.div<StyledBoxProps>`
   ${(p) =>
-    p.my &&
+    p.$my &&
     css`
-      margin-top: ${p.theme.indents.calc(p.my)};
-      margin-bottom: ${p.theme.indents.calc(p.my)};
+      margin-top: ${p.theme.indents.calc(p.$my)};
+      margin-bottom: ${p.theme.indents.calc(p.$my)};
     `}
   ${(p) =>
-    p.mx &&
+    p.$mx &&
     css`
-      margin-left: ${p.theme.indents.calc(p.mx)};
-      margin-right: ${p.theme.indents.calc(p.mx)};
+      margin-left: ${p.theme.indents.calc(p.$mx)};
+      margin-right: ${p.theme.indents.calc(p.$mx)};
     `}
   ${(p) =>
-    p.mt &&
+    p.$mt &&
     css`
-      margin-top: ${p.theme.indents.calc(p.mt)};
+      margin-top: ${p.theme.indents.calc(p.$mt)};
     `}
   ${(p) =>
-    p.mb &&
+    p.$mb &&
     css`
-      margin-bottom: ${p.theme.indents.calc(p.mb)};
+      margin-bottom: ${p.theme.indents.calc(p.$mb)};
     `}
   ${(p) =>
-    p.ml &&
+    p.$ml &&
     css`
-      margin-left: ${p.theme.indents.calc(p.ml)};
+      margin-left: ${p.theme.indents.calc(p.$ml)};
     `}
   ${(p) =>
-    p.mr &&
+    p.$mr &&
     css`
-      margin-right: ${p.theme.indents.calc(p.mr)};
+      margin-right: ${p.theme.indents.calc(p.$mr)};
     `}
   ${(p) =>
-    p.py &&
+    p.$py &&
     css`
-      margin-top: ${p.theme.indents.calc(p.py)};
-      margin-bottom: ${p.theme.indents.calc(p.py)};
+      margin-top: ${p.theme.indents.calc(p.$py)};
+      margin-bottom: ${p.theme.indents.calc(p.$py)};
     `}
   ${(p) =>
-    p.px &&
+    p.$px &&
     css`
-      margin-left: ${p.theme.indents.calc(p.px)};
-      margin-right: ${p.theme.indents.calc(p.px)};
+      margin-left: ${p.theme.indents.calc(p.$px)};
+      margin-right: ${p.theme.indents.calc(p.$px)};
     `}
   ${(p) =>
-    p.pt &&
+    p.$pt &&
     css`
-      margin-top: ${p.theme.indents.calc(p.pt)};
+      margin-top: ${p.theme.indents.calc(p.$pt)};
     `}
   ${(p) =>
-    p.pb &&
+    p.$pb &&
     css`
-      margin-bottom: ${p.theme.indents.calc(p.pb)};
+      margin-bottom: ${p.theme.indents.calc(p.$pb)};
     `}
   ${(p) =>
-    p.pl &&
+    p.$pl &&
     css`
-      margin-left: ${p.theme.indents.calc(p.pl)};
+      margin-left: ${p.theme.indents.calc(p.$pl)};
     `}
   ${(p) =>
-    p.pr &&
+    p.$pr &&
     css`
-      margin-right: ${p.theme.indents.calc(p.pr)};
+      margin-right: ${p.theme.indents.calc(p.$pr)};
     `}
 `;
 
-export default function Box({
-  children,
-  ...styles
-}: BoxProps & StylesBoxProps) {
-  return <StyledBox {...styles}>{children}</StyledBox>;
+export default function Box({ children, className, ...styles }: BoxProps) {
+  return (
+    <StyledBox
+      $mt={styles.mt}
+      $ml={styles.ml}
+      $mb={styles.mb}
+      $mr={styles.mr}
+      $mx={styles.mx}
+      $my={styles.my}
+      $pt={styles.pt}
+      $pl={styles.pl}
+      $pb={styles.pb}
+      $pr={styles.pr}
+      $px={styles.px}
+      $py={styles.py}
+      className={className}
+    >
+      {children}
+    </StyledBox>
+  );
 }

@@ -16,3 +16,12 @@ interface ImportMetaEnv {
 interface ImportMeta {
   readonly env: ImportMetaEnv;
 }
+
+/**
+ * Get a type of styled component props without some keys.
+ * @example
+ * GetStyledComponentProps<{a: string, b: number, c: boolean}, 'a'> // { $b: number, $c: boolean }
+ */
+type GetStyledComponentProps<T, K extends keyof T = never> = {
+  [P in Exclude<keyof T, K> as `$${string & P}`]?: T[P];
+};

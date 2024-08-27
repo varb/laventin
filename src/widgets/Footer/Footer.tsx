@@ -25,7 +25,7 @@ export default function Footer() {
     <Root>
       <div>
         Designed &amp; developed by me:{" "}
-        <Typography.TextLink href="http://varb.me" target="_blank">
+        <Typography.TextLink href="https://varb.me" target="_blank">
           varb.me
         </Typography.TextLink>
       </div>

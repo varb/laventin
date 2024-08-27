@@ -4,7 +4,7 @@ import { Button, Layout } from "shared/ui";
 const horizontalIndent = 4;
 const verticalIndent = 20;
 
-export const HeaderRoot = styled.div`
+export const HeaderRoot = styled.header`
   display: flex;
   justify-content: space-between;
 
