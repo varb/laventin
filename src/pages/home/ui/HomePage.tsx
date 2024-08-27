@@ -46,6 +46,7 @@ function HomePage() {
           iconRight={<Playlist />}
           forwardedAs={Link}
           to={RouteNames.tracks}
+          width="full"
         >
           View all tracks
         </Button>

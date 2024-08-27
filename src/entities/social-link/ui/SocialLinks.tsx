@@ -14,6 +14,7 @@ export default function SocialLinks() {
           forwardedAs="a"
           href={url}
           target="_blank"
+          variant="outlined"
         />
       ))}
     </Root>

@@ -1,6 +1,12 @@
 import { useMatch, useNavigate } from "react-router-dom";
 import { CaretLeft } from "@phosphor-icons/react";
-import { Root, Logo, TopBarLink } from "./Header.styles";
+import {
+  HeaderRoot,
+  HeaderWrapper,
+  Logo,
+  HeaderRigthAction,
+} from "./Header.styles";
+import { Button } from "shared/ui";
 
 export default function Header() {
   const isHomePage = useMatch("/");
@@ -11,15 +17,29 @@ export default function Header() {
   };
 
   return (
-    <Root>
-      {isHomePage ? (
-        <Logo />
-      ) : (
-        <TopBarLink onClick={onBackButtonClick}>
-          <CaretLeft size={16} />
-          Back
-        </TopBarLink>
-      )}
-    </Root>
+    <HeaderRoot>
+      <HeaderWrapper $isHome={!!isHomePage}>
+        {isHomePage ? (
+          <>
+            <Logo />
+            <span />
+          </>
+        ) : (
+          <>
+            <Button
+              size="small"
+              onClick={onBackButtonClick}
+              variant="ghost"
+              iconLeft={<CaretLeft />}
+            >
+              Back
+            </Button>
+            <HeaderRigthAction>
+              <span />
+            </HeaderRigthAction>
+          </>
+        )}
+      </HeaderWrapper>
+    </HeaderRoot>
   );
 }

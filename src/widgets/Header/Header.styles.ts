@@ -1,34 +1,54 @@
-import styled from "styled-components";
+import styled, { css } from "styled-components";
+import { Button, Layout } from "shared/ui";
 
-export const Root = styled.div`
+const horizontalIndent = 4;
+const verticalIndent = 20;
+
+export const HeaderRoot = styled.div`
   display: flex;
   justify-content: space-between;
+
+  & ${Button} {
+    position: relative;
+
+    &::before {
+      content: "";
+      position: absolute;
+      top: -${verticalIndent}px;
+      left: -${horizontalIndent}px;
+      width: calc(100% + ${horizontalIndent * 2}px);
+      height: calc(100% + ${verticalIndent * 2}px);
+      background-color: transparent;
+    }
+  }
 `;
 
-export const TopBarLink = styled.div`
+export const HeaderWrapper = styled(Layout.PageWrap)<{ $isHome?: boolean }>`
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  ${(p) =>
+    !p.$isHome
+      ? css`
+          height: 70px;
+          padding: 0 20px;
+        `
+      : css`
+          height: 106px;
+        `}
+`;
+
+export const HeaderRigthAction = styled.div`
   display: flex;
   align-items: center;
-  padding: 24px 20px 20px;
-
-  cursor: pointer;
-  color: ${(p) => p.theme.colors.text.secondary};
-  font-weight: bold;
-  font-size: 14px;
-  line-height: 17px;
-  text-transform: uppercase;
-  transition: color 0.2s;
-  text-decoration: none;
-
-  &:hover {
-    color: ${(p) => p.theme.colors.text.primary};
-  }
+  gap: 8px;
 `;
 
 export const Logo = styled.div`
   display: block;
   width: 87px;
-  height: 104px;
-  margin-left: 30px;
+  height: 30px;
   background-image: url("/art/logo.svg");
   background-size: 87px;
   background-repeat: no-repeat;

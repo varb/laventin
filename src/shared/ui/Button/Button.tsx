@@ -14,7 +14,13 @@ function Button({
   ...buttonProps
 }: IButtonProps & ButtonHTMLAttributes<HTMLButtonElement>) {
   return (
-    <StyledButton $variant={variant} $size={size} type={type} {...buttonProps}>
+    <StyledButton
+      type={type}
+      $variant={variant}
+      $size={size}
+      $width={width}
+      {...buttonProps}
+    >
       {iconLeft && <StyledIcon>{iconLeft}</StyledIcon>}
       {children}
       {iconRight && <StyledIcon>{iconRight}</StyledIcon>}
