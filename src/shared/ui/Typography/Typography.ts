@@ -1,24 +1,31 @@
 import styled from "styled-components";
 
 export const H1 = styled.h1`
-  color: ${(p) => p.theme.colors.text.primary};
-  font-size: 28px;
-  font-weight: 900;
-  line-height: 34px;
+  ${(p) => p.theme.typography.header1};
 `;
 
 export const H2 = styled.h2`
-  color: ${(p) => p.theme.colors.primary.main};
-  font-size: 24px;
-  font-weight: 900;
-  line-height: 29px;
+  ${(p) => p.theme.typography.header2};
 `;
 
 export const H3 = styled.h3`
-  color: ${(p) => p.theme.colors.primary.main};
-  font-size: 16px;
-  font-weight: 600;
-  line-height: 20px;
+  ${(p) => p.theme.typography.header3};
+`;
+
+export const H4 = styled.h4`
+  ${(p) => p.theme.typography.header4};
+`;
+
+export const H5 = styled.h5`
+  ${(p) => p.theme.typography.header5};
+`;
+
+export const H6 = styled.h6`
+  ${(p) => p.theme.typography.header6};
+`;
+
+export const Label = styled.span`
+  ${(p) => p.theme.typography.label};
 `;
 
 export const TextLink = styled.a`
@@ -35,6 +42,10 @@ const typography = {
   H1,
   H2,
   H3,
+  H4,
+  H5,
+  H6,
+  Label,
   TextLink,
 };
 

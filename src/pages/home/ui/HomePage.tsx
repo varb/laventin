@@ -42,12 +42,6 @@ function HomePage() {
       <SectionWrapper>
         <TrackList limit={5} />
 
-        {user && (
-          <Typography.TextLink as={Link} to="/t">
-            All tracks
-          </Typography.TextLink>
-        )}
-
         <Button
           iconRight={<Playlist />}
           forwardedAs={Link}
