@@ -1,4 +1,9 @@
-type ColorScheme = {
+import { css } from "styled-components";
+import { createTransition } from ".";
+
+type StyledCSS = ReturnType<typeof css>;
+
+export type ColorScheme = {
   lighter: string;
   light: string;
   main: string;
@@ -40,6 +45,33 @@ export type DefaultThemeColors = {
   };
 };
 
+export type Typography = {
+  fontFamily: {
+    regular: string;
+    primary: string;
+  };
+  header1: StyledCSS;
+  header2: StyledCSS;
+  header3: StyledCSS;
+  header4: StyledCSS;
+  header5: StyledCSS;
+  header6: StyledCSS;
+  label: StyledCSS;
+};
+
+type ButtonEffect = {
+  hover: StyledCSS;
+  active: StyledCSS;
+  disabled?: StyledCSS;
+};
+
+export type EffectStyles = {
+  primary: ButtonEffect;
+  secondary: ButtonEffect;
+  outlined: ButtonEffect;
+  ghost: ButtonEffect;
+};
+
 declare module "styled-components" {
   export interface DefaultTheme {
     indents: {
@@ -47,5 +79,10 @@ declare module "styled-components" {
       calc: (n: number) => string;
     };
     colors: DefaultThemeColors;
+    typography: Typography;
+    effectStyles: EffectStyles;
+    helpers: {
+      createTransition: typeof createTransition;
+    };
   }
 }

@@ -1,5 +1,5 @@
 import { CSSProperties } from "react";
-import { css, FlattenSimpleInterpolation } from "styled-components";
+import { css } from "styled-components";
 
 export const defaultTransitionDuration = 200;
 export const defaultTransitionEasing: CSSProperties["transitionTimingFunction"] =
@@ -37,7 +37,7 @@ export const createTransition = (
     duration?: number;
     easing?: CSSProperties["transitionTimingFunction"];
   }
-): FlattenSimpleInterpolation => {
+): ReturnType<typeof css> => {
   const duration = params?.duration || defaultTransitionDuration;
   const easing = params?.easing || defaultTransitionEasing;
   const properties = transitionProperties.join();

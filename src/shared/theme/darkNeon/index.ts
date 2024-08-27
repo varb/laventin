@@ -1,5 +1,8 @@
-import colors from './colors';
-// import typography from './typography'
+import { DefaultTheme } from "styled-components";
+import { typography } from "../typography";
+import colors from "./colors";
+import effectStyles from "./effectStyles";
+import { createTransition } from "../transition";
 // import breakpoints from './breakpoints'
 // import media from './media'
 // import keyframes from './keyframes'
@@ -7,16 +10,21 @@ import colors from './colors';
 
 const indents = {
   base: 8,
-  calc: (indent: number) => `${indent * indents.base}px`
-}
-
+  calc: function (indent: number) {
+    return `${indent * this.base}px`;
+  },
+};
 
 export default {
-  colors,
   indents,
-  // typography,
+  colors,
+  typography,
+  effectStyles,
+  helpers: {
+    createTransition,
+  },
   // breakpoints,
   // media,
   // keyframes,
   // animation,
-}
+} as DefaultTheme;
