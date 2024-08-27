@@ -9,3 +9,7 @@ export type IButtonProps = {
   iconRight?: React.ReactNode;
   width?: string | "full";
 };
+
+export type IStyledButtonProps = {
+  [K in Exclude<keyof IButtonProps, "children"> as `$${K}`]?: IButtonProps[K];
+};

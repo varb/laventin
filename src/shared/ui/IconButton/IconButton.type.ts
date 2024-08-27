@@ -6,3 +6,10 @@ export type IIconButtonProps = {
   size?: IconButtonSize;
   icon?: React.ReactNode;
 };
+
+export type IStyledIconButtonProps = {
+  [K in Exclude<
+    keyof IIconButtonProps,
+    "icon"
+  > as `$${K}`]?: IIconButtonProps[K];
+};

@@ -9,11 +9,12 @@ function Button({
   iconLeft,
   iconRight,
   children,
+  type = "button",
   width,
   ...buttonProps
 }: IButtonProps & ButtonHTMLAttributes<HTMLButtonElement>) {
   return (
-    <StyledButton variant={variant} size={size} {...buttonProps}>
+    <StyledButton $variant={variant} $size={size} type={type} {...buttonProps}>
       {iconLeft && <StyledIcon>{iconLeft}</StyledIcon>}
       {children}
       {iconRight && <StyledIcon>{iconRight}</StyledIcon>}
