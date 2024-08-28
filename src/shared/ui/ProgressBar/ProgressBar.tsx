@@ -14,7 +14,10 @@ const StyledIndicator = styled.div`
   height: 100%;
   border-radius: 10px;
 
-  mask: linear-gradient(#fff 0 0);
+  mask-image: linear-gradient(rgb(0 0 0 / 100%), #000);
+  -webkit-mask-image: linear-gradient(rgb(0 0 0 / 100%), #000);
+
+  ${(p) => p.theme.helpers.createTransition(["width"], { duration: 100 })}
 
   &::before {
     content: "";
@@ -31,10 +34,10 @@ type ProgressBarProps = {
   progress: number;
 };
 
-export default function ProgressBar({ progress }: ProgressBarProps) {
+export default function ProgressBar({ progress = 0 }: ProgressBarProps) {
   return (
     <StyledProgressBar>
-      <StyledIndicator style={{ width: `${progress}%` }} />
+      {progress > 0 && <StyledIndicator style={{ width: `${progress}%` }} />}
     </StyledProgressBar>
   );
 }
