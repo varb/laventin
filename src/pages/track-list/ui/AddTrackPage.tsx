@@ -1,7 +1,7 @@
 import Helmet from "react-helmet";
 
 import { AddTrackForm } from "widgets/AddTrackForm";
-import { Box, Typography, Layout } from "shared/ui";
+import { Typography, Layout, Stack } from "shared/ui";
 
 export default function AddTrackPage() {
   return (
@@ -9,11 +9,11 @@ export default function AddTrackPage() {
       <Helmet>
         <title>Add new track</title>
       </Helmet>
-      <Layout.PageWrap style={{ marginBottom: 32 }}>
-        <Box mb={3}>
+      <Layout.PageWrap>
+        <Stack gap={3}>
           <Typography.H1>New Track</Typography.H1>
           <AddTrackForm />
-        </Box>
+        </Stack>
       </Layout.PageWrap>
     </>
   );

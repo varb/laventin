@@ -7,17 +7,6 @@ export const Root = styled(Layout.PageWrap)`
   margin-bottom: 50px;
 `;
 
-export const ShareButton = styled.div`
-  padding-right: 4px;
-  color: ${(p) => p.theme.colors.text.secondary};
-  font-size: 26px;
-  transition: color 0.2s;
-
-  &:hover {
-    color: ${(p) => p.theme.colors.text.primary};
-  }
-`;
-
 export const InfoRow = styled.div`
   text-align: center;
 

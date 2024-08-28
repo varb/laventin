@@ -23,7 +23,7 @@ export default function LoginForm() {
   };
 
   return (
-    <Stack forwardedAs="form" onSubmit={onSubmit} gap={3}>
+    <Stack forwardedAs="form" onSubmit={onSubmit} gap={3} pb={3}>
       <Stack gap={2.5}>
         <label>
           <input type="email" name="email" id="email" placeholder="email" />
