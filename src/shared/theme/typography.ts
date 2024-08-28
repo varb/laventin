@@ -50,6 +50,12 @@ const label = css`
   /* line-height: 15px; */
 `;
 
+const truncateText = css`
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+`;
+
 export const typography: Typography = {
   fontFamily: {
     regular:
@@ -64,4 +70,5 @@ export const typography: Typography = {
   header5,
   header6,
   label,
+  truncateText,
 };

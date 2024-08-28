@@ -3,16 +3,11 @@ import styled from "styled-components";
 import { SignIn, SignOut } from "@phosphor-icons/react";
 
 import { useAuth } from "shared/providers";
-import { Button, Typography } from "shared/ui";
+import { Button, Stack, Typography } from "shared/ui";
 import { RouteNames } from "shared/model/route-names";
 
-export const Root = styled.footer`
-  display: grid;
-  gap: ${(p) => p.theme.indents.calc(1)};
-  padding-bottom: ${(p) => p.theme.indents.calc(8)};
-
-  color: ${(p) => p.theme.colors.text.secondary};
-  font-size: 12px;
+export const StyledCopyright = styled(Typography.Label)`
+  color: ${(p) => p.theme.colors.gray[300]};
 `;
 
 export const StyledAuthButton = styled(Button)`
@@ -27,13 +22,13 @@ export default function Footer() {
   };
 
   return (
-    <Root>
-      <div>
+    <Stack pt={8} pb={8}>
+      <StyledCopyright>
         Designed &amp; developed by me:{" "}
         <Typography.TextLink href="https://varb.me" target="_blank">
           varb.me
         </Typography.TextLink>
-      </div>
+      </StyledCopyright>
       <div>
         {!user ? (
           <StyledAuthButton
@@ -56,6 +51,6 @@ export default function Footer() {
           </StyledAuthButton>
         )}
       </div>
-    </Root>
+    </Stack>
   );
 }

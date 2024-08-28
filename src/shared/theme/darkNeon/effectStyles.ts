@@ -62,6 +62,7 @@ const ghostHover = css`
   background-color: ${(p) => p.theme.colors.gray[900]};
   box-shadow: 0px 2px 10px ${(p) => p.theme.colors.gray[900]},
     inset 0 0 0 transparent;
+  color: ${(p) => p.theme.colors.common.foreground};
 `;
 
 const ghostActive = css`
@@ -73,6 +74,17 @@ const ghostActive = css`
 
 const ghostDisabled = css`
   color: ${(p) => p.theme.colors.gray[500]};
+`;
+
+/**
+ * Cover Style
+ */
+const coverShadowMiddle = css`
+  box-shadow: 0px 4px 16px rgba(0, 0, 0, 0.4);
+`;
+
+const coverShadowLarge = css`
+  box-shadow: 0px 10px 30px rgba(0, 0, 0, 0.5);
 `;
 
 export default {
@@ -95,5 +107,9 @@ export default {
     hover: ghostHover,
     active: ghostActive,
     disabled: ghostDisabled,
+  },
+  cover: {
+    middle: coverShadowMiddle,
+    large: coverShadowLarge,
   },
 } as EffectStyles;

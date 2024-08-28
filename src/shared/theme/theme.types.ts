@@ -57,6 +57,7 @@ export type Typography = {
   header5: StyledCSS;
   header6: StyledCSS;
   label: StyledCSS;
+  truncateText: StyledCSS;
 };
 
 type ButtonEffect = {
@@ -70,6 +71,10 @@ export type EffectStyles = {
   secondary: ButtonEffect;
   outlined: ButtonEffect;
   ghost: ButtonEffect;
+  cover: {
+    middle: StyledCSS;
+    large: StyledCSS;
+  };
 };
 
 declare module "styled-components" {
