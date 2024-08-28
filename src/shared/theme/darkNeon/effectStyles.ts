@@ -16,6 +16,7 @@ const primaryActive = css`
 `;
 
 const primaryDisabled = css`
+  background-image: none;
   box-shadow: 0 0 0 transparent, inset 0 0 0 transparent;
   color: ${(p) => p.theme.colors.gray[300]};
 `;
@@ -35,6 +36,7 @@ const secondaryActive = css`
 `;
 
 const secondaryDisabled = css`
+  background-image: none;
   background-color: ${(p) => p.theme.colors.gray[500]};
   box-shadow: 0 0 0 transparent, inset 0 0 0 transparent;
   color: ${(p) => p.theme.colors.gray[700]};
