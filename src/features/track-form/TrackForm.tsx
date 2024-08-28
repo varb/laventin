@@ -1,6 +1,10 @@
 import { useState } from "react";
-import { getStorage } from "firebase/storage";
+import { FloppyDisk, Plus } from "@phosphor-icons/react";
+
 import { TrackFormData } from "entities/track";
+import { Button, FileButton } from "shared/ui";
+import UploadImageForm from "./UploadImageForm";
+import { StyledTrackForm } from "./TrackForm.styles";
 
 interface TrackFormProps {
   onSubmit?: (formData: TrackFormData) => void;
@@ -45,7 +49,7 @@ export default function TrackForm({ onSubmit }: TrackFormProps) {
   };
 
   return (
-    <form onSubmit={onFormSubmit}>
+    <StyledTrackForm onSubmit={onFormSubmit}>
       <div>
         <input
           type="text"
@@ -56,6 +60,12 @@ export default function TrackForm({ onSubmit }: TrackFormProps) {
       </div>
 
       <div>
+        <input type="text" placeholder="slug" value={formData.slug} readOnly />
+      </div>
+
+      <div>track url: {formData.slug}</div>
+
+      <div>
         <input
           type="text"
           placeholder="artist"
@@ -64,11 +74,14 @@ export default function TrackForm({ onSubmit }: TrackFormProps) {
         />
       </div>
 
-      <div>
-        <input type="text" placeholder="slug" value={formData.slug} />
-      </div>
+      <UploadImageForm label="Artwork" />
 
-      <div>track url: {formData.slug}</div>
+      <div>
+        Streaming links
+        <Button variant="outlined" iconLeft={<Plus />} width="full">
+          Add new link
+        </Button>
+      </div>
 
       <div>
         <label>
@@ -82,7 +95,10 @@ export default function TrackForm({ onSubmit }: TrackFormProps) {
           Show track in public list
         </label>
       </div>
-      <button type="submit">Add new</button>
-    </form>
+
+      <Button iconLeft={<FloppyDisk />} type="submit" width="full">
+        Save new track
+      </Button>
+    </StyledTrackForm>
   );
 }
