@@ -7,10 +7,12 @@ import {
   HeaderRigthAction,
 } from "./Header.styles";
 import { Button } from "shared/ui";
+import { useHeaderContext } from "shared/providers/HeaderProvider";
 
 export default function Header() {
-  const isHomePage = useMatch("/");
+  const isHomePage = !!useMatch("/");
   const navigate = useNavigate();
+  const { rightAction } = useHeaderContext();
 
   const onBackButtonClick = () => {
     navigate(-1);
@@ -18,7 +20,7 @@ export default function Header() {
 
   return (
     <HeaderRoot>
-      <HeaderWrapper $isHome={!!isHomePage}>
+      <HeaderWrapper $isHome={isHomePage} key="headerWrapper">
         {isHomePage ? (
           <>
             <Logo />
@@ -34,9 +36,9 @@ export default function Header() {
             >
               Back
             </Button>
-            <HeaderRigthAction>
-              <span />
-            </HeaderRigthAction>
+            {rightAction && (
+              <HeaderRigthAction>{rightAction}</HeaderRigthAction>
+            )}
           </>
         )}
       </HeaderWrapper>

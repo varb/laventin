@@ -4,6 +4,7 @@ import { darkNeon } from "shared/theme";
 import useWebFont from "shared/hooks/useWebFont";
 import AppRouter from "app/routes";
 import { AppProvider, AuthProvider } from "shared/providers";
+import { HeaderProvider } from "shared/providers/HeaderProvider";
 
 function App() {
   useWebFont();
@@ -12,7 +13,9 @@ function App() {
     <ThemeProvider theme={darkNeon}>
       <AppProvider>
         <AuthProvider>
-          <AppRouter />
+          <HeaderProvider>
+            <AppRouter />
+          </HeaderProvider>
         </AuthProvider>
       </AppProvider>
     </ThemeProvider>

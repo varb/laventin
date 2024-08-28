@@ -1,10 +1,12 @@
 import { useEffect, useState } from "react";
 import Helmet from "react-helmet";
-import { Navigate, useParams, Link } from "react-router-dom";
+import { useParams, Link, useLocation } from "react-router-dom";
+import { PencilSimple } from "@phosphor-icons/react";
 
 import { TrackItem } from "entities/track";
 import { StreamingLinks } from "entities/streaming-link";
-import { Box, Typography } from "shared/ui";
+import { useAuth } from "shared/providers";
+import { Button, HeaderAction } from "shared/ui";
 
 import {
   Root,
@@ -12,7 +14,6 @@ import {
   InfoRow,
   Author,
   ArtworkCover,
-  // ShareButton,
   ArtworkWrapper,
   ArtworkContainer,
 } from "./TrackPage.styles";
@@ -42,8 +43,8 @@ export const useTrackInfo = (
 export default function TrackPage() {
   const { id } = useParams<"id">();
   const { data: trackInfo } = useTrackInfo(id);
-
-  // const { user } = useAuth();
+  const { user } = useAuth();
+  const { pathname } = useLocation();
 
   console.log("trackInfo", id, trackInfo);
 
@@ -66,12 +67,21 @@ export default function TrackPage() {
         <meta property="og:image:height" content="1200" />
       </Helmet>
 
+      {user && (
+        <HeaderAction>
+          <Button
+            iconRight={<PencilSimple />}
+            forwardedAs={Link}
+            to={`${pathname}/edit`}
+            variant="secondary"
+            size="small"
+          >
+            Edit
+          </Button>
+        </HeaderAction>
+      )}
+
       <Root>
-        <Box mb={3}>
-          <Typography.TextLink to="edit" as={Link}>
-            Edit track
-          </Typography.TextLink>
-        </Box>
         <InfoRow>
           <ArtworkWrapper>
             <ArtworkContainer artPath={trackArtworkPath}>
