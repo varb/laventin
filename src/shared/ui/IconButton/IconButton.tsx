@@ -92,6 +92,8 @@ const StyledIconButton = styled.button<IStyledIconButtonProps>`
     p.$variant === "ghost" &&
     css`
       background-color: transparent;
+      color: ${(p) => p.theme.colors.gray[200]};
+
       &:hover {
         ${p.theme.effectStyles.ghost.hover}
       }
@@ -132,6 +134,7 @@ function IconButton({
   icon,
   variant = "primary",
   size = "middle",
+  type = "button",
   className,
   ...buttonProps
 }: IIconButtonProps & ButtonHTMLAttributes<HTMLButtonElement>) {
@@ -140,6 +143,7 @@ function IconButton({
       $size={size}
       $variant={variant}
       className={className}
+      type={type}
       {...buttonProps}
     >
       {icon}

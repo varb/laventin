@@ -7,9 +7,7 @@ export type IIconButtonProps = {
   icon?: React.ReactNode;
 };
 
-export type IStyledIconButtonProps = {
-  [K in Exclude<
-    keyof IIconButtonProps,
-    "icon"
-  > as `$${K}`]?: IIconButtonProps[K];
-};
+export type IStyledIconButtonProps = GetStyledComponentProps<
+  IIconButtonProps,
+  "icon"
+>;

@@ -25,6 +25,7 @@ export const H6 = styled.h6`
 `;
 
 export const Label = styled.span`
+  color: ${(p) => p.theme.colors.gray[100]};
   ${(p) => p.theme.typography.label};
 `;
 

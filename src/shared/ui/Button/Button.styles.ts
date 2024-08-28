@@ -99,6 +99,8 @@ export const StyledButton = styled.button<IStyledButtonProps>`
     p.$variant === "ghost" &&
     css`
       background-color: transparent;
+      color: ${(p) => p.theme.colors.gray[200]};
+
       &:hover {
         ${p.theme.effectStyles.ghost.hover}
       }
