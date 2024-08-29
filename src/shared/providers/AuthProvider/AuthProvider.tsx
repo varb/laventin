@@ -1,4 +1,4 @@
-import { createContext, useContext, useLayoutEffect, useState } from "react";
+import { createContext, useContext, useEffect, useState } from "react";
 import { User } from "firebase/auth";
 import { authUser, loginUser, logoutUser } from "shared/api/user";
 
@@ -25,14 +25,12 @@ export const useAuth = () => useContext(AuthContext);
 export function AuthProvider({ children }: AuthProviderProps) {
   const [currentUser, setCurrentUser] = useState<UserType>(null);
 
-  useLayoutEffect(() => {
+  useEffect(() => {
     authUser(setCurrentUser);
-    console.log("AuthProvider setted");
   }, []);
 
   const signIn = async (email: string, password: string) => {
     const userCredentials = await loginUser(email, password);
-    console.log("sign in");
 
     setCurrentUser(userCredentials.user);
   };

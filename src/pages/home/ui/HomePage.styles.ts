@@ -13,6 +13,7 @@ export const MainBgCover = styled.div`
   background-size: cover;
   background-position: top center;
   background-repeat: no-repeat;
+  mix-blend-mode: luminosity;
 
   &::after {
     content: "";
@@ -24,7 +25,7 @@ export const MainBgCover = styled.div`
     background-image: linear-gradient(
       180deg,
       rgba(0, 0, 0, 0.1) 0%,
-      ${(p) => p.theme.colors.background.default} 100%
+      ${(p) => p.theme.colors.common.background} 100%
     );
   }
 `;

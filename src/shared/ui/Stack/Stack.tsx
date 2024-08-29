@@ -1,5 +1,5 @@
 import styled, { css, CSSProperties } from "styled-components";
-import Box, { BoxProps } from "../Box/Box";
+import Box, { BoxProps } from "../Box";
 
 export type StackProps = BoxProps & {
   direction?: CSSProperties["flexDirection"];
