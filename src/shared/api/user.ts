@@ -9,10 +9,12 @@ import {
 
 const auth = getAuth(firebaseApp);
 
-export async function authUser(
-  onAuth: (user: User | null) => void
-): Promise<void> {
-  await auth.onAuthStateChanged(onAuth);
+export async function authUser(): Promise<User | null> {
+  return new Promise((resolve) => {
+    auth.onAuthStateChanged((user) => {
+      resolve(user);
+    });
+  });
 }
 
 export async function loginUser(

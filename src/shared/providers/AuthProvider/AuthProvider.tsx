@@ -24,9 +24,16 @@ export const useAuth = () => useContext(AuthContext);
 
 export function AuthProvider({ children }: AuthProviderProps) {
   const [currentUser, setCurrentUser] = useState<UserType>(null);
+  const [isAuthInitialized, setIsAuthInitialized] = useState(false);
 
   useEffect(() => {
-    authUser(setCurrentUser);
+    const initializeAuth = async () => {
+      const user = await authUser();
+      setCurrentUser(user);
+      setIsAuthInitialized(true);
+    };
+
+    initializeAuth();
   }, []);
 
   const signIn = async (email: string, password: string) => {
@@ -40,8 +47,6 @@ export function AuthProvider({ children }: AuthProviderProps) {
     setCurrentUser(null);
   };
 
-  console.log("AuthProvider", currentUser);
-
   return (
     <AuthContext.Provider
       value={{
@@ -50,7 +55,7 @@ export function AuthProvider({ children }: AuthProviderProps) {
         signOut,
       }}
     >
-      {children}
+      {isAuthInitialized && children}
     </AuthContext.Provider>
   );
 }
