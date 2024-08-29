@@ -33,6 +33,10 @@ const GlobalStyle = createGlobalStyle`
     font-weight: 600;
   }
 
+  input {
+    font-family: ${(p) => p.theme.typography.fontFamily.regular};
+  }
+
   #root {
     min-height: 100vh;
     display: flex;

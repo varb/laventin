@@ -7,20 +7,8 @@ export const PageWrap = styled.div`
   padding: 0 32px;
 `;
 
-export const PageLayout = styled.div`
-  opacity: 0;
-  transition: opacity 600ms 1000ms ease-out;
-  /* transition-delay: 1000ms;
-  transition-property: opacity; */
-
-  ._loaded & {
-    opacity: 1;
-  }
-`;
-
 const Layout = {
   PageWrap,
-  PageLayout,
 };
 
 export default Layout;

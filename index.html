@@ -21,7 +21,8 @@
     <meta property="og:url" content="http://lavent.in/" />
     <style>
       :root {
-        --fadein-anim-duration: 1200ms;
+        --fadein-anim-duration: 1000ms;
+        --transition-timing-function: cubic-bezier(0.4, 0.06, 0.55, 1);
       }
 
       body {
@@ -46,12 +47,16 @@
         background-color: #1c1421;
         transition-property: height, opacity;
         transition-duration: var(--fadein-anim-duration);
-        transition-timing-function: cubic-bezier(0.4, 0.06, 0.55, 1);
+        transition-timing-function: var(--transition-timing-function);
         overflow: hidden;
       }
 
       #preloader svg {
         height: 32px;
+        opacity: 1;
+        transition-property: opacity;
+        transition-duration: 400ms;
+        transition-timing-function: var(--transition-timing-function);
       }
 
       #preloader::after {
@@ -74,6 +79,11 @@
       }
 
       ._loaded #preloader {
+        pointer-events: none;
+        opacity: 0;
+      }
+
+      ._loaded #preloader svg {
         pointer-events: none;
         opacity: 0;
       }

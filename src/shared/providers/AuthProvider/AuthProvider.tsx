@@ -1,6 +1,7 @@
 import { createContext, useContext, useEffect, useState } from "react";
 import { User } from "firebase/auth";
 import { authUser, loginUser, logoutUser } from "shared/api/user";
+import showPageContent from "shared/helpers/showPageContent";
 
 interface AuthProviderProps {
   children: React.ReactElement;
@@ -31,6 +32,7 @@ export function AuthProvider({ children }: AuthProviderProps) {
       const user = await authUser();
       setCurrentUser(user);
       setIsAuthInitialized(true);
+      showPageContent();
     };
 
     initializeAuth();
