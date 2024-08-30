@@ -4,18 +4,16 @@ import Stack from "../Stack";
 import Typography from "../Typography";
 import { IconButton } from "..";
 
-const StyledInputArea = styled.div`
+const StyledAsideSlot = styled.div`
   display: flex;
+  justify-content: center;
   align-items: center;
-  height: 40px;
-  border: 2px solid ${(p) => p.theme.colors.gray[700]};
-  border-radius: ${(p) => p.theme.indents.calc(1)};
-  font-size: 20px;
-  cursor: text;
+  align-self: stretch;
+  color: ${(p) => p.theme.colors.gray[300]};
 
-  &:focus-within {
-    border-color: ${(p) => p.theme.colors.primary.main};
-    ${(p) => p.theme.effectStyles.primary.hover}
+  & ${IconButton} {
+    width: 32px;
+    height: 32px;
   }
 `;
 
@@ -29,24 +27,48 @@ const StyledInput = styled.input`
   border: 0;
   color: ${(p) => p.theme.colors.common.foreground};
   font-size: 16px;
-  /* outline: none; */
+  outline: none;
 
   &:placeholder {
     color: ${(p) => p.theme.colors.gray[700]};
   }
+
+  &:has(+ ${StyledAsideSlot}) {
+    padding-right: 0;
+  }
 `;
 
-const AsideSlot = styled.div`
+const StyledInputArea = styled.label`
   display: flex;
-  justify-content: center;
   align-items: center;
-  width: 36px;
-  height: 36px;
-  color: ${(p) => p.theme.colors.gray[300]};
+  height: 40px;
+  border: 2px solid ${(p) => p.theme.colors.gray[700]};
+  border-radius: ${(p) => p.theme.indents.calc(1)};
+  font-size: 20px;
+  cursor: text;
 
-  & ${IconButton} {
-    width: 32px;
-    height: 32px;
+  &:focus-within {
+    border-color: ${(p) => p.theme.colors.primary.main};
+    ${(p) => p.theme.effectStyles.primary.hover}
+  }
+
+  & ${StyledAsideSlot} {
+    &:first-child {
+      padding-left: ${(p) => p.theme.indents.calc(1.75)};
+      padding-right: ${(p) => p.theme.indents.calc(1)};
+
+      & + ${StyledInput} {
+        padding-left: 0;
+      }
+    }
+
+    &:last-child {
+      padding: 0 ${(p) => p.theme.indents.calc(1)};
+    }
+
+    & + ${StyledInput} {
+      padding-left: 0;
+    }
   }
 `;
 
@@ -68,9 +90,9 @@ export default React.forwardRef<
       {label && <Typography.Label>{label}</Typography.Label>}
 
       <StyledInputArea>
-        {leftSlot && <AsideSlot>{leftSlot}</AsideSlot>}
+        {leftSlot && <StyledAsideSlot>{leftSlot}</StyledAsideSlot>}
         <StyledInput ref={ref} type={type} {...inputProps} />
-        {rightSlot && <AsideSlot>{rightSlot}</AsideSlot>}
+        {rightSlot && <StyledAsideSlot>{rightSlot}</StyledAsideSlot>}
       </StyledInputArea>
     </Stack>
   );
