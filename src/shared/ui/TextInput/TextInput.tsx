@@ -25,6 +25,7 @@ const StyledInput = styled.input`
 
   background-color: transparent;
   border: 0;
+  border-radius: ${(p) => p.theme.indents.calc(1)};
   color: ${(p) => p.theme.colors.common.foreground};
   font-size: 16px;
   outline: none;
@@ -35,6 +36,15 @@ const StyledInput = styled.input`
 
   &:has(+ ${StyledAsideSlot}) {
     padding-right: 0;
+  }
+
+  &:-webkit-autofill,
+  &:-webkit-autofill:hover,
+  &:-webkit-autofill:focus {
+    -webkit-text-fill-color: ${(p) => p.theme.colors.primary.main};
+    -webkit-box-shadow: 0 0 0px 1000px
+      ${(p) => p.theme.colors.common.background} inset;
+    transition: background-color 5000s ease-in-out 0s;
   }
 `;
 

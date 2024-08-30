@@ -1,11 +1,13 @@
 import LoginForm from "features/sign-in";
-import { Typography, Layout } from "shared/ui";
+import { Typography, Layout, Stack } from "shared/ui";
 
 export default function LoginScreen() {
   return (
     <Layout.PageWrap>
-      <Typography.H1>Login</Typography.H1>
-      <LoginForm />
+      <Stack gap={3}>
+        <Typography.H1>Sign In</Typography.H1>
+        <LoginForm />
+      </Stack>
     </Layout.PageWrap>
   );
 }
