@@ -24,11 +24,13 @@ export const StyledButton = styled.button<IStyledButtonProps>`
       "background-color",
       "color",
       "border-color",
+      "filter",
     ])}
   text-decoration: none;
 
   ${(p) =>
     (p.onClick || p.type === "submit" || p.as === "a") &&
+    !p.disabled &&
     css`
       cursor: pointer;
     `}
@@ -41,17 +43,7 @@ export const StyledButton = styled.button<IStyledButtonProps>`
       background-repeat: no-repeat;
       background-size: auto;
 
-      &:hover {
-        ${p.theme.effectStyles.primary.hover}
-      }
-
-      &:active {
-        ${p.theme.effectStyles.primary.active}
-      }
-
-      &:disabled {
-        ${p.theme.effectStyles.primary.disabled}
-      }
+      ${p.theme.effectStyles.primary.fullBehavior}
     `}
 
   ${(p) =>
@@ -63,17 +55,7 @@ export const StyledButton = styled.button<IStyledButtonProps>`
       background-size: auto;
       color: ${(p) => p.theme.colors.common.background};
 
-      &:hover {
-        ${p.theme.effectStyles.secondary.hover}
-      }
-
-      &:active {
-        ${p.theme.effectStyles.secondary.active}
-      }
-
-      &:disabled {
-        ${p.theme.effectStyles.secondary.disabled}
-      }
+      ${p.theme.effectStyles.secondary.fullBehavior}
     `}
 
   ${(p) =>
@@ -82,17 +64,7 @@ export const StyledButton = styled.button<IStyledButtonProps>`
       background-color: ${(p) => p.theme.colors.primary.darker};
       border: 2px solid ${(p) => p.theme.colors.primary.main};
 
-      &:hover {
-        ${p.theme.effectStyles.outlined.hover}
-      }
-
-      &:active {
-        ${p.theme.effectStyles.outlined.active}
-      }
-
-      &:disabled {
-        ${p.theme.effectStyles.outlined.disabled}
-      }
+      ${p.theme.effectStyles.outlined.fullBehavior}
     `}
 
   ${(p) =>
@@ -101,17 +73,7 @@ export const StyledButton = styled.button<IStyledButtonProps>`
       background-color: transparent;
       color: ${(p) => p.theme.colors.gray[200]};
 
-      &:hover {
-        ${p.theme.effectStyles.ghost.hover}
-      }
-
-      &:active {
-        ${p.theme.effectStyles.ghost.active}
-      }
-
-      &:disabled {
-        ${p.theme.effectStyles.ghost.disabled}
-      }
+      ${p.theme.effectStyles.ghost.fullBehavior}
     `}
 
   /* Sizes */;

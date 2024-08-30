@@ -11,7 +11,7 @@ export enum MusicStoresEnum {
 export type MusicStoreInfo = {
   id: string;
   title: string;
-  icon: string;
+  icon: React.ReactNode;
 };
 
 export type MusicStores = Record<MusicStoresEnum, MusicStoreInfo>;

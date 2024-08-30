@@ -2,8 +2,8 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { doc, setDoc } from "firebase/firestore";
 
-import { TrackForm } from "features/track-form";
-import { TrackFormData } from "entities/track";
+import { TrackForm, TrackFormData } from "features/track-form";
+import { TrackItem } from "entities/track";
 import { firebaseDB } from "shared/api/firebase";
 import { RouteNames } from "shared/model/route-names";
 
@@ -13,7 +13,7 @@ export default function AddTrackForm({}: AddTrackFormProps) {
   const [isLoading, setIsLoading] = useState<boolean>(false);
   const navigate = useNavigate();
 
-  const onSubmit = async ({ id, ...data }: TrackFormData) => {
+  const onSubmit = async ({ id, ...data }: TrackItem) => {
     console.log("onSubmit", data);
     setIsLoading(true);
     const trackRef = doc(firebaseDB, "tracks", id);

@@ -39,6 +39,7 @@ export type DefaultThemeColors = {
     secondary: string;
   };
   gradient: {
+    transparent: string;
     primary: string;
     primaryDisabled: string;
     secondary: string;
@@ -64,6 +65,7 @@ type ButtonEffect = {
   hover: StyledCSS;
   active: StyledCSS;
   disabled?: StyledCSS;
+  fullBehavior?: StyledCSS;
 };
 
 export type EffectStyles = {

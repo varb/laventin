@@ -39,6 +39,7 @@ export default {
     "900": "#2E2933",
   },
   gradient: {
+    transparent: "linear-gradient(150deg, #2E293300 0%, #2E293300 100%)",
     primary: "linear-gradient(150deg, #de4bb8ff 0%, #bc0fd8ff 100%)",
     primaryDisabled:
       "linear-gradient(126.91deg, #989096 24.33%, #786F76 75.67%)",

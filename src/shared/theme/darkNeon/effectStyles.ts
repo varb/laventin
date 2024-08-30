@@ -16,9 +16,23 @@ const primaryActive = css`
 `;
 
 const primaryDisabled = css`
-  background-image: none;
+  filter: grayscale(1);
   box-shadow: 0 0 0 transparent, inset 0 0 0 transparent;
   color: ${(p) => p.theme.colors.gray[300]};
+`;
+
+const primaryFullBehavior = css`
+  &:hover {
+    ${(p) => p.theme.effectStyles.primary.hover}
+  }
+
+  &:active {
+    ${(p) => p.theme.effectStyles.primary.active}
+  }
+
+  &:disabled {
+    ${(p) => p.theme.effectStyles.primary.disabled}
+  }
 `;
 
 /**
@@ -42,6 +56,20 @@ const secondaryDisabled = css`
   color: ${(p) => p.theme.colors.gray[700]};
 `;
 
+const secondaryFullBehavior = css`
+  &:hover {
+    ${(p) => p.theme.effectStyles.secondary.hover}
+  }
+
+  &:active {
+    ${(p) => p.theme.effectStyles.secondary.active}
+  }
+
+  &:disabled {
+    ${(p) => p.theme.effectStyles.secondary.disabled}
+  }
+`;
+
 /**
  * Outlined Style
  */
@@ -55,6 +83,20 @@ const outlinedDisabled = css`
   border-color: ${(p) => p.theme.colors.gray[800]};
   box-shadow: 0 0 0 transparent, inset 0 0 0 transparent;
   color: ${(p) => p.theme.colors.gray[600]};
+`;
+
+const outlinedFullBehavior = css`
+  &:hover {
+    ${(p) => p.theme.effectStyles.outlined.hover}
+  }
+
+  &:active {
+    ${(p) => p.theme.effectStyles.outlined.active}
+  }
+
+  &:disabled {
+    ${(p) => p.theme.effectStyles.outlined.disabled}
+  }
 `;
 
 /**
@@ -78,6 +120,20 @@ const ghostDisabled = css`
   color: ${(p) => p.theme.colors.gray[500]};
 `;
 
+const ghostFullBehavior = css`
+  &:hover {
+    ${(p) => p.theme.effectStyles.ghost.hover}
+  }
+
+  &:active {
+    ${(p) => p.theme.effectStyles.ghost.active}
+  }
+
+  &:disabled {
+    ${(p) => p.theme.effectStyles.ghost.disabled}
+  }
+`;
+
 /**
  * Cover Style
  */
@@ -94,21 +150,25 @@ export default {
     hover: primaryHover,
     active: primaryActive,
     disabled: primaryDisabled,
+    fullBehavior: primaryFullBehavior,
   },
   secondary: {
     hover: secondaryHover,
     active: secondaryActive,
     disabled: secondaryDisabled,
+    fullBehavior: secondaryFullBehavior,
   },
   outlined: {
     hover: primaryHover,
     active: outlinedActive,
     disabled: outlinedDisabled,
+    fullBehavior: outlinedFullBehavior,
   },
   ghost: {
     hover: ghostHover,
     active: ghostActive,
     disabled: ghostDisabled,
+    fullBehavior: ghostFullBehavior,
   },
   cover: {
     middle: coverShadowMiddle,

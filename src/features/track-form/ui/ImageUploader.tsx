@@ -12,15 +12,15 @@ import {
 import { firebaseStorage } from "shared/api";
 import { Button, ProgressBar, Stack } from "shared/ui";
 
-const imageSize = 152;
+const IMAGE_SIZE = 152;
 
 const StyledBackgroundIcon = styled.div`
   position: absolute;
   top: ${(p) => p.theme.indents.calc(2.75)};
   left: ${(p) => p.theme.indents.calc(2.75)};
   z-index: -1;
-  width: ${imageSize}px;
-  height: ${imageSize}px;
+  width: ${IMAGE_SIZE}px;
+  height: ${IMAGE_SIZE}px;
   color: ${(p) => p.theme.colors.gray[900]};
   pointer-events: none;
 
@@ -106,7 +106,7 @@ const ImageUploader = ({
         {artwork && image ? (
           <img src={artwork} alt={image.name} />
         ) : (
-          <ImageSquare size={imageSize} />
+          <ImageSquare size={IMAGE_SIZE} />
         )}
       </StyledBackgroundIcon>
 

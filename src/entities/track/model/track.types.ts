@@ -2,16 +2,23 @@ import { MusicStoresEnum } from "entities/streaming-link";
 
 export interface TrackItem {
   id: string;
-  slug?: string;
+  slug: string;
   title: string;
   artist: string;
   active: boolean;
-  links: Partial<Record<MusicStoresEnum, string>>;
   coverUrl: string;
+  createdAt: Date;
+  updatedAt: Date;
+  releaseDate?: string;
+  // links?: Partial<Record<MusicStoresEnum, string>>;
+  // links?: Array<{ [key in MusicStoresEnum]: string }>;
+  links?: Array<{ resourceId: string; url: string }>;
   description?: string;
-  createdAt?: Date;
-  updatedAt?: Date;
-  releaseDate?: Date;
 }
 
-export type TrackFormData = TrackItem;
+const links = [
+  {
+    resourceId: "apple",
+    url: "https://music.apple.com/ru/album/lovely/1500734346?i=1500734349",
+  },
+];

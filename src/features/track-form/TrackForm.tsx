@@ -1,104 +1,147 @@
-import { useState } from "react";
-import { FloppyDisk, Plus } from "@phosphor-icons/react";
+import { FloppyDisk } from "@phosphor-icons/react";
+import {
+  Control,
+  Controller,
+  FormProvider,
+  SubmitHandler,
+  useForm,
+  useFormContext,
+  useWatch,
+} from "react-hook-form";
 
-import { TrackFormData } from "entities/track";
-import { Button, FileButton } from "shared/ui";
-import UploadImageForm from "./UploadImageForm";
+import { TrackItem } from "entities/track";
+import { Button } from "shared/ui";
+import TextInput from "shared/ui/TextInput";
+
+import UploadImageForm from "./ui/UploadImageForm";
+import StreamingLinksForm from "./ui/StreamingLinksForm";
+import { TrackFormData } from "./model/trackForm.types";
 import { StyledTrackForm } from "./TrackForm.styles";
 
 interface TrackFormProps {
-  onSubmit?: (formData: TrackFormData) => void;
+  onSubmit?: (formData: TrackItem) => void;
 }
 
 const defaultFormData: TrackFormData = {
-  id: "",
   title: "",
   artist: "Laventin",
   active: true,
-  links: {},
+  // links: {
+  //   soundcloud:
+  //     "https://soundcloud.com/laventin/lovely?si=498cb57e15aa4cfd92563d1d2a223345&utm_source=clipboard&utm_medium=text&utm_campaign=social_sharing",
+  //   apple: "https://music.apple.com/ru/album/lovely/1500734346?i=1500734349",
+  // },
+  links: [
+    {
+      resourceId: "apple",
+      url: "https://music.apple.com/ru/album/lovely/1500734346?i=1500734349",
+    },
+  ],
   slug: "",
   coverUrl: "",
   description: "",
-  createdAt: new Date(),
-  updatedAt: new Date(),
-  releaseDate: new Date(),
+  releaseDate: "",
+  // createdAt: new Date(),
+  // updatedAt: new Date(),
+};
+
+const TrackSlug = ({ control }: { control: Control<TrackFormData> }) => {
+  const title = useWatch({ control, name: "slug" });
+
+  return <div>track url: {title}</div>;
+};
+
+const prepareTrackId = (title: string) => {
+  return title
+    .trim()
+    .toLowerCase()
+    .replace(/\s+/g, "-")
+    .replace(/[^a-zA-Z0-9-]/g, "");
+};
+
+const TrackTitleInput = () => {
+  const { control, setValue } = useFormContext<TrackFormData>();
+
+  return (
+    <Controller
+      name="title"
+      control={control}
+      rules={{ required: true }}
+      render={({ field }) => (
+        <TextInput
+          label="Title"
+          placeholder="Eg. Forever"
+          {...field}
+          onChange={(e) => {
+            const { value } = e.target;
+            const preparedTrackId = prepareTrackId(value);
+            setValue("slug", preparedTrackId);
+            field.onChange(value);
+          }}
+        />
+      )}
+    />
+  );
 };
 
 export default function TrackForm({ onSubmit }: TrackFormProps) {
-  const [formData, setFormData] = useState<TrackFormData>(defaultFormData);
+  const formMethods = useForm<TrackFormData>({
+    defaultValues: defaultFormData,
+  });
+  const { control, handleSubmit, formState } = formMethods;
 
-  // const storage = getStorage();
-  // console.log(storage);
-
-  const onFormSubmit = (e: React.BaseSyntheticEvent) => {
-    e.preventDefault();
-    if (onSubmit) {
-      onSubmit(formData);
-    }
+  const onFormSubmit: SubmitHandler<TrackFormData> = (data) => {
+    console.log("onFormSubmit", data);
   };
 
-  const onTitleChange = (e: React.BaseSyntheticEvent) => {
-    const title = e.target.value;
-    const slug = title
-      .trim()
-      .toLowerCase()
-      .replace(/\s+/g, "-")
-      .replace(/[^a-zA-Z0-9-]/g, "");
-
-    setFormData({ ...formData, title, slug, id: slug });
-  };
+  console.log("render form");
 
   return (
-    <StyledTrackForm onSubmit={onFormSubmit}>
-      <div>
-        <input
-          type="text"
-          placeholder="title"
-          value={formData.title}
-          onChange={onTitleChange}
-        />
-      </div>
+    <FormProvider {...formMethods}>
+      <StyledTrackForm onSubmit={handleSubmit(onFormSubmit)}>
+        <TrackTitleInput />
 
-      <div>
+        {/* <div>
         <input type="text" placeholder="slug" value={formData.slug} readOnly />
-      </div>
+      </div> */}
 
-      <div>track url: {formData.slug}</div>
+        <TrackSlug control={control} />
 
-      <div>
-        <input
-          type="text"
-          placeholder="artist"
-          value={formData.artist}
-          onChange={(e) => setFormData({ ...formData, artist: e.target.value })}
+        <Controller
+          name="artist"
+          control={control}
+          rules={{ required: true }}
+          render={({ field }) => (
+            <TextInput label="Artist" placeholder="Eg. Laventin" {...field} />
+          )}
         />
-      </div>
 
-      <UploadImageForm label="Artwork" />
+        <UploadImageForm label="Artwork" />
 
-      <div>
-        Streaming links
-        <Button variant="outlined" iconLeft={<Plus />} width="full">
-          Add new link
+        <StreamingLinksForm />
+
+        <Controller
+          name="active"
+          control={control}
+          render={({ field: { value, ...field } }) => (
+            <div>
+              <label>
+                <input type="checkbox" checked={value} {...field} />
+                Show track in public list
+              </label>
+            </div>
+          )}
+        />
+
+        <Button
+          iconLeft={<FloppyDisk />}
+          type="submit"
+          width="full"
+          disabled={!formState.isValid}
+        >
+          Save new track
         </Button>
-      </div>
-
-      <div>
-        <label>
-          <input
-            type="checkbox"
-            checked={formData.active}
-            onChange={(e) =>
-              setFormData({ ...formData, active: e.target.checked })
-            }
-          />
-          Show track in public list
-        </label>
-      </div>
-
-      <Button iconLeft={<FloppyDisk />} type="submit" width="full">
-        Save new track
-      </Button>
-    </StyledTrackForm>
+      </StyledTrackForm>
+    </FormProvider>
   );
 }
