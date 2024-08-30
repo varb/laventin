@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
 import styled from "styled-components";
 import { ImageSquare } from "@phosphor-icons/react";
 import {
@@ -12,12 +12,25 @@ import {
 import { firebaseStorage } from "shared/api";
 import { Button, ProgressBar, Stack } from "shared/ui";
 
-const StyledBackgroundImage = styled.div`
+const imageSize = 152;
+
+const StyledBackgroundIcon = styled.div`
   position: absolute;
-  top: ${(p) => p.theme.indents.calc(3)};
-  left: ${(p) => p.theme.indents.calc(3)};
+  top: ${(p) => p.theme.indents.calc(2.75)};
+  left: ${(p) => p.theme.indents.calc(2.75)};
   z-index: -1;
+  width: ${imageSize}px;
+  height: ${imageSize}px;
   color: ${(p) => p.theme.colors.gray[900]};
+  pointer-events: none;
+
+  img {
+    display: block;
+    max-width: 100%;
+    border-radius: 4px;
+    ${(p) => p.theme.effectStyles.cover.middle}
+    filter: brightness(0.35);
+  }
 `;
 
 const StyledFileName = styled.div`
@@ -44,6 +57,7 @@ const ImageUploader = ({
 }: ImageUploaderProps) => {
   const [progressValue, setProgressValue] = useState<number>(0);
   const uploadTaskRef = useRef<UploadTask | null>(null);
+  const artwork = useMemo(() => image && URL.createObjectURL(image), [image]);
 
   const handleUpload = () => {
     if (!image) return;
@@ -58,7 +72,6 @@ const ImageUploader = ({
         const progress = Math.round(
           (snapshot.bytesTransferred / snapshot.totalBytes) * 100
         );
-        console.log("Upload is " + progress + "% done");
 
         setProgressValue(progress);
       },
@@ -89,9 +102,13 @@ const ImageUploader = ({
 
   return (
     <>
-      <StyledBackgroundImage>
-        <ImageSquare size={152} />
-      </StyledBackgroundImage>
+      <StyledBackgroundIcon>
+        {artwork && image ? (
+          <img src={artwork} alt={image.name} />
+        ) : (
+          <ImageSquare size={imageSize} />
+        )}
+      </StyledBackgroundIcon>
 
       <Stack gap={2} width="100%">
         <Stack direction="row" alignItems="center">

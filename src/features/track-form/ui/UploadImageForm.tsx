@@ -1,11 +1,13 @@
 import { useState } from "react";
 import styled from "styled-components";
 import { StorageError } from "firebase/storage";
+import { useFormContext, useWatch } from "react-hook-form";
 
 import { Stack, Typography } from "shared/ui";
 import ImageUploader from "./ImageUploader";
 import ImageViewer from "./ImageViewer";
 import ImagePicker from "./ImagePicker";
+import { TrackFormData } from "../model/trackForm.types";
 
 const StyledUploadImage = styled(Stack)`
   position: relative;
@@ -20,21 +22,23 @@ interface UploadImageFormProps {
 }
 
 const UploadImageForm = ({ label }: UploadImageFormProps) => {
+  const { control, setValue } = useFormContext<TrackFormData>();
+  const imageUrl = useWatch({ control, name: "coverUrl" });
+
   const [uploadState, setUploadState] = useState<"idle" | "uploading" | "done">(
-    "idle"
+    imageUrl ? "done" : "idle"
   );
-  const [image, setImage] = useState<File | null>(null);
-  const [imageUrl, setImageUrl] = useState<string | null>(null);
+  const [artowrk, setArtowrk] = useState<File | null>(null);
 
   const handleImageChange = (imageFile: File | null) => {
     if (imageFile) {
-      setImage(imageFile);
+      setArtowrk(imageFile);
       setUploadState("uploading");
     }
   };
 
   const onUploadDone = (imageUrl: string) => {
-    setImageUrl(imageUrl);
+    setValue("coverUrl", imageUrl);
     setUploadState("done");
   };
 
@@ -44,8 +48,8 @@ const UploadImageForm = ({ label }: UploadImageFormProps) => {
   };
 
   const onRemoveImage = () => {
-    setImage(null);
-    setImageUrl(null);
+    setArtowrk(null);
+    setValue("coverUrl", "");
     setUploadState("idle");
   };
 
@@ -60,7 +64,7 @@ const UploadImageForm = ({ label }: UploadImageFormProps) => {
       {uploadState === "uploading" && (
         <StyledUploadImage justifyContent="center" alignItems="center" p={2.75}>
           <ImageUploader
-            image={image}
+            image={artowrk}
             onUploadDone={onUploadDone}
             onUploadError={onUploadError}
           />

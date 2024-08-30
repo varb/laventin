@@ -5,6 +5,10 @@ import { FileButton, IconButton, Stack } from "shared/ui";
 
 const StyledImageWrapper = styled.div`
   position: relative;
+
+  & ${IconButton} {
+    background-color: ${(p) => p.theme.colors.gray[800]}aa;
+  }
 `;
 
 const StyledRemoveButton = styled(IconButton)`
