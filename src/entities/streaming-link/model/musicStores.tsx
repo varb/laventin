@@ -75,7 +75,7 @@ export const getResourceIdFromLink = (url: string): string => {
   return findMusicStoreKey(domains, musicStores);
 };
 
-export const getStreamingLinkIcon = (id: string) => {
+export const getStreamingLinkIcon = (id?: string | null) => {
   const resourceId = musicStores[id as MusicStoresEnum];
 
   if (resourceId) {
