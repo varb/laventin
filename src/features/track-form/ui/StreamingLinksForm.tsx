@@ -2,6 +2,7 @@ import {
   Controller,
   FieldArrayWithId,
   useFieldArray,
+  UseFieldArrayRemove,
   useFormContext,
   useWatch,
 } from "react-hook-form";
@@ -19,15 +20,16 @@ import {
 type StreamingLinkInputProps = {
   index: number;
   item: FieldArrayWithId<TrackFormData, "links", "id">;
+  remove: UseFieldArrayRemove;
 };
 
-const StreamingLinkInput = ({ index, item }: StreamingLinkInputProps) => {
+const StreamingLinkInput = ({
+  index,
+  item,
+  remove,
+}: StreamingLinkInputProps) => {
   const { control, setValue } = useFormContext<TrackFormData>();
   const { links } = useWatch({ control });
-  const { remove } = useFieldArray({
-    control,
-    name: "links",
-  });
 
   if (!links) return null;
 
@@ -72,7 +74,7 @@ const StreamingLinkInput = ({ index, item }: StreamingLinkInputProps) => {
 
 export default function StreamingLinksForm() {
   const { control } = useFormContext<TrackFormData>();
-  const { fields, append } = useFieldArray({
+  const { fields, append, remove } = useFieldArray({
     control,
     name: "links",
   });
@@ -82,7 +84,12 @@ export default function StreamingLinksForm() {
       <Typography.Label>Streaming links</Typography.Label>
       <Stack gap={1.5}>
         {fields?.map((item, index) => (
-          <StreamingLinkInput key={item.id} index={index} item={item} />
+          <StreamingLinkInput
+            key={item.id}
+            index={index}
+            item={item}
+            remove={remove}
+          />
         ))}
 
         <Button
