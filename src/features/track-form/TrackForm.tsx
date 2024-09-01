@@ -1,4 +1,9 @@
-import { FloppyDisk } from "@phosphor-icons/react";
+import {
+  CalendarStar,
+  FloppyDisk,
+  LinkSimple,
+  LinkSimpleBreak,
+} from "@phosphor-icons/react";
 import {
   Control,
   Controller,
@@ -12,11 +17,11 @@ import {
 import { TrackItem } from "entities/track";
 import { Button } from "shared/ui";
 import TextInput from "shared/ui/TextInput";
+import Stack from "shared/ui/Stack";
 
 import UploadImageForm from "./ui/UploadImageForm";
 import StreamingLinksForm from "./ui/StreamingLinksForm";
 import { TrackFormData } from "./model/trackForm.types";
-import { StyledTrackForm } from "./TrackForm.styles";
 
 interface TrackFormProps {
   onSubmit?: (formData: TrackItem) => void;
@@ -26,29 +31,13 @@ const defaultFormData: TrackFormData = {
   title: "",
   artist: "Laventin",
   active: true,
-  // links: {
-  //   soundcloud:
-  //     "https://soundcloud.com/laventin/lovely?si=498cb57e15aa4cfd92563d1d2a223345&utm_source=clipboard&utm_medium=text&utm_campaign=social_sharing",
-  //   apple: "https://music.apple.com/ru/album/lovely/1500734346?i=1500734349",
-  // },
-  links: [
-    {
-      resourceId: "apple",
-      url: "https://music.apple.com/ru/album/lovely/1500734346?i=1500734349",
-    },
-  ],
+  links: [{ resourceId: "", url: "" }],
   slug: "",
   coverUrl: "",
   description: "",
   releaseDate: "",
   // createdAt: new Date(),
   // updatedAt: new Date(),
-};
-
-const TrackSlug = ({ control }: { control: Control<TrackFormData> }) => {
-  const title = useWatch({ control, name: "slug" });
-
-  return <div>track url: {title}</div>;
 };
 
 const prepareTrackId = (title: string) => {
@@ -60,7 +49,7 @@ const prepareTrackId = (title: string) => {
 };
 
 const TrackTitleInput = () => {
-  const { control, setValue } = useFormContext<TrackFormData>();
+  const { control, setValue, formState } = useFormContext<TrackFormData>();
 
   return (
     <Controller
@@ -71,11 +60,14 @@ const TrackTitleInput = () => {
         <TextInput
           label="Title"
           placeholder="Eg. Forever"
+          autoFocus
           {...field}
           onChange={(e) => {
             const { value } = e.target;
             const preparedTrackId = prepareTrackId(value);
-            setValue("slug", preparedTrackId);
+            if (!formState.dirtyFields.slug) {
+              setValue("slug", preparedTrackId);
+            }
             field.onChange(value);
           }}
         />
@@ -94,18 +86,33 @@ export default function TrackForm({ onSubmit }: TrackFormProps) {
     console.log("onFormSubmit", data);
   };
 
-  console.log("render form");
+  console.log("render form", formState);
 
   return (
     <FormProvider {...formMethods}>
-      <StyledTrackForm onSubmit={handleSubmit(onFormSubmit)}>
+      <Stack forwardedAs="form" onSubmit={handleSubmit(onFormSubmit)} gap={2.5}>
         <TrackTitleInput />
 
-        {/* <div>
-        <input type="text" placeholder="slug" value={formData.slug} readOnly />
-      </div> */}
-
-        <TrackSlug control={control} />
+        <Controller
+          name="slug"
+          control={control}
+          rules={{ required: true }}
+          render={({ field }) => (
+            <TextInput
+              label="Permalink"
+              leadingText="lavent.in/tracks/"
+              placeholder="Eg. forever"
+              rightSlot={
+                !formState.dirtyFields.slug ? (
+                  <LinkSimple />
+                ) : (
+                  <LinkSimpleBreak />
+                )
+              }
+              {...field}
+            />
+          )}
+        />
 
         <Controller
           name="artist"
@@ -121,13 +128,26 @@ export default function TrackForm({ onSubmit }: TrackFormProps) {
         <StreamingLinksForm />
 
         <Controller
+          name="releaseDate"
+          control={control}
+          render={({ field }) => (
+            <TextInput
+              label="Release Date"
+              placeholder="Eg. 12.10.2024"
+              leftSlot={<CalendarStar />}
+              {...field}
+            />
+          )}
+        />
+
+        <Controller
           name="active"
           control={control}
           render={({ field: { value, ...field } }) => (
             <div>
               <label>
                 <input type="checkbox" checked={value} {...field} />
-                Show track in public list
+                Show track on home page
               </label>
             </div>
           )}
@@ -141,7 +161,7 @@ export default function TrackForm({ onSubmit }: TrackFormProps) {
         >
           Save new track
         </Button>
-      </StyledTrackForm>
+      </Stack>
     </FormProvider>
   );
 }
