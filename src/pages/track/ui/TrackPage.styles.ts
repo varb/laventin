@@ -1,5 +1,6 @@
 import styled, { css } from "styled-components";
-import { Typography, Layout } from "shared/ui";
+import Layout from "shared/ui/Layout";
+import Typography from "shared/ui/Typography";
 
 export const Root = styled(Layout.PageWrap)`
   position: relative;

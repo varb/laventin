@@ -6,7 +6,8 @@ import { PencilSimple } from "@phosphor-icons/react";
 import { TrackItem } from "entities/track";
 import { StreamingLinks } from "entities/streaming-link";
 import { useAuth } from "shared/providers";
-import { Button, HeaderAction } from "shared/ui";
+import Button from "shared/ui/Button";
+import HeaderAction from "shared/ui/HeaderAction";
 
 import {
   Root,

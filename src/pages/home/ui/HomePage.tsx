@@ -6,7 +6,8 @@ import { TrackList, trackList } from "entities/track";
 import { StreamingLinks } from "entities/streaming-link";
 import { SocialLinks } from "entities/social-link";
 import { useAuth } from "shared/providers";
-import { Typography, Button, Layout } from "shared/ui";
+import Button from "shared/ui/Button";
+import Layout from "shared/ui/Layout";
 import { RouteNames } from "shared/model/route-names";
 
 import {

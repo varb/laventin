@@ -2,7 +2,7 @@ import { useState } from "react";
 import { Controller, useFormContext } from "react-hook-form";
 import { Eye, EyeSlash, Password } from "@phosphor-icons/react";
 
-import { IconButton } from "shared/ui";
+import IconButton from "shared/ui/IconButton";
 import TextInput from "shared/ui/TextInput";
 import { LoginFormData } from "../model";
 

@@ -1,6 +1,6 @@
 import { Root } from "./SocialLinks.styles";
 import { socialLinks } from "../model/socialLinksList";
-import { IconButton } from "shared/ui";
+import IconButton from "shared/ui/IconButton";
 
 export default function SocialLinks() {
   if (!socialLinks) return null;

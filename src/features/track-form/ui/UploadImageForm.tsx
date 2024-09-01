@@ -3,7 +3,9 @@ import styled from "styled-components";
 import { StorageError } from "firebase/storage";
 import { useFormContext, useWatch } from "react-hook-form";
 
-import { Stack, Typography } from "shared/ui";
+import Stack from "shared/ui/Stack";
+import Typography from "shared/ui/Typography";
+
 import ImageUploader from "./ImageUploader";
 import ImageViewer from "./ImageViewer";
 import ImagePicker from "./ImagePicker";

@@ -6,7 +6,7 @@ import {
   Logo,
   HeaderRigthAction,
 } from "./Header.styles";
-import { Button } from "shared/ui";
+import Button from "shared/ui/Button";
 import { useHeaderContext } from "shared/providers/HeaderProvider";
 
 export default function Header() {

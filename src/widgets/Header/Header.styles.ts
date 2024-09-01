@@ -1,5 +1,6 @@
 import styled, { css } from "styled-components";
-import { Button, Layout } from "shared/ui";
+import Button from "shared/ui/Button";
+import Layout from "shared/ui/Layout";
 
 const horizontalIndent = 4;
 const verticalIndent = 20;

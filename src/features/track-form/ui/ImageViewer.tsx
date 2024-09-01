@@ -1,7 +1,9 @@
 import styled from "styled-components";
 import { Check, Swap, X } from "@phosphor-icons/react";
 
-import { FileButton, IconButton, Stack } from "shared/ui";
+import IconButton from "shared/ui/IconButton";
+import FileButton from "shared/ui/FileButton";
+import Stack from "shared/ui/Stack";
 
 const StyledImageWrapper = styled.div`
   position: relative;

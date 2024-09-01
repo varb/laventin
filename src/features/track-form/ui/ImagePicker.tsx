@@ -2,7 +2,7 @@ import { useState } from "react";
 import styled, { css } from "styled-components";
 import { CloudArrowUp } from "@phosphor-icons/react";
 
-import { FileButton } from "shared/ui";
+import FileButton from "shared/ui/FileButton";
 
 const StyledIcon = styled.span`
   display: inline-flex;

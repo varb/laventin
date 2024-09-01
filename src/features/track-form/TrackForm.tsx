@@ -11,11 +11,10 @@ import {
   SubmitHandler,
   useForm,
   useFormContext,
-  useWatch,
 } from "react-hook-form";
 
 import { TrackItem } from "entities/track";
-import { Button } from "shared/ui";
+import Button from "shared/ui/Button";
 import TextInput from "shared/ui/TextInput";
 import Stack from "shared/ui/Stack";
 

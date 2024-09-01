@@ -10,7 +10,9 @@ import {
 } from "firebase/storage";
 
 import { firebaseStorage } from "shared/api";
-import { Button, ProgressBar, Stack } from "shared/ui";
+import Button from "shared/ui/Button";
+import ProgressBar from "shared/ui/ProgressBar";
+import Stack from "shared/ui/Stack";
 
 const IMAGE_SIZE = 152;
 

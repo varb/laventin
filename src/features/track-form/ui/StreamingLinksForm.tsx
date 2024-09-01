@@ -8,14 +8,18 @@ import {
 } from "react-hook-form";
 import { Plus, Trash } from "@phosphor-icons/react";
 
-import { Button, IconButton, Stack, Typography } from "shared/ui";
-import { TrackFormData } from "../model/trackForm.types";
-import TextInput from "shared/ui/TextInput";
 import {
   getResourceIdFromLink,
   getStreamingLinkIcon,
   MusicStoresEnum,
 } from "entities/streaming-link";
+
+import Button from "shared/ui/Button";
+import IconButton from "shared/ui/IconButton";
+import Stack from "shared/ui/Stack";
+import Typography from "shared/ui/Typography";
+import TextInput from "shared/ui/TextInput";
+import { TrackFormData } from "../model/trackForm.types";
 
 type StreamingLinkInputProps = {
   index: number;

@@ -2,8 +2,11 @@ import Helmet from "react-helmet";
 import { Link } from "react-router-dom";
 import { MusicNotesPlus } from "@phosphor-icons/react";
 
-import { Button, HeaderAction, Layout, Typography } from "shared/ui";
 import { TrackList } from "entities/track";
+import Button from "shared/ui/Button";
+import HeaderAction from "shared/ui/HeaderAction";
+import Layout from "shared/ui/Layout";
+import Typography from "shared/ui/Typography";
 import { useAuth } from "shared/providers";
 import { RouteNames } from "shared/model/route-names";
 

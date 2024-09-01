@@ -3,7 +3,9 @@ import styled from "styled-components";
 import { SignIn, SignOut } from "@phosphor-icons/react";
 
 import { useAuth } from "shared/providers";
-import { Button, Stack, Typography } from "shared/ui";
+import Button from "shared/ui/Button";
+import Stack from "shared/ui/Stack";
+import Typography from "shared/ui/Typography";
 import { RouteNames } from "shared/model/route-names";
 
 export const StyledCopyright = styled(Typography.Label)`

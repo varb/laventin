@@ -1,4 +1,4 @@
-import { Typography } from "shared/ui";
+import Typography from "shared/ui/Typography";
 import { EditTrackForm } from "widgets/EditTrackForm";
 
 export default function EditTrackPage() {
