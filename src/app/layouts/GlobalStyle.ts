@@ -33,7 +33,7 @@ const GlobalStyle = createGlobalStyle`
     font-weight: 600;
   }
 
-  input {
+  input, textarea, select {
     font-family: ${(p) => p.theme.typography.fontFamily.regular};
   }
 
