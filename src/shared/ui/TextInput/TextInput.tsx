@@ -1,4 +1,4 @@
-import React, { InputHTMLAttributes, useMemo } from "react";
+import { InputHTMLAttributes, useMemo, forwardRef } from "react";
 import Typography from "../Typography";
 import {
   StyledAsideSlot,
@@ -22,7 +22,7 @@ type TextInputProps = {
   leadingText?: string;
 };
 
-export default React.forwardRef<
+export default forwardRef<
   HTMLInputElement,
   TextInputProps & InputHTMLAttributes<HTMLInputElement>
 >(function TextInput(

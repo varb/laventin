@@ -52,14 +52,14 @@ const prepareTrackId = (title: string) => {
 };
 
 const TrackTitleInput = () => {
-  const { control, setValue, formState } = useFormContext<TrackFormData>();
+  const { control, setValue } = useFormContext<TrackFormData>();
 
   return (
     <Controller
       name="title"
       control={control}
       rules={{ required: true }}
-      render={({ field }) => (
+      render={({ field, formState: { dirtyFields } }) => (
         <TextInput
           label="Title"
           placeholder="Eg. Forever"
@@ -68,7 +68,7 @@ const TrackTitleInput = () => {
           onChange={(e) => {
             const { value } = e.target;
             const preparedTrackId = prepareTrackId(value);
-            if (!formState.dirtyFields.slug) {
+            if (!dirtyFields.slug) {
               setValue("slug", preparedTrackId);
             }
             field.onChange(value);
@@ -100,19 +100,20 @@ export default function TrackForm({ onSubmit }: TrackFormProps) {
           name="slug"
           control={control}
           rules={{ required: true }}
-          render={({ field }) => (
+          render={({ field, fieldState }) => (
             <TextInput
               label="Permalink"
               leadingText="lavent.in/tracks/"
               placeholder="Eg. forever"
+              helperText="Use letters, numbers, and hyphens only."
               rightSlot={
-                !formState.dirtyFields.slug ? (
-                  <LinkSimple />
-                ) : (
-                  <LinkSimpleBreak />
-                )
+                !fieldState.isDirty ? <LinkSimple /> : <LinkSimpleBreak />
               }
               {...field}
+              onChange={(e) => {
+                const { value } = e.target;
+                field.onChange(prepareTrackId(value));
+              }}
             />
           )}
         />

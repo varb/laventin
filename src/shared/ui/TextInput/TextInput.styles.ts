@@ -94,7 +94,8 @@ export const StyledInputArea = styled.label`
 `;
 
 export const StyledHelperText = styled.span`
-  color: ${(p) => p.theme.colors.gray[300]};
+  color: ${(p) => p.theme.colors.gray[400]};
+  font-size: 12px;
 `;
 
 export const StyledTextInputRoot = styled(Stack)<{ $disabled?: boolean }>`

@@ -1,5 +1,6 @@
-import React, { TextareaHTMLAttributes } from "react";
+import { forwardRef, TextareaHTMLAttributes } from "react";
 import styled, { css } from "styled-components";
+import { Notches } from "@phosphor-icons/react";
 
 import Typography from "../Typography";
 import Stack from "../Stack";
@@ -35,11 +36,17 @@ const StyledInput = styled.textarea`
       ${(p) => p.theme.colors.common.background} inset;
     transition: background-color 5000s ease-in-out 0s;
   }
+
+  &::-webkit-resizer {
+    width: 20px;
+    height: 20px;
+  }
 `;
 
 const StyledInputArea = styled.label`
   display: flex;
   align-items: center;
+  position: relative;
   /* height: 40px; */
   min-height: ${MIN_TEXTAREA_HEIGHT}px;
   border: 2px solid ${(p) => p.theme.colors.gray[700]};
@@ -63,6 +70,7 @@ const StyledInputArea = styled.label`
 
 const StyledHelperText = styled.span`
   color: ${(p) => p.theme.colors.gray[300]};
+  font-size: 12px;
 `;
 
 const StyledTextareaRoot = styled(Stack)<{ $disabled?: boolean }>`
@@ -88,12 +96,20 @@ const StyledTextareaRoot = styled(Stack)<{ $disabled?: boolean }>`
     `}
 `;
 
+const StyledResizeIcon = styled(Notches)`
+  position: absolute;
+  bottom: ${(p) => p.theme.indents.calc(0.5)};
+  right: ${(p) => p.theme.indents.calc(0.5)};
+  pointer-events: none;
+  color: ${(p) => p.theme.colors.gray[500]};
+`;
+
 type TextAreaProps = {
   label?: string;
   helperText?: string;
 };
 
-export default React.forwardRef<
+export default forwardRef<
   HTMLTextAreaElement,
   TextAreaProps & TextareaHTMLAttributes<HTMLTextAreaElement>
 >(function TextArea(
@@ -106,6 +122,7 @@ export default React.forwardRef<
 
       <StyledInputArea>
         <StyledInput ref={ref} disabled={disabled} {...textareaProps} />
+        {!disabled && <StyledResizeIcon size={12} />}
       </StyledInputArea>
 
       {helperText && <StyledHelperText>{helperText}</StyledHelperText>}
