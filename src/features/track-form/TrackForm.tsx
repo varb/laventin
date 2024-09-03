@@ -15,12 +15,15 @@ import {
 
 import { TrackItem } from "entities/track";
 import Button from "shared/ui/Button";
+import Checkbox from "shared/ui/Checkbox";
+import Radio from "shared/ui/Radio";
 import TextInput from "shared/ui/TextInput";
 import Stack from "shared/ui/Stack";
 
 import UploadImageForm from "./ui/UploadImageForm";
 import StreamingLinksForm from "./ui/StreamingLinksForm";
 import { TrackFormData } from "./model/trackForm.types";
+import TextArea from "shared/ui/TextArea";
 
 interface TrackFormProps {
   onSubmit?: (formData: TrackItem) => void;
@@ -35,6 +38,7 @@ const defaultFormData: TrackFormData = {
   coverUrl: "",
   description: "",
   releaseDate: "",
+  releaseType: "single",
   // createdAt: new Date(),
   // updatedAt: new Date(),
 };
@@ -143,12 +147,50 @@ export default function TrackForm({ onSubmit }: TrackFormProps) {
           name="active"
           control={control}
           render={({ field: { value, ...field } }) => (
-            <div>
-              <label>
-                <input type="checkbox" checked={value} {...field} />
-                Show track on home page
-              </label>
-            </div>
+            <Checkbox
+              label="Show track on home page"
+              checked={value}
+              {...field}
+            />
+          )}
+        />
+
+        <Controller
+          name="releaseType"
+          control={control}
+          render={({ field: { value, ...field } }) => (
+            <Stack gap={3} direction="row">
+              <Radio
+                label="Single"
+                value="single"
+                checked={value === "single"}
+                {...field}
+              />
+              <Radio
+                label="EP"
+                value="extendedPlay"
+                checked={value === "extendedPlay"}
+                {...field}
+              />
+              <Radio
+                label="Album"
+                value="album"
+                checked={value === "album"}
+                {...field}
+              />
+            </Stack>
+          )}
+        />
+
+        <Controller
+          name="description"
+          control={control}
+          render={({ field }) => (
+            <TextArea
+              label="Description"
+              placeholder="Eg. I am a description"
+              {...field}
+            />
           )}
         />
 

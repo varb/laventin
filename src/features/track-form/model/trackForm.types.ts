@@ -10,4 +10,5 @@ export type TrackFormData = Pick<
   | "description"
   | "links"
   | "releaseDate"
+  | "releaseType"
 >;
