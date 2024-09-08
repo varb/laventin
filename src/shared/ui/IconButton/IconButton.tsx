@@ -144,6 +144,7 @@ function IconButton({
   variant = "primary",
   size = "middle",
   type = "button",
+  tabIndex = 0,
   className,
   ...buttonProps
 }: IIconButtonProps & ButtonHTMLAttributes<HTMLButtonElement>) {
@@ -153,6 +154,7 @@ function IconButton({
       $variant={variant}
       className={className}
       type={type}
+      tabIndex={tabIndex}
       {...buttonProps}
     >
       {icon}

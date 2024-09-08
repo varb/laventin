@@ -11,6 +11,7 @@ function Button({
   children,
   type = "button",
   width,
+  tabIndex = 0,
   ...buttonProps
 }: IButtonProps & ButtonHTMLAttributes<HTMLButtonElement>) {
   return (
@@ -19,6 +20,7 @@ function Button({
       $variant={variant}
       $size={size}
       $width={width}
+      tabIndex={tabIndex}
       {...buttonProps}
     >
       {iconLeft && <StyledIcon>{iconLeft}</StyledIcon>}
