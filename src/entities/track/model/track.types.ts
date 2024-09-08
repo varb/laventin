@@ -1,4 +1,4 @@
-import { MusicStoresEnum } from "entities/streaming-link";
+import { Timestamp } from "firebase/firestore";
 
 export interface TrackItem {
   id: string;
@@ -7,8 +7,8 @@ export interface TrackItem {
   artist: string;
   active: boolean;
   coverUrl: string;
-  createdAt: Date;
-  updatedAt: Date;
+  createdAt: Timestamp;
+  updatedAt: Timestamp;
   releaseDate?: string;
   releaseType: "single" | "album" | "extendedPlay";
   links?: Array<{ resourceId: string; url: string }>;

@@ -9,6 +9,8 @@ import {
 import { firebaseDB } from "shared/api/firebase";
 import { TrackItem } from "../model/track.types";
 
+type TrackItemKey = keyof TrackItem;
+
 /**
  * Retrieves a list of tracks from the Firestore database.
  *
@@ -28,8 +30,8 @@ export const getTrackList = async (props?: {
   try {
     const q = query(
       collection(firebaseDB, "tracks"),
-      orderBy("title", "desc"),
-      ...(isPublic ? [where("active", "==", true)] : []),
+      orderBy("title" as TrackItemKey, "desc"),
+      ...(isPublic ? [where("active" as TrackItemKey, "==", true)] : []),
       ...(limit ? [fbLimit(limit)] : [])
     );
     const querySnapshot = await getDocs(q);

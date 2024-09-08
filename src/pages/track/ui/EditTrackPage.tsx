@@ -1,11 +1,36 @@
-import Typography from "shared/ui/Typography";
+import { Helmet } from "react-helmet";
+import { useNavigate, useParams } from "react-router-dom";
+
 import { EditTrackForm } from "widgets/EditTrackForm";
+import Layout from "shared/ui/Layout";
+import Stack from "shared/ui/Stack";
+import Typography from "shared/ui/Typography";
+import { RouteNames } from "shared/model/route-names";
+import { useTrackInfo } from "../lib/useTrackInfo";
 
 export default function EditTrackPage() {
+  const { id } = useParams<"id">();
+  const navigate = useNavigate();
+  const { data: trackInfo, loading } = useTrackInfo(id);
+
+  const onSubmit = (trackId: string) => {
+    navigate(`${RouteNames.tracks}/${trackId}`, { replace: true });
+  };
+
   return (
-    <div>
-      <Typography.H1>Edit Track</Typography.H1>
-      <EditTrackForm />
-    </div>
+    <>
+      <Helmet>
+        <title>Edit track</title>
+      </Helmet>
+      <Layout.PageWrap>
+        <Stack gap={3}>
+          <Typography.H1>Edit Track</Typography.H1>
+          {loading && "Loading..."}
+          {trackInfo && (
+            <EditTrackForm trackInfo={trackInfo} onSubmit={onSubmit} />
+          )}
+        </Stack>
+      </Layout.PageWrap>
+    </>
   );
 }

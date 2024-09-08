@@ -1,5 +1,6 @@
 import { useEffect, useMemo, useRef, useState } from "react";
 import styled from "styled-components";
+import { nanoid } from "nanoid";
 import { ImageSquare } from "@phosphor-icons/react";
 import {
   getDownloadURL,
@@ -13,6 +14,8 @@ import { firebaseStorage } from "shared/api";
 import Button from "shared/ui/Button";
 import ProgressBar from "shared/ui/ProgressBar";
 import Stack from "shared/ui/Stack";
+import { useFormContext, useWatch } from "react-hook-form";
+import { TrackFormData } from "../model/trackForm.types";
 
 const IMAGE_SIZE = 152;
 
@@ -57,14 +60,24 @@ const ImageUploader = ({
   onUploadDone,
   onUploadError,
 }: ImageUploaderProps) => {
+  const { control } = useFormContext<TrackFormData>();
+  const slug = useWatch({ control, name: "slug" });
+
   const [progressValue, setProgressValue] = useState<number>(0);
   const uploadTaskRef = useRef<UploadTask | null>(null);
   const artwork = useMemo(() => image && URL.createObjectURL(image), [image]);
+  const fileName = useMemo(() => {
+    const salt = nanoid(5);
+    const name =
+      slug || image?.name.split(".").slice(0, -1).join(".") || "artwork";
+
+    return `${name}-${salt}`;
+  }, [slug, image]);
 
   const handleUpload = () => {
     if (!image) return;
 
-    const storageRef = ref(firebaseStorage, `images/${image.name}`);
+    const storageRef = ref(firebaseStorage, `images/${fileName}`);
     const uploadTask = uploadBytesResumable(storageRef, image);
     uploadTaskRef.current = uploadTask;
 
@@ -105,8 +118,8 @@ const ImageUploader = ({
   return (
     <>
       <StyledBackgroundIcon>
-        {artwork && image ? (
-          <img src={artwork} alt={image.name} />
+        {artwork && fileName ? (
+          <img src={artwork} alt={fileName} />
         ) : (
           <ImageSquare size={IMAGE_SIZE} />
         )}
@@ -114,7 +127,7 @@ const ImageUploader = ({
 
       <Stack gap={2} width="100%">
         <Stack direction="row" alignItems="center">
-          <StyledFileName>{image?.name || "..."}</StyledFileName>
+          <StyledFileName>{fileName}</StyledFileName>
           <StyledProgressValue>{progressValue}%</StyledProgressValue>
           <Button variant="secondary" size="small" onClick={handleCancel}>
             Cancel

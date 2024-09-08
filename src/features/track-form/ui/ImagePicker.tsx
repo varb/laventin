@@ -68,8 +68,10 @@ export default function ImagePicker({ onChangeImage }: ImagePickerProps) {
   };
 
   const handleImageChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    if (e.target.files && e.target.files[0]) {
-      onChangeImage(e.target.files[0]);
+    const newImage = e.target.files![0];
+
+    if (newImage) {
+      onChangeImage(newImage);
     }
   };
 

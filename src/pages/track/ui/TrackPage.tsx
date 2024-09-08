@@ -1,14 +1,13 @@
-import { useEffect, useState } from "react";
 import Helmet from "react-helmet";
 import { useParams, Link, useLocation } from "react-router-dom";
 import { PencilSimple } from "@phosphor-icons/react";
 
-import { TrackItem } from "entities/track";
 import { StreamingLinks } from "entities/streaming-link";
 import { useAuth } from "shared/providers";
 import Button from "shared/ui/Button";
 import HeaderAction from "shared/ui/HeaderAction";
 
+import { useTrackInfo } from "../lib/useTrackInfo";
 import {
   Root,
   Title,
@@ -18,28 +17,6 @@ import {
   ArtworkWrapper,
   ArtworkContainer,
 } from "./TrackPage.styles";
-import { getTrackInfo } from "../api/getTrackInfo";
-
-export const useTrackInfo = (
-  networkProps: Parameters<typeof getTrackInfo>[0]
-) => {
-  const [loading, setLoading] = useState(false);
-  const [trackInfo, setTrackInfo] = useState<TrackItem | null>(null);
-
-  useEffect(() => {
-    setLoading(true);
-    const fetchTrackInfo = async () => {
-      const trackInfo = await getTrackInfo(networkProps);
-
-      setTrackInfo(trackInfo);
-      setLoading(false);
-    };
-
-    fetchTrackInfo();
-  }, [networkProps]);
-
-  return { data: trackInfo, loading };
-};
 
 export default function TrackPage() {
   const { id } = useParams<"id">();

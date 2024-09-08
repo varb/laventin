@@ -26,6 +26,7 @@ interface UploadImageFormProps {
 const UploadImageForm = ({ label }: UploadImageFormProps) => {
   const { control, setValue } = useFormContext<TrackFormData>();
   const imageUrl = useWatch({ control, name: "coverUrl" });
+  // const [slug, imageUrl] = useWatch({ control, name: ['slug', 'coverUrl'] });
 
   const [uploadState, setUploadState] = useState<"idle" | "uploading" | "done">(
     imageUrl ? "done" : "idle"
@@ -40,7 +41,7 @@ const UploadImageForm = ({ label }: UploadImageFormProps) => {
   };
 
   const onUploadDone = (imageUrl: string) => {
-    setValue("coverUrl", imageUrl);
+    setValue("coverUrl", imageUrl, { shouldDirty: true });
     setUploadState("done");
   };
 
@@ -51,7 +52,7 @@ const UploadImageForm = ({ label }: UploadImageFormProps) => {
 
   const onRemoveImage = () => {
     setArtowrk(null);
-    setValue("coverUrl", "");
+    setValue("coverUrl", "", { shouldDirty: true });
     setUploadState("idle");
   };
 

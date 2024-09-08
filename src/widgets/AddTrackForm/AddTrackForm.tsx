@@ -1,31 +1,43 @@
 import { useState } from "react";
-import { useNavigate } from "react-router-dom";
-import { doc, setDoc } from "firebase/firestore";
+import { doc, setDoc, Timestamp } from "firebase/firestore";
 
 import { TrackForm, TrackFormData } from "features/track-form";
 import { TrackItem } from "entities/track";
 import { firebaseDB } from "shared/api/firebase";
-import { RouteNames } from "shared/model/route-names";
 
-type AddTrackFormProps = {};
+type AddTrackFormProps = {
+  onSubmit?: (trackId: string) => void;
+};
 
-export default function AddTrackForm({}: AddTrackFormProps) {
+const createTrack = async (data: TrackItem) => {
+  const trackRef = doc(firebaseDB, "tracks", data.id);
+  return await setDoc(trackRef, data);
+};
+
+export default function AddTrackForm({ onSubmit }: AddTrackFormProps) {
   const [isLoading, setIsLoading] = useState<boolean>(false);
-  const navigate = useNavigate();
 
-  const onSubmit = async ({ id, ...data }: TrackItem) => {
-    console.log("onSubmit", data);
+  const onFormSubmit = async (formData: TrackFormData) => {
     setIsLoading(true);
-    const trackRef = doc(firebaseDB, "tracks", id);
-    await setDoc(trackRef, data);
+    const id = formData.slug;
+
+    await createTrack({
+      id,
+      createdAt: Timestamp.now(),
+      updatedAt: Timestamp.now(),
+      ...formData,
+    });
 
     setIsLoading(false);
-    navigate(`/${RouteNames.tracks}/${id}`, { replace: true });
+
+    if (onSubmit) {
+      onSubmit(id);
+    }
   };
 
   if (isLoading) {
     return <>Loading...</>;
   }
 
-  return <TrackForm onSubmit={onSubmit} />;
+  return <TrackForm onSubmit={onFormSubmit} submitLabel="Save new track" />;
 }

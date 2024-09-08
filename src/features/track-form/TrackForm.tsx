@@ -5,28 +5,33 @@ import {
   LinkSimpleBreak,
 } from "@phosphor-icons/react";
 import {
-  Control,
   Controller,
   FormProvider,
+  FormState,
   SubmitHandler,
   useForm,
   useFormContext,
 } from "react-hook-form";
 
-import { TrackItem } from "entities/track";
-import Button from "shared/ui/Button";
-import Checkbox from "shared/ui/Checkbox";
-import Radio from "shared/ui/Radio";
-import TextInput from "shared/ui/TextInput";
 import Stack from "shared/ui/Stack";
+import Button from "shared/ui/Button";
+import Radio from "shared/ui/Radio";
+import Checkbox from "shared/ui/Checkbox";
+import TextInput from "shared/ui/TextInput";
+import TextArea from "shared/ui/TextArea";
 
 import UploadImageForm from "./ui/UploadImageForm";
 import StreamingLinksForm from "./ui/StreamingLinksForm";
 import { TrackFormData } from "./model/trackForm.types";
-import TextArea from "shared/ui/TextArea";
 
 interface TrackFormProps {
-  onSubmit?: (formData: TrackItem) => void;
+  onSubmit?: (
+    formData: TrackFormData,
+    dirtyFields: FormState<TrackFormData>["dirtyFields"]
+  ) => void;
+  trackItem?: TrackFormData | null;
+  submitLabel?: string;
+  isLoading?: boolean;
 }
 
 const defaultFormData: TrackFormData = {
@@ -39,8 +44,6 @@ const defaultFormData: TrackFormData = {
   description: "",
   releaseDate: "",
   releaseType: "single",
-  // createdAt: new Date(),
-  // updatedAt: new Date(),
 };
 
 const prepareTrackId = (title: string) => {
@@ -79,14 +82,20 @@ const TrackTitleInput = () => {
   );
 };
 
-export default function TrackForm({ onSubmit }: TrackFormProps) {
+export default function TrackForm({
+  onSubmit,
+  trackItem,
+  submitLabel = "Save track",
+}: TrackFormProps) {
   const formMethods = useForm<TrackFormData>({
-    defaultValues: defaultFormData,
+    defaultValues: trackItem || defaultFormData,
   });
   const { control, handleSubmit, formState } = formMethods;
 
   const onFormSubmit: SubmitHandler<TrackFormData> = (data) => {
-    console.log("onFormSubmit", data);
+    if (onSubmit) {
+      onSubmit(data, formState.dirtyFields);
+    }
   };
 
   console.log("render form", formState);
@@ -201,7 +210,7 @@ export default function TrackForm({ onSubmit }: TrackFormProps) {
           width="full"
           disabled={!formState.isValid}
         >
-          Save new track
+          {submitLabel}
         </Button>
       </Stack>
     </FormProvider>
