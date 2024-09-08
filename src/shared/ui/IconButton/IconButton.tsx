@@ -26,7 +26,12 @@ const StyledIconButton = styled.button<IStyledIconButtonProps>`
       cursor: pointer;
     `}
 
-    ${(p) =>
+  &:focus-visible {
+    outline: 2px solid ${(p) => p.theme.colors.accent.main};
+    outline-offset: 3px;
+  }
+
+  ${(p) =>
     p.$variant === "primary" &&
     css`
       background-image: ${(p) => p.theme.colors.gradient.primary};
@@ -104,6 +109,10 @@ const StyledIconButton = styled.button<IStyledIconButtonProps>`
 
       &:disabled {
         ${p.theme.effectStyles.ghost.disabled}
+      }
+
+      &:focus-visible {
+        outline-offset: 0;
       }
     `}
 

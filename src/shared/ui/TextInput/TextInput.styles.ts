@@ -1,7 +1,7 @@
 import styled, { css } from "styled-components";
 import Stack from "../Stack";
 import Typography from "../Typography";
-import { IconButton } from "..";
+import IconButton from "../IconButton";
 
 export const StyledAsideSlot = styled.div`
   display: flex;

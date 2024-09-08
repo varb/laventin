@@ -41,6 +41,12 @@ export const TextLink = styled.a`
   &:active {
     color: ${(p) => p.theme.colors.primary.dark};
   }
+
+  &:focus-visible {
+    outline: 2px solid ${(p) => p.theme.colors.accent.main};
+    outline-offset: 2px;
+    border-radius: 2px;
+  }
 `;
 
 const typography = {

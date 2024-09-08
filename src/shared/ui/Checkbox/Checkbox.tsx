@@ -67,12 +67,9 @@ const StyledCheckboxRoot = styled.label`
     border-color: ${(p) => p.theme.colors.primary.main};
   }
 
-  & ${StyledCheckboxInput}:focus ~ ${StyledCheckboxMark} {
-    ${(p) => p.theme.effectStyles.primary.hover}
-  }
-
-  & ${StyledCheckboxInput}:not(:checked):focus ~ ${StyledCheckboxMark} {
-    ${(p) => p.theme.effectStyles.secondary.hover}
+  & ${StyledCheckboxInput}:focus-visible ~ ${StyledCheckboxMark} {
+    outline: 2px solid ${(p) => p.theme.colors.accent.main};
+    outline-offset: 3px;
   }
 `;
 

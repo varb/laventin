@@ -77,12 +77,9 @@ const StyledRadioRoot = styled.label`
     }
   }
 
-  & ${StyledRadioInput}:focus ~ ${StyledRadioMark} {
-    ${(p) => p.theme.effectStyles.primary.hover};
-  }
-
-  & ${StyledRadioInput}:not(:checked):focus ~ ${StyledRadioMark} {
-    ${(p) => p.theme.effectStyles.secondary.hover};
+  & ${StyledRadioInput}:focus-visible ~ ${StyledRadioMark} {
+    outline: 2px solid ${(p) => p.theme.colors.accent.main};
+    outline-offset: 3px;
   }
 `;
 

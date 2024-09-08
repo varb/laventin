@@ -35,6 +35,11 @@ export const StyledButton = styled.button<IStyledButtonProps>`
       cursor: pointer;
     `}
 
+  &:focus-visible {
+    outline: 2px solid ${(p) => p.theme.colors.accent.main};
+    outline-offset: 3px;
+  }
+
   ${(p) =>
     p.$variant === "primary" &&
     css`
@@ -74,6 +79,10 @@ export const StyledButton = styled.button<IStyledButtonProps>`
       color: ${(p) => p.theme.colors.gray[200]};
 
       ${p.theme.effectStyles.ghost.fullBehavior}
+
+      &:focus-visible {
+        outline-offset: 0;
+      }
     `}
 
   /* Sizes */;
