@@ -36,7 +36,8 @@ export const StyledButton = styled.button<IStyledButtonProps>`
     `}
 
   &:focus-visible {
-    outline: 2px solid ${(p) => p.theme.colors.accent.main};
+    outline: ${(p) => p.theme.indents.borderWidth} solid
+      ${(p) => p.theme.colors.accent.main};
     outline-offset: 3px;
   }
 
@@ -67,7 +68,8 @@ export const StyledButton = styled.button<IStyledButtonProps>`
     p.$variant === "outlined" &&
     css`
       background-color: ${(p) => p.theme.colors.primary.darker};
-      border: 2px solid ${(p) => p.theme.colors.primary.main};
+      border: ${(p) => p.theme.indents.borderWidth} solid
+        ${(p) => p.theme.colors.primary.main};
 
       ${p.theme.effectStyles.outlined.fullBehavior}
     `}

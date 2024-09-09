@@ -1,35 +1,35 @@
 import styled from "styled-components";
 
-export const H1 = styled.h1`
+const H1 = styled.h1`
   ${(p) => p.theme.typography.header1};
 `;
 
-export const H2 = styled.h2`
+const H2 = styled.h2`
   ${(p) => p.theme.typography.header2};
 `;
 
-export const H3 = styled.h3`
+const H3 = styled.h3`
   ${(p) => p.theme.typography.header3};
 `;
 
-export const H4 = styled.h4`
+const H4 = styled.h4`
   ${(p) => p.theme.typography.header4};
 `;
 
-export const H5 = styled.h5`
+const H5 = styled.h5`
   ${(p) => p.theme.typography.header5};
 `;
 
-export const H6 = styled.h6`
+const H6 = styled.h6`
   ${(p) => p.theme.typography.header6};
 `;
 
-export const Label = styled.span`
+const Label = styled.span`
   color: ${(p) => p.theme.colors.gray[100]};
   ${(p) => p.theme.typography.label};
 `;
 
-export const TextLink = styled.a`
+const TextLink = styled.a`
   color: ${(p) => p.theme.colors.primary.main};
   cursor: pointer;
   text-decoration: underline;
@@ -43,8 +43,9 @@ export const TextLink = styled.a`
   }
 
   &:focus-visible {
-    outline: 2px solid ${(p) => p.theme.colors.accent.main};
-    outline-offset: 2px;
+    outline: ${(p) => p.theme.indents.borderWidth} solid
+      ${(p) => p.theme.colors.accent.main};
+    outline-offset: ${(p) => p.theme.indents.borderWidth};
     border-radius: 2px;
   }
 `;

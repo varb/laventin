@@ -84,6 +84,7 @@ declare module "styled-components" {
     indents: {
       base: number;
       calc: (n: number) => string;
+      borderWidth: string;
     };
     colors: DefaultThemeColors;
     typography: Typography;

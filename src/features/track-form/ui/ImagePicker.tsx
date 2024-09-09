@@ -19,7 +19,7 @@ const StyledDropArea = styled.div<{ $isDragging: boolean }>`
   height: 200px;
   padding: ${(p) => p.theme.indents.calc(2.75)};
 
-  border: 2px dashed
+  border: ${(p) => p.theme.indents.borderWidth} dashed
     ${(p) =>
       p.$isDragging ? p.theme.colors.gray[500] : p.theme.colors.gray[700]};
   border-radius: ${(p) => p.theme.indents.calc(1)};

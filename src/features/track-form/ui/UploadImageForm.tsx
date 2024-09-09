@@ -15,7 +15,8 @@ const StyledUploadImage = styled(Stack)`
   position: relative;
   height: 200px;
 
-  border: 2px dashed ${(p) => p.theme.colors.gray[700]};
+  border: ${(p) => p.theme.indents.borderWidth} dashed
+    ${(p) => p.theme.colors.gray[700]};
   border-radius: ${(p) => p.theme.indents.calc(1)};
 `;
 

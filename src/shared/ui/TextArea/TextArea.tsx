@@ -49,7 +49,8 @@ const StyledInputArea = styled.label`
   position: relative;
   /* height: 40px; */
   min-height: ${MIN_TEXTAREA_HEIGHT}px;
-  border: 2px solid ${(p) => p.theme.colors.gray[700]};
+  border: ${(p) => p.theme.indents.borderWidth} solid
+    ${(p) => p.theme.colors.gray[700]};
   border-radius: ${(p) => p.theme.indents.calc(1)};
   cursor: text;
 

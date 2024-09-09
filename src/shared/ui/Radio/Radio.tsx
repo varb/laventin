@@ -12,7 +12,8 @@ const StyledRadioMark = styled.span`
   width: 30px;
   height: 30px;
   border-radius: ${(p) => p.theme.indents.calc(2)};
-  border: 2px solid ${(p) => p.theme.colors.gray[700]};
+  border: ${(p) => p.theme.indents.borderWidth} solid
+    ${(p) => p.theme.colors.gray[700]};
   ${(p) =>
     p.theme.helpers.createTransition(["box-shadow", "border-color"], {
       duration: 150,
@@ -78,7 +79,8 @@ const StyledRadioRoot = styled.label`
   }
 
   & ${StyledRadioInput}:focus-visible ~ ${StyledRadioMark} {
-    outline: 2px solid ${(p) => p.theme.colors.accent.main};
+    outline: ${(p) => p.theme.indents.borderWidth} solid
+      ${(p) => p.theme.colors.accent.main};
     outline-offset: 3px;
   }
 `;

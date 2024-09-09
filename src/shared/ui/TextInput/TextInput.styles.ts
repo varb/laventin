@@ -53,7 +53,8 @@ export const StyledInputArea = styled.label`
   display: flex;
   align-items: center;
   height: 40px;
-  border: 2px solid ${(p) => p.theme.colors.gray[700]};
+  border: ${(p) => p.theme.indents.borderWidth} solid
+    ${(p) => p.theme.colors.gray[700]};
   border-radius: ${(p) => p.theme.indents.calc(1)};
   cursor: text;
 

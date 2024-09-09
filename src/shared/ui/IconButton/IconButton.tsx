@@ -27,7 +27,8 @@ const StyledIconButton = styled.button<IStyledIconButtonProps>`
     `}
 
   &:focus-visible {
-    outline: 2px solid ${(p) => p.theme.colors.accent.main};
+    outline: ${(p) => p.theme.indents.borderWidth} solid
+      ${(p) => p.theme.colors.accent.main};
     outline-offset: 3px;
   }
 
@@ -78,7 +79,8 @@ const StyledIconButton = styled.button<IStyledIconButtonProps>`
     p.$variant === "outlined" &&
     css`
       background-color: ${(p) => p.theme.colors.primary.darker};
-      border: 2px solid ${(p) => p.theme.colors.primary.main};
+      border: ${(p) => p.theme.indents.borderWidth} solid
+        ${(p) => p.theme.colors.primary.main};
 
       &:hover {
         ${p.theme.effectStyles.outlined.hover}
