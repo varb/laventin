@@ -1,19 +1,15 @@
 import { useMemo, useState } from "react";
 import { FormState } from "react-hook-form";
-import { doc, Timestamp, updateDoc } from "firebase/firestore";
+import { Trash } from "@phosphor-icons/react";
 
 import { TrackForm, TrackFormData } from "features/track-form";
 import { TrackItem } from "entities/track";
-import { firebaseDB } from "shared/api/firebase";
 import { omitKeys } from "shared/lib/omitKeys";
 import { filterDirtyFields } from "shared/lib/filterDirtyFields";
+import Button from "shared/ui/Button";
 
-const updateTrack = async (
-  data: Partial<Omit<TrackItem, "createdAt" | "id">> & Pick<TrackItem, "id">
-) => {
-  const trackRef = doc(firebaseDB, "tracks", data.id);
-  return await updateDoc(trackRef, data);
-};
+import { useRemoveConfirmModal } from "./RemoveConfirmModal";
+import { updateTrack } from "./api/track";
 
 type EditTrackFormProps = {
   onSubmit?: (trackId: string) => void;
@@ -24,7 +20,9 @@ export default function EditTrackForm({
   onSubmit,
   trackInfo,
 }: EditTrackFormProps) {
+  const { openModal } = useRemoveConfirmModal();
   const [isLoading, setIsLoading] = useState<boolean>(false);
+
   const trackFormData: TrackFormData | null = useMemo(
     () =>
       trackInfo ? omitKeys(trackInfo, ["createdAt", "updatedAt", "id"]) : null,
@@ -39,7 +37,6 @@ export default function EditTrackForm({
 
     await updateTrack({
       id: trackInfo.id,
-      updatedAt: Timestamp.now(),
       ...filterDirtyFields(formData, dirtyFields),
     });
 
@@ -50,9 +47,27 @@ export default function EditTrackForm({
     }
   };
 
+  const onRemoveClick = () => {
+    openModal({
+      id: trackInfo.id,
+    });
+  };
+
   if (isLoading) {
     return <>Loading...</>;
   }
 
-  return <TrackForm trackItem={trackFormData} onSubmit={onFormSubmit} />;
+  return (
+    <>
+      <TrackForm trackItem={trackFormData} onSubmit={onFormSubmit} />
+      <Button
+        iconLeft={<Trash />}
+        variant="error"
+        width="full"
+        onClick={onRemoveClick}
+      >
+        Remove
+      </Button>
+    </>
+  );
 }

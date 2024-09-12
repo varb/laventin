@@ -12,7 +12,7 @@ export const getTrackInfo = async (trackId?: string) => {
     const docSnapshot = await getDoc(docRef);
 
     if (docSnapshot.exists()) {
-      trackInfo = docSnapshot.data() as TrackItem;
+      trackInfo = { id: docSnapshot.id, ...docSnapshot.data() } as TrackItem;
     } else {
       console.log("No such document!");
     }
