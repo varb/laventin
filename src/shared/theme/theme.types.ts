@@ -20,6 +20,8 @@ export type DefaultThemeColors = {
   primary: ColorScheme;
   accent: ColorScheme;
   secondary: ColorScheme;
+  success: ColorScheme;
+  error: ColorScheme;
   gray: {
     100: string;
     200: string;
@@ -73,6 +75,8 @@ export type EffectStyles = {
   secondary: ButtonEffect;
   outlined: ButtonEffect;
   ghost: ButtonEffect;
+  success: ButtonEffect;
+  error: ButtonEffect;
   cover: {
     middle: StyledCSS;
     large: StyledCSS;

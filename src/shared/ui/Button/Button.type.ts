@@ -1,4 +1,10 @@
-export type ButtonVariant = "primary" | "outlined" | "secondary" | "ghost";
+export type ButtonVariant =
+  | "primary"
+  | "outlined"
+  | "secondary"
+  | "ghost"
+  | "success"
+  | "error";
 export type ButtonSize = "small" | "middle" | "large";
 
 export type IButtonProps = {

@@ -11,7 +11,8 @@ export const StyledLeadingInputArea = styled.div`
   align-self: stretch;
   flex-grow: 1;
 
-  border: 2px solid ${(p) => p.theme.colors.gray[700]};
+  border: ${(p) => p.theme.indents.borderWidth} solid
+    ${(p) => p.theme.colors.gray[700]};
   border-radius: 0 ${(p) => p.theme.indents.calc(1)}
     ${(p) => p.theme.indents.calc(1)} 0;
 
@@ -41,7 +42,8 @@ export const StyledLeadingTextArea = styled.div`
   padding: 0 ${(p) => p.theme.indents.calc(1)} 0
     ${(p) => p.theme.indents.calc(1.75)};
 
-  border: 2px solid ${(p) => p.theme.colors.gray[700]};
+  border: ${(p) => p.theme.indents.borderWidth} solid
+    ${(p) => p.theme.colors.gray[700]};
   border-right: 0;
   border-radius: ${(p) => p.theme.indents.calc(1)} 0 0
     ${(p) => p.theme.indents.calc(1)};

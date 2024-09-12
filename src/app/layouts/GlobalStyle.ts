@@ -37,6 +37,10 @@ const GlobalStyle = createGlobalStyle`
     font-family: ${(p) => p.theme.typography.fontFamily.regular};
   }
 
+  p {
+    margin: 0;
+  }
+
   #root {
     min-height: 100vh;
     display: flex;

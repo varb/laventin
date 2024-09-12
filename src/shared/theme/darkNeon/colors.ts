@@ -27,6 +27,20 @@ export default {
     dark: "#0353C4",
     darker: "#023379",
   },
+  success: {
+    lighter: "#9EE6C3",
+    light: "#45CF8D",
+    main: "#279661",
+    dark: "#1A6541",
+    darker: "#11412A",
+  },
+  error: {
+    lighter: "#E8A6AA",
+    light: "#D55D65",
+    main: "#AE2D35",
+    dark: "#711D23",
+    darker: "#491316",
+  },
   gray: {
     "100": "#E6E3E8",
     "200": "#CFCBD2",

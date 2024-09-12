@@ -75,6 +75,26 @@ export const StyledButton = styled.button<IStyledButtonProps>`
     `}
 
   ${(p) =>
+    p.$variant === "success" &&
+    css`
+      background-color: ${(p) => p.theme.colors.success.darker};
+      border: ${(p) => p.theme.indents.borderWidth} solid
+        ${(p) => p.theme.colors.success.main};
+
+      ${p.theme.effectStyles.success.fullBehavior}
+    `}
+
+  ${(p) =>
+    p.$variant === "error" &&
+    css`
+      background-color: ${(p) => p.theme.colors.error.darker};
+      border: ${(p) => p.theme.indents.borderWidth} solid
+        ${(p) => p.theme.colors.error.main};
+
+      ${p.theme.effectStyles.error.fullBehavior}
+    `}
+
+  ${(p) =>
     p.$variant === "ghost" &&
     css`
       background-color: transparent;

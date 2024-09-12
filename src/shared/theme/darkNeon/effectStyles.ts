@@ -100,6 +100,64 @@ const outlinedFullBehavior = css`
 `;
 
 /**
+ * Success Style
+ */
+const successHover = css`
+  box-shadow: 0px 2px 10px ${(p) => p.theme.colors.success.main}80,
+    inset 0 0 0 transparent;
+`;
+
+const successActive = css`
+  border-color: ${(p) => p.theme.colors.success.dark};
+  box-shadow: 0 0 0 transparent,
+    inset 0px 1px 6px ${(p) => p.theme.colors.success.dark};
+  color: ${(p) => p.theme.colors.gray[100]};
+`;
+
+const successFullBehavior = css`
+  &:hover {
+    ${(p) => p.theme.effectStyles.success.hover}
+  }
+
+  &:active {
+    ${(p) => p.theme.effectStyles.success.active}
+  }
+
+  &:disabled {
+    ${(p) => p.theme.effectStyles.success.disabled}
+  }
+`;
+
+/**
+ * Success Style
+ */
+const errorHover = css`
+  box-shadow: 0px 2px 10px ${(p) => p.theme.colors.error.main}80,
+    inset 0 0 0 transparent;
+`;
+
+const errorActive = css`
+  border-color: ${(p) => p.theme.colors.error.dark};
+  box-shadow: 0 0 0 transparent,
+    inset 0px 1px 6px ${(p) => p.theme.colors.error.dark};
+  color: ${(p) => p.theme.colors.gray[100]};
+`;
+
+const errorFullBehavior = css`
+  &:hover {
+    ${(p) => p.theme.effectStyles.error.hover}
+  }
+
+  &:active {
+    ${(p) => p.theme.effectStyles.error.active}
+  }
+
+  &:disabled {
+    ${(p) => p.theme.effectStyles.error.disabled}
+  }
+`;
+
+/**
  * Ghost Style
  */
 const ghostHover = css`
@@ -163,6 +221,18 @@ export default {
     active: outlinedActive,
     disabled: outlinedDisabled,
     fullBehavior: outlinedFullBehavior,
+  },
+  success: {
+    hover: successHover,
+    active: successActive,
+    disabled: outlinedDisabled,
+    fullBehavior: successFullBehavior,
+  },
+  error: {
+    hover: errorHover,
+    active: errorActive,
+    disabled: outlinedDisabled,
+    fullBehavior: errorFullBehavior,
   },
   ghost: {
     hover: ghostHover,
