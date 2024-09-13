@@ -24,25 +24,28 @@ const filteredList = trackList.filter((item) => item.active);
 const lastRelease = filteredList[0];
 
 function HomePage() {
-  const { user } = useAuth();
-
   return (
-    <Layout.PageWrap>
-      <MainBgCover />
-      <LastReleaseInfo>
-        <LastReleaseLabel>Last release</LastReleaseLabel>
-        <LastReleaseTitle>{lastRelease.title}</LastReleaseTitle>
-        <LastReleaseAuthor>{lastRelease.artist}</LastReleaseAuthor>
-      </LastReleaseInfo>
+    <>
+      <Layout.PageWrap>
+        <MainBgCover />
+        <LastReleaseInfo>
+          <LastReleaseLabel>Last release</LastReleaseLabel>
+          <LastReleaseTitle>{lastRelease.title}</LastReleaseTitle>
+          <LastReleaseAuthor>{lastRelease.artist}</LastReleaseAuthor>
+        </LastReleaseInfo>
 
-      <SectionWrapper>
-        <StreamingLinks trackInfo={lastRelease} />
-      </SectionWrapper>
+        <SectionWrapper>
+          <StreamingLinks trackInfo={lastRelease} />
+        </SectionWrapper>
 
-      <SubTitle>Discography</SubTitle>
-      <SectionWrapper>
+        <SubTitle>Discography</SubTitle>
+      </Layout.PageWrap>
+
+      <Layout.BasePageWrap>
         <TrackList limit={5} />
+      </Layout.BasePageWrap>
 
+      <Layout.PageWrap>
         <Button
           iconRight={<Playlist />}
           forwardedAs={Link}
@@ -51,13 +54,13 @@ function HomePage() {
         >
           View all tracks
         </Button>
-      </SectionWrapper>
 
-      <SubTitle>Socials</SubTitle>
-      <SectionWrapper>
-        <SocialLinks />
-      </SectionWrapper>
-    </Layout.PageWrap>
+        <SubTitle>Socials</SubTitle>
+        <SectionWrapper>
+          <SocialLinks />
+        </SectionWrapper>
+      </Layout.PageWrap>
+    </>
   );
 }
 

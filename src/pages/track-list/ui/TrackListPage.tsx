@@ -9,6 +9,7 @@ import Layout from "shared/ui/Layout";
 import Typography from "shared/ui/Typography";
 import { useAuth } from "shared/providers";
 import { RouteNames } from "shared/model/route-names";
+import Stack from "shared/ui/Stack";
 
 export default function TrackListPage() {
   const { user } = useAuth();
@@ -33,11 +34,15 @@ export default function TrackListPage() {
         </HeaderAction>
       )}
 
-      <Layout.PageWrap style={{ marginBottom: 32 }}>
-        <Typography.H1 style={{ marginBottom: 24 }}>Discography</Typography.H1>
+      <Stack>
+        <Layout.PageWrap>
+          <Typography.H1>Discography</Typography.H1>
+        </Layout.PageWrap>
 
-        <TrackList />
-      </Layout.PageWrap>
+        <Layout.BasePageWrap>
+          <TrackList />
+        </Layout.BasePageWrap>
+      </Stack>
     </>
   );
 }

@@ -75,5 +75,4 @@ export const InfoRow = styled.div`
 
 export const SubTitle = styled(Typography.H2)`
   margin: 0 0 30px;
-  text-align: center;
 `;

@@ -1,13 +1,5 @@
-import { Link } from "react-router-dom";
-
-import { RouteNames } from "shared/model/route-names";
-import {
-  LinksList,
-  TrackLink,
-  TrackArtist,
-  TrackArtwork,
-  TrackTitle,
-} from "./TrackList.styles";
+import Stack from "shared/ui/Stack";
+import TrackItem from "./TrackItem";
 import { useTrackList } from "../lib/useTrackList";
 
 type TrackListProps = {
@@ -24,20 +16,10 @@ export default function TrackList({ limit }: TrackListProps) {
   }
 
   return (
-    <LinksList>
+    <Stack gap={0}>
       {trackList.map((track) => (
-        <TrackLink
-          key={track.id}
-          to={`${RouteNames.tracks}/${track.id}`}
-          as={Link}
-        >
-          <TrackArtwork src={track.coverUrl || `/art/empty-cover.svg`} />
-          <div>
-            <TrackTitle>{track.title}</TrackTitle>
-            <TrackArtist>{track.artist}</TrackArtist>
-          </div>
-        </TrackLink>
+        <TrackItem {...track} />
       ))}
-    </LinksList>
+    </Stack>
   );
 }
