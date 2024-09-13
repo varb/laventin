@@ -1,14 +1,16 @@
 import { TrackItem } from "entities/track";
 
-export type TrackFormData = Pick<
-  TrackItem,
-  | "title"
-  | "slug"
-  | "artist"
-  | "coverUrl"
-  | "active"
-  | "description"
-  | "links"
-  | "releaseDate"
-  | "releaseType"
->;
+export interface TrackFormData
+  extends Pick<
+    TrackItem,
+    | "title"
+    | "slug"
+    | "artist"
+    | "coverUrl"
+    | "active"
+    | "description"
+    | "links"
+    | "releaseType"
+  > {
+  releaseDate: string;
+}

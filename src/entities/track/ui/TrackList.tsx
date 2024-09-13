@@ -18,7 +18,7 @@ export default function TrackList({ limit }: TrackListProps) {
   return (
     <Stack gap={0}>
       {trackList.map((track) => (
-        <TrackItem {...track} />
+        <TrackItem key={track.id} {...track} />
       ))}
     </Stack>
   );

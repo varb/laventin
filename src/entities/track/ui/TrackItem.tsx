@@ -93,10 +93,10 @@ function TrackItem({
   releaseDate,
   updatedAt,
 }: ITrackItem) {
-  const year = releaseDate?.slice(-4);
+  const year = releaseDate?.toDate().getFullYear();
 
   return (
-    <StyledTrackLink key={id} to={`${RouteNames.tracks}/${id}`} as={Link}>
+    <StyledTrackLink to={`${RouteNames.tracks}/${id}`} as={Link}>
       <StyledTrackItemWrapper>
         <StyledTrackArtwork src={coverUrl || `/art/empty-cover.svg`} />
         <Stack gap={0.25}>

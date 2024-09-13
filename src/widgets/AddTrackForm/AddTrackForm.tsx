@@ -4,6 +4,7 @@ import { doc, setDoc, Timestamp } from "firebase/firestore";
 import { TrackForm, TrackFormData } from "features/track-form";
 import { TrackItem } from "entities/track";
 import { firebaseDB } from "shared/api/firebase";
+import { formatStringToFBTimestamp } from "shared/lib/date";
 
 type AddTrackFormProps = {
   onSubmit?: (trackId: string) => void;
@@ -17,7 +18,7 @@ const createTrack = async (data: TrackItem) => {
 export default function AddTrackForm({ onSubmit }: AddTrackFormProps) {
   const [isLoading, setIsLoading] = useState<boolean>(false);
 
-  const onFormSubmit = async (formData: TrackFormData) => {
+  const onFormSubmit = async ({ releaseDate, ...formData }: TrackFormData) => {
     setIsLoading(true);
     const id = formData.slug;
 
@@ -25,6 +26,7 @@ export default function AddTrackForm({ onSubmit }: AddTrackFormProps) {
       id,
       createdAt: Timestamp.now(),
       updatedAt: Timestamp.now(),
+      releaseDate: formatStringToFBTimestamp(releaseDate),
       ...formData,
     });
 

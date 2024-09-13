@@ -1,5 +1,11 @@
 import { Timestamp } from "firebase/firestore";
 
+export enum ReleaseType {
+  single = "Single",
+  album = "Album",
+  extendedPlay = "EP",
+}
+
 export interface TrackItem {
   id: string;
   slug: string;
@@ -9,8 +15,8 @@ export interface TrackItem {
   coverUrl: string;
   createdAt: Timestamp;
   updatedAt: Timestamp;
-  releaseDate?: string;
-  releaseType: "single" | "album" | "extendedPlay";
+  releaseDate?: Timestamp;
+  releaseType: keyof typeof ReleaseType;
   links?: Array<{ resourceId: string; url: string }>;
   description?: string;
 }

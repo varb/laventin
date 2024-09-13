@@ -10,6 +10,7 @@ import Button from "shared/ui/Button";
 
 import { useRemoveConfirmModal } from "./RemoveConfirmModal";
 import { updateTrack } from "./api/track";
+import { formatDateToString, formatStringToFBTimestamp } from "shared/lib/date";
 
 type EditTrackFormProps = {
   onSubmit?: (trackId: string) => void;
@@ -23,9 +24,21 @@ export default function EditTrackForm({
   const { openModal } = useRemoveConfirmModal();
   const [isLoading, setIsLoading] = useState<boolean>(false);
 
+  console.log(trackInfo);
+
   const trackFormData: TrackFormData | null = useMemo(
     () =>
-      trackInfo ? omitKeys(trackInfo, ["createdAt", "updatedAt", "id"]) : null,
+      trackInfo
+        ? {
+            ...omitKeys(trackInfo, [
+              "createdAt",
+              "updatedAt",
+              "id",
+              "releaseDate",
+            ]),
+            releaseDate: formatDateToString(trackInfo.releaseDate?.toDate!()),
+          }
+        : null,
     [trackInfo]
   );
 
@@ -35,9 +48,17 @@ export default function EditTrackForm({
   ) => {
     setIsLoading(true);
 
+    const { releaseDate, ...filteredFields } = filterDirtyFields(
+      formData,
+      dirtyFields
+    );
+
     await updateTrack({
       id: trackInfo.id,
-      ...filterDirtyFields(formData, dirtyFields),
+      ...filteredFields,
+      ...(releaseDate && {
+        releaseDate: formatStringToFBTimestamp(releaseDate),
+      }),
     });
 
     setIsLoading(false);
