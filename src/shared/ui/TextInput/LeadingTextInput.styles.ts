@@ -57,13 +57,15 @@ export const StyledLeadingInputWrapper = styled.label`
   height: 40px;
   cursor: text;
 
-  &:hover ${StyledLeadingInputArea} {
-    border-color: ${(p) => p.theme.colors.gray[300]};
+  @media (hover: hover) {
+    &:hover ${StyledLeadingInputArea} {
+      border-color: ${(p) => p.theme.colors.gray[300]};
+    }
   }
 
   &:focus-within ${StyledLeadingInputArea} {
     border-color: ${(p) => p.theme.colors.primary.main};
-    ${(p) => p.theme.effectStyles.primary.hover}
+    ${(p) => p.theme.effectStyles.outlined.hover}
   }
 `;
 

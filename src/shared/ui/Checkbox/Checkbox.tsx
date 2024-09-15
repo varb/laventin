@@ -43,12 +43,14 @@ const StyledCheckboxRoot = styled.label`
       duration: 150,
     })};
 
-  &:hover {
-    ${StyledCheckboxInput} ~ ${StyledCheckboxMark} {
-      border-color: ${(p) => p.theme.colors.gray[300]};
-    }
-    ${StyledCheckboxInput}:checked ~ ${StyledCheckboxMark} {
-      border-color: ${(p) => p.theme.colors.primary.light};
+  @media (hover: hover) {
+    &:hover {
+      ${StyledCheckboxInput} ~ ${StyledCheckboxMark} {
+        border-color: ${(p) => p.theme.colors.gray[300]};
+      }
+      ${StyledCheckboxInput}:checked ~ ${StyledCheckboxMark} {
+        border-color: ${(p) => p.theme.colors.primary.light};
+      }
     }
   }
 

@@ -13,7 +13,7 @@ const indents = {
   calc: function (indent: number) {
     return `${indent * this.base}px`;
   },
-  borderWidth: "2px",
+  borderWidth: "1px",
 };
 
 export default {

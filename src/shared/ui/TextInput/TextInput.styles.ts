@@ -63,13 +63,15 @@ export const StyledInputArea = styled.label`
       duration: 150,
     })}
 
-  &:hover {
-    border-color: ${(p) => p.theme.colors.gray[300]};
+  @media (hover: hover) {
+    &:hover {
+      border-color: ${(p) => p.theme.colors.gray[300]};
+    }
   }
 
   &:focus-within {
     border-color: ${(p) => p.theme.colors.primary.main};
-    ${(p) => p.theme.effectStyles.primary.hover}
+    ${(p) => p.theme.effectStyles.outlined.hover}
   }
 
   & ${StyledAsideSlot} {

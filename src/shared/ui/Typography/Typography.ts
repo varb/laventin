@@ -34,8 +34,10 @@ const TextLink = styled.a`
   cursor: pointer;
   text-decoration: underline;
 
-  &:hover {
-    text-decoration: none;
+  @media (hover: hover) {
+    &:hover {
+      text-decoration: none;
+    }
   }
 
   &:active {

@@ -18,22 +18,24 @@ const StyledLink = styled.a`
   border-radius: ${(p) => p.theme.indents.calc(5)};
   color: inherit;
   font-size: 16px;
-  font-weight: 600;
+  font-weight: 500;
   text-decoration: none;
   ${(p) => p.theme.helpers.createTransition(["border-color", "box-shadow"])}
 
-  &:hover {
-    border-color: ${(p) => p.theme.colors.primary.main};
-    ${(p) => p.theme.effectStyles.primary.hover}
+  @media (hover: hover) {
+    &:hover {
+      border-color: ${(p) => p.theme.colors.primary.main};
+      ${(p) => p.theme.effectStyles.outlined.hover}
+    }
   }
 
   &:active {
-    ${(p) => p.theme.effectStyles.primary.active}
+    ${(p) => p.theme.effectStyles.outlined.active}
   }
 `;
 
 const StyledIcon = styled.span`
-  align-self: stretch;
+  display: inline-flex;
   font-size: 20px;
 `;
 

@@ -5,13 +5,13 @@ import { EffectStyles } from "../theme.types";
  * Primary Style
  */
 const primaryHover = css`
-  box-shadow: 0px 2px 10px ${(p) => p.theme.colors.primary.main},
-    inset 0 0 0 transparent;
+  box-shadow: 0px 0px 10px ${(p) => p.theme.colors.primary.main}80,
+    inset 0px 0px 5px ${(p) => p.theme.colors.primary.lighter}80;
 `;
 
 const primaryActive = css`
   box-shadow: 0 0 0 transparent,
-    inset 0px 1px 6px ${(p) => p.theme.colors.primary.dark};
+    inset 0px 0px 6px ${(p) => p.theme.colors.primary.dark};
   color: ${(p) => p.theme.colors.gray[100]};
 `;
 
@@ -22,8 +22,10 @@ const primaryDisabled = css`
 `;
 
 const primaryFullBehavior = css`
-  &:hover {
-    ${(p) => p.theme.effectStyles.primary.hover}
+  @media (hover: hover) {
+    &:hover {
+      ${(p) => p.theme.effectStyles.primary.hover}
+    }
   }
 
   &:active {
@@ -39,13 +41,13 @@ const primaryFullBehavior = css`
  * Secondary Style
  */
 const secondaryHover = css`
-  box-shadow: 0px 2px 10px ${(p) => p.theme.colors.secondary.lighter},
-    inset 0 0 0 transparent;
+  box-shadow: 0px 0px 10px ${(p) => p.theme.colors.secondary.lighter}80,
+    inset 0px 0px 5px ${(p) => p.theme.colors.secondary.main};
 `;
 
 const secondaryActive = css`
   box-shadow: 0 0 0 transparent,
-    inset 0px 1px 6px ${(p) => p.theme.colors.secondary.darker};
+    inset 0px 0px 6px ${(p) => p.theme.colors.secondary.darker};
   color: ${(p) => p.theme.colors.gray[800]};
 `;
 
@@ -57,8 +59,10 @@ const secondaryDisabled = css`
 `;
 
 const secondaryFullBehavior = css`
-  &:hover {
-    ${(p) => p.theme.effectStyles.secondary.hover}
+  @media (hover: hover) {
+    &:hover {
+      ${(p) => p.theme.effectStyles.secondary.hover}
+    }
   }
 
   &:active {
@@ -73,6 +77,11 @@ const secondaryFullBehavior = css`
 /**
  * Outlined Style
  */
+const outlinedHover = css`
+  box-shadow: 0px 0px 10px ${(p) => p.theme.colors.primary.main}80,
+    inset 0px 0px 5px ${(p) => p.theme.colors.primary.main}80;
+`;
+
 const outlinedActive = css`
   border-color: ${(p) => p.theme.colors.primary.dark};
   ${primaryActive}
@@ -86,8 +95,10 @@ const outlinedDisabled = css`
 `;
 
 const outlinedFullBehavior = css`
-  &:hover {
-    ${(p) => p.theme.effectStyles.outlined.hover}
+  @media (hover: hover) {
+    &:hover {
+      ${(p) => p.theme.effectStyles.outlined.hover}
+    }
   }
 
   &:active {
@@ -103,20 +114,22 @@ const outlinedFullBehavior = css`
  * Success Style
  */
 const successHover = css`
-  box-shadow: 0px 2px 10px ${(p) => p.theme.colors.success.main}80,
-    inset 0 0 0 transparent;
+  box-shadow: 0px 0px 10px ${(p) => p.theme.colors.success.main}80,
+    inset 0 0 5px ${(p) => p.theme.colors.success.main}80;
 `;
 
 const successActive = css`
   border-color: ${(p) => p.theme.colors.success.dark};
   box-shadow: 0 0 0 transparent,
-    inset 0px 1px 6px ${(p) => p.theme.colors.success.dark};
+    inset 0px 0px 6px ${(p) => p.theme.colors.success.dark};
   color: ${(p) => p.theme.colors.gray[100]};
 `;
 
 const successFullBehavior = css`
-  &:hover {
-    ${(p) => p.theme.effectStyles.success.hover}
+  @media (hover: hover) {
+    &:hover {
+      ${(p) => p.theme.effectStyles.success.hover}
+    }
   }
 
   &:active {
@@ -132,20 +145,22 @@ const successFullBehavior = css`
  * Success Style
  */
 const errorHover = css`
-  box-shadow: 0px 2px 10px ${(p) => p.theme.colors.error.main}80,
-    inset 0 0 0 transparent;
+  box-shadow: 0 0 10px ${(p) => p.theme.colors.error.main}80,
+    inset 0 0 5px ${(p) => p.theme.colors.error.main}80;
 `;
 
 const errorActive = css`
   border-color: ${(p) => p.theme.colors.error.dark};
   box-shadow: 0 0 0 transparent,
-    inset 0px 1px 6px ${(p) => p.theme.colors.error.dark};
+    inset 0px 0px 6px ${(p) => p.theme.colors.error.dark};
   color: ${(p) => p.theme.colors.gray[100]};
 `;
 
 const errorFullBehavior = css`
-  &:hover {
-    ${(p) => p.theme.effectStyles.error.hover}
+  @media (hover: hover) {
+    &:hover {
+      ${(p) => p.theme.effectStyles.error.hover}
+    }
   }
 
   &:active {
@@ -162,15 +177,15 @@ const errorFullBehavior = css`
  */
 const ghostHover = css`
   background-color: ${(p) => p.theme.colors.gray[900]};
-  box-shadow: 0px 2px 10px ${(p) => p.theme.colors.gray[900]},
-    inset 0 0 0 transparent;
+  box-shadow: 0px 0px 10px ${(p) => p.theme.colors.gray[800]}80,
+    inset 0 0 5px ${(p) => p.theme.colors.gray[800]}80;
   color: ${(p) => p.theme.colors.common.foreground};
 `;
 
 const ghostActive = css`
   background-color: ${(p) => p.theme.colors.gray[900]};
   box-shadow: 0 0 0 transparent,
-    inset 0px 1px 6px ${(p) => p.theme.colors.common.background};
+    inset 0px 0px 6px ${(p) => p.theme.colors.common.background};
   color: ${(p) => p.theme.colors.gray[100]};
 `;
 
@@ -179,8 +194,10 @@ const ghostDisabled = css`
 `;
 
 const ghostFullBehavior = css`
-  &:hover {
-    ${(p) => p.theme.effectStyles.ghost.hover}
+  @media (hover: hover) {
+    &:hover {
+      ${(p) => p.theme.effectStyles.ghost.hover}
+    }
   }
 
   &:active {
@@ -217,7 +234,7 @@ export default {
     fullBehavior: secondaryFullBehavior,
   },
   outlined: {
-    hover: primaryHover,
+    hover: outlinedHover,
     active: outlinedActive,
     disabled: outlinedDisabled,
     fullBehavior: outlinedFullBehavior,

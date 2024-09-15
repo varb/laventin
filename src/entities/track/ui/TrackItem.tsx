@@ -24,9 +24,11 @@ const StyledTrackLink = styled.a`
   color: inherit;
   text-decoration: none;
 
-  &:hover ${StyledTrackItemWrapper} {
-    border-color: ${(p) => p.theme.colors.primary.main};
-    ${(p) => p.theme.effectStyles.primary.hover}
+  @media (hover: hover) {
+    &:hover ${StyledTrackItemWrapper} {
+      border-color: ${(p) => p.theme.colors.primary.main};
+      ${(p) => p.theme.effectStyles.outlined.hover}
+    }
   }
 
   &:active ${StyledTrackItemWrapper} {
