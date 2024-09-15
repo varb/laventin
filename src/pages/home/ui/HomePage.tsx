@@ -2,6 +2,7 @@ import { useMemo } from "react";
 import { Link } from "react-router-dom";
 import { Playlist } from "@phosphor-icons/react";
 
+import LatestRelease from "widgets/LatestRelease";
 import { TrackList, useTrackList } from "entities/track";
 import { StreamingList } from "entities/streaming-link";
 import { RouteNames } from "shared/model/route-names";
@@ -10,14 +11,7 @@ import Layout from "shared/ui/Layout";
 import Typography from "shared/ui/Typography";
 import Box from "shared/ui/Box";
 
-import {
-  MainBgCover,
-  LastReleaseInfo,
-  LastReleaseTitle,
-  LastReleaseAuthor,
-  SectionWrapper,
-  LastReleaseLabel,
-} from "./HomePage.styles";
+import { MainBgCover } from "./HomePage.styles";
 
 function HomePage() {
   const { data: trackList } = useTrackList({ limit: 5 });
@@ -30,17 +24,9 @@ function HomePage() {
       <Layout.PageWrap>
         <MainBgCover />
 
-        <LastReleaseInfo>
-          <LastReleaseLabel>Last release</LastReleaseLabel>
-          <LastReleaseTitle>{latestRelease?.title}</LastReleaseTitle>
-          <LastReleaseAuthor>{latestRelease?.artist}</LastReleaseAuthor>
-        </LastReleaseInfo>
+        <LatestRelease trackInfo={latestRelease} />
 
-        <SectionWrapper>
-          <StreamingList trackInfo={latestRelease} />
-        </SectionWrapper>
-
-        <Box mb={1}>
+        <Box mb={1} mt={5}>
           <Typography.H2>Discography</Typography.H2>
         </Box>
       </Layout.PageWrap>
@@ -55,6 +41,7 @@ function HomePage() {
             iconRight={<Playlist />}
             forwardedAs={Link}
             to={RouteNames.tracks}
+            size="large"
             width="full"
           >
             View all tracks
