@@ -86,3 +86,12 @@ export const getStreamingLinkIcon = (id?: string | null) => {
     return <MusicNotesPlus />;
   }
 };
+
+export const getStreamingTitle = (id?: string | null) => {
+  const resourceId = musicStores[id as MusicStoresEnum];
+  if (resourceId) {
+    return resourceId.title;
+  } else {
+    return id;
+  }
+};

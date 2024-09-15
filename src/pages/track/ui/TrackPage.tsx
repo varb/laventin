@@ -2,7 +2,7 @@ import Helmet from "react-helmet";
 import { useParams, Link, useLocation } from "react-router-dom";
 import { PencilSimple } from "@phosphor-icons/react";
 
-import { StreamingLinks } from "entities/streaming-link";
+import { StreamingList } from "entities/streaming-link";
 import { useAuth } from "shared/providers";
 import Button from "shared/ui/Button";
 import HeaderAction from "shared/ui/HeaderAction";
@@ -71,7 +71,7 @@ export default function TrackPage() {
         </InfoRow>
 
         <InfoRow>
-          <StreamingLinks trackInfo={trackInfo} />
+          <StreamingList trackInfo={trackInfo} />
         </InfoRow>
       </Root>
     </>
