@@ -2,7 +2,7 @@ import Helmet from "react-helmet";
 import { Link } from "react-router-dom";
 import { MusicNotesPlus } from "@phosphor-icons/react";
 
-import { TrackList } from "entities/track";
+import { TrackList, useTrackList } from "entities/track";
 import Button from "shared/ui/Button";
 import HeaderAction from "shared/ui/HeaderAction";
 import Layout from "shared/ui/Layout";
@@ -13,6 +13,7 @@ import Stack from "shared/ui/Stack";
 
 export default function TrackListPage() {
   const { user } = useAuth();
+  const { data: trackList } = useTrackList();
 
   return (
     <>
@@ -40,7 +41,7 @@ export default function TrackListPage() {
         </Layout.PageWrap>
 
         <Layout.BasePageWrap>
-          <TrackList />
+          <TrackList dataList={trackList} />
         </Layout.BasePageWrap>
       </Stack>
     </>

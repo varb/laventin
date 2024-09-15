@@ -1,7 +1,8 @@
-import { Link } from "react-router-dom";
+import { Link, useMatch } from "react-router-dom";
 import styled from "styled-components";
 import { SignIn, SignOut } from "@phosphor-icons/react";
 
+import { SocialLinks } from "entities/social-link";
 import { useAuth } from "shared/providers";
 import Button from "shared/ui/Button";
 import Stack from "shared/ui/Stack";
@@ -17,6 +18,7 @@ export const StyledAuthButton = styled(Button)`
 `;
 
 export default function Footer() {
+  const isHomePage = !!useMatch("/");
   const { user, signOut } = useAuth();
   const logout = async (e: React.MouseEvent) => {
     e.preventDefault();
@@ -24,7 +26,14 @@ export default function Footer() {
   };
 
   return (
-    <Stack pt={8} pb={8}>
+    <Stack pt={5} pb={8}>
+      {isHomePage && (
+        <Stack pb={2} gap={1.5}>
+          <Typography.H3>Socials</Typography.H3>
+          <SocialLinks />
+        </Stack>
+      )}
+
       <StyledCopyright>
         Designed &amp; developed by me:{" "}
         <Typography.TextLink href="https://varb.me" target="_blank">

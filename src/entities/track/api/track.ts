@@ -21,17 +21,21 @@ type TrackItemKey = keyof TrackItem;
  * @return {TrackItem[]} An array of track items.
  */
 export const getTrackList = async (props?: {
-  isPublic?: boolean;
+  isAuthorized?: boolean;
   limit?: number;
 }) => {
   const list: TrackItem[] = [];
-  const { isPublic, limit } = props || {};
+  const { isAuthorized, limit } = props || {};
 
   try {
     const q = query(
       collection(firebaseDB, "tracks"),
-      orderBy("title" as TrackItemKey, "desc"),
-      ...(isPublic ? [where("active" as TrackItemKey, "==", true)] : []),
+      // sorting by releaseDate should only happen in public mode, not for admin
+      orderBy(
+        (isAuthorized ? "updatedAt" : "releaseDate") as TrackItemKey,
+        "desc"
+      ),
+      ...(!isAuthorized ? [where("active" as TrackItemKey, "==", true)] : []),
       ...(limit ? [fbLimit(limit)] : [])
     );
     const querySnapshot = await getDocs(q);

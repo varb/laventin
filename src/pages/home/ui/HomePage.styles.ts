@@ -72,7 +72,3 @@ export const InfoRow = styled.div`
     margin-bottom: 40px;
   }
 `;
-
-export const SubTitle = styled(Typography.H2)`
-  margin: 0 0 30px;
-`;

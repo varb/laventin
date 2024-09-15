@@ -1,64 +1,65 @@
+import { useMemo } from "react";
 import { Link } from "react-router-dom";
 import { Playlist } from "@phosphor-icons/react";
 
-import { TrackList, trackList } from "entities/track";
-
-import { StreamingLinks } from "entities/streaming-link";
-import { SocialLinks } from "entities/social-link";
-import { useAuth } from "shared/providers";
+import { TrackList, useTrackList } from "entities/track";
+import { StreamingList } from "entities/streaming-link";
+import { RouteNames } from "shared/model/route-names";
 import Button from "shared/ui/Button";
 import Layout from "shared/ui/Layout";
-import { RouteNames } from "shared/model/route-names";
+import Typography from "shared/ui/Typography";
+import Box from "shared/ui/Box";
 
 import {
   MainBgCover,
   LastReleaseInfo,
   LastReleaseTitle,
   LastReleaseAuthor,
-  SubTitle,
   SectionWrapper,
   LastReleaseLabel,
 } from "./HomePage.styles";
 
-const filteredList = trackList.filter((item) => item.active);
-const lastRelease = filteredList[0];
-
 function HomePage() {
+  const { data: trackList } = useTrackList({ limit: 5 });
+  const latestRelease = useMemo(() => {
+    return trackList && trackList[0];
+  }, [trackList]);
+
   return (
     <>
       <Layout.PageWrap>
         <MainBgCover />
+
         <LastReleaseInfo>
           <LastReleaseLabel>Last release</LastReleaseLabel>
-          <LastReleaseTitle>{lastRelease.title}</LastReleaseTitle>
-          <LastReleaseAuthor>{lastRelease.artist}</LastReleaseAuthor>
+          <LastReleaseTitle>{latestRelease?.title}</LastReleaseTitle>
+          <LastReleaseAuthor>{latestRelease?.artist}</LastReleaseAuthor>
         </LastReleaseInfo>
 
         <SectionWrapper>
-          <StreamingLinks trackInfo={lastRelease} />
+          <StreamingList trackInfo={latestRelease} />
         </SectionWrapper>
 
-        <SubTitle>Discography</SubTitle>
+        <Box mb={1}>
+          <Typography.H2>Discography</Typography.H2>
+        </Box>
       </Layout.PageWrap>
 
       <Layout.BasePageWrap>
-        <TrackList limit={5} />
+        <TrackList dataList={trackList} />
       </Layout.BasePageWrap>
 
       <Layout.PageWrap>
-        <Button
-          iconRight={<Playlist />}
-          forwardedAs={Link}
-          to={RouteNames.tracks}
-          width="full"
-        >
-          View all tracks
-        </Button>
-
-        <SubTitle>Socials</SubTitle>
-        <SectionWrapper>
-          <SocialLinks />
-        </SectionWrapper>
+        <Box mt={2}>
+          <Button
+            iconRight={<Playlist />}
+            forwardedAs={Link}
+            to={RouteNames.tracks}
+            width="full"
+          >
+            View all tracks
+          </Button>
+        </Box>
       </Layout.PageWrap>
     </>
   );

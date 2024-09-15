@@ -91,7 +91,6 @@ function TrackItem({
   artist,
   releaseType,
   releaseDate,
-  updatedAt,
 }: ITrackItem) {
   const year = releaseDate?.toDate().getFullYear();
 

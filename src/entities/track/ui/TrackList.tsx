@@ -1,23 +1,17 @@
 import Stack from "shared/ui/Stack";
 import TrackItem from "./TrackItem";
-import { useTrackList } from "../lib/useTrackList";
+import { TrackItem as ITrackItem } from "../model/track.types";
 
 type TrackListProps = {
-  limit?: number;
+  dataList?: ITrackItem[] | null;
 };
 
-export default function TrackList({ limit }: TrackListProps) {
-  const { data: trackList } = useTrackList({ limit });
-
-  console.log("TracksList", trackList);
-
-  if (trackList === null) {
-    return null;
-  }
+export default function TrackList({ dataList }: TrackListProps) {
+  if (!dataList) return null;
 
   return (
     <Stack gap={0}>
-      {trackList.map((track) => (
+      {dataList.map((track) => (
         <TrackItem key={track.id} {...track} />
       ))}
     </Stack>
