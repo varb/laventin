@@ -62,8 +62,11 @@ export const ArtworkCover = styled.img`
   border-radius: 15px;
 `;
 
-export const Title = styled(Typography.H1)`
+export const Title = styled(Typography.H2)`
   margin-bottom: 5px;
 `;
 
-export const Author = styled(Typography.H3)``;
+export const Author = styled.p`
+  color: ${(p) => p.theme.colors.primary.main};
+  font-weight: 500;
+`;

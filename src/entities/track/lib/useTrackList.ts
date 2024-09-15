@@ -28,7 +28,7 @@ export const useTrackList = (networkProps?: { limit?: number }) => {
     };
 
     fetchTracks();
-  }, [limit]);
+  }, [limit, user]);
 
   return { data: trackList, loading };
 };

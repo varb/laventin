@@ -44,7 +44,7 @@ type StreamingListProps = {
 };
 
 function StreamingList({ trackInfo }: StreamingListProps) {
-  if (!trackInfo || !trackInfo.links || !trackInfo.links.length) return null;
+  if (!trackInfo?.links?.length) return null;
 
   const onLinkClick = (e: React.MouseEvent<HTMLAnchorElement>) => {
     const { targetId } = e.currentTarget.dataset;
