@@ -32,6 +32,7 @@ const StyledBackgroundIcon = styled.div`
   img {
     display: block;
     max-width: 100%;
+    height: 100%;
     border-radius: 4px;
     ${(p) => p.theme.effectStyles.cover.middle}
     filter: brightness(0.35);

@@ -2,12 +2,12 @@ import styled, { css } from "styled-components";
 
 type ArtworkProps = {
   variant?: "primary" | "secondary";
-  src: string;
-  size?: number;
+  src?: string;
 };
 
 const StyledRoot = styled.div<{ $artPath?: string }>`
   position: relative;
+  padding-bottom: 100%;
 
   &::before {
     content: "";
@@ -36,20 +36,21 @@ const StyledRoot = styled.div<{ $artPath?: string }>`
 
 const StyledArtwork = styled.img`
   display: block;
-  max-width: 100%;
+  position: absolute;
+  width: 100%;
+  height: 100%;
   margin: 0;
   border-radius: ${(p) => p.theme.indents.calc(1)};
   ${(p) => p.theme.effectStyles.cover.large}
 `;
 
 export default function Artwork({
-  src,
-  size,
+  src = `/art/empty-cover.svg`,
   variant = "secondary",
 }: ArtworkProps) {
   return (
     <StyledRoot $artPath={src}>
-      <StyledArtwork src={src} width={size} height={size} />
+      <StyledArtwork src={src} />
     </StyledRoot>
   );
 }

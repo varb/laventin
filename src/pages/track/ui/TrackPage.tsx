@@ -6,17 +6,21 @@ import { StreamingList } from "entities/streaming-link";
 import { useAuth } from "shared/providers";
 import Button from "shared/ui/Button";
 import HeaderAction from "shared/ui/HeaderAction";
+import Layout from "shared/ui/Layout";
 
 import { useTrackInfo } from "../lib/useTrackInfo";
 import {
-  Root,
-  Title,
-  InfoRow,
-  Author,
-  ArtworkCover,
-  ArtworkWrapper,
-  ArtworkContainer,
+  StyledTitle,
+  StyledArtist,
+  StyledArtworkWrapper,
+  StyledHero,
+  StyledReleaseDate,
+  StyledDescription,
 } from "./TrackPage.styles";
+import Artwork from "entities/artwork";
+import Stack from "shared/ui/Stack";
+import Typography from "shared/ui/Typography";
+import { formatTimestampToReadableDate } from "shared/lib/date";
 
 export default function TrackPage() {
   const { id } = useParams<"id">();
@@ -40,7 +44,7 @@ export default function TrackPage() {
         <title>
           {trackInfo.title} by {trackInfo.artist}
         </title>
-        <meta property="og:image" content={trackArtworkPath} />
+        <meta property="og:image" content={trackInfo.coverUrl} />
         <meta property="og:image:width" content="1200" />
         <meta property="og:image:height" content="1200" />
       </Helmet>
@@ -59,21 +63,34 @@ export default function TrackPage() {
         </HeaderAction>
       )}
 
-      <Root>
-        <InfoRow>
-          <ArtworkWrapper>
-            <ArtworkContainer artPath={trackArtworkPath}>
-              <ArtworkCover src={trackArtworkPath} />
-            </ArtworkContainer>
-          </ArtworkWrapper>
-          <Title>{trackInfo.title}</Title>
-          <Author>{trackInfo.artist}</Author>
-        </InfoRow>
+      <Layout.PageWrap>
+        <Stack gap={4}>
+          <StyledHero>
+            <StyledArtworkWrapper>
+              <Artwork src={trackInfo.coverUrl} />
+            </StyledArtworkWrapper>
+            <StyledTitle>{trackInfo.title}</StyledTitle>
+            <StyledArtist>{trackInfo.artist}</StyledArtist>
+          </StyledHero>
 
-        <InfoRow>
           <StreamingList trackInfo={trackInfo} />
-        </InfoRow>
-      </Root>
+
+          <Stack gap={2}>
+            <Typography.H3 foreground="primary.main">
+              About release
+            </Typography.H3>
+            {trackInfo.description && (
+              <StyledDescription>{trackInfo.description}</StyledDescription>
+            )}
+
+            <StyledReleaseDate>
+              {trackInfo.releaseDate
+                ? formatTimestampToReadableDate(trackInfo.releaseDate)
+                : "Release Date: TBA"}
+            </StyledReleaseDate>
+          </Stack>
+        </Stack>
+      </Layout.PageWrap>
     </>
   );
 }

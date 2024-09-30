@@ -7,10 +7,8 @@ import Stack from "shared/ui/Stack";
 import Typography from "shared/ui/Typography";
 import { StreamingList } from "entities/streaming-link";
 
-const ARTWORK_SIZE = 96;
-
 const StyledArtwork = styled.div`
-  max-width: ${ARTWORK_SIZE}px;
+  width: 96px;
 `;
 
 const StyledInfoRow = styled(Layout.BulletRow)`
@@ -38,7 +36,7 @@ export default function LatestRelease({ trackInfo }: LatestReleaseProps) {
     <>
       <Stack gap={3} direction="row" alignItems="center">
         <StyledArtwork>
-          <Artwork src={trackInfo.coverUrl} size={ARTWORK_SIZE} />
+          <Artwork src={trackInfo.coverUrl} />
         </StyledArtwork>
 
         <Stack gap={0}>
