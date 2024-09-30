@@ -146,6 +146,7 @@ export default function TrackForm({
           render={({ field }) => (
             <TextInput
               label="Release Date"
+              inputMode="decimal"
               placeholder="Eg. 12.10.2024"
               leftSlot={<CalendarStar />}
               {...field}

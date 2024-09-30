@@ -51,6 +51,7 @@ export default function LoginForm() {
             render={({ field }) => (
               <TextInput
                 type="email"
+                inputMode="email"
                 label="Username"
                 placeholder="Eg. Jack"
                 leftSlot={<User />}
