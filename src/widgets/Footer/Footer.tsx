@@ -9,16 +9,12 @@ import Stack from "shared/ui/Stack";
 import Typography from "shared/ui/Typography";
 import { RouteNames } from "shared/model/route-names";
 
-export const StyledCopyright = styled(Typography.Label)`
-  color: ${(p) => p.theme.colors.gray[300]};
-`;
-
-export const StyledAuthButton = styled(Button)`
+const StyledAuthButton = styled(Button)`
   margin-left: -12px;
 `;
 
 export default function Footer() {
-  const isHomePage = !!useMatch("/");
+  const isShowSocials = !!useMatch("/");
   const { user, signOut } = useAuth();
   const logout = async (e: React.MouseEvent) => {
     e.preventDefault();
@@ -27,19 +23,20 @@ export default function Footer() {
 
   return (
     <Stack pt={5} pb={8}>
-      {isHomePage && (
+      {isShowSocials && (
         <Stack pb={2} gap={1.5}>
-          <Typography.H3>Socials</Typography.H3>
+          <Typography.H3 foreground="primary.main">Socials</Typography.H3>
           <SocialLinks />
         </Stack>
       )}
 
-      <StyledCopyright>
+      <Typography.Label>
         Designed &amp; developed by me:{" "}
         <Typography.TextLink href="https://varb.me" target="_blank">
           varb.me
         </Typography.TextLink>
-      </StyledCopyright>
+      </Typography.Label>
+
       <div>
         {!user ? (
           <StyledAuthButton

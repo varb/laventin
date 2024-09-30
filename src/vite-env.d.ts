@@ -25,3 +25,9 @@ interface ImportMeta {
 type GetStyledComponentProps<T, K extends keyof T = never> = {
   [P in Exclude<keyof T, K> as `$${string & P}`]?: T[P];
 };
+
+type GetNestedKeys<T> = {
+  [K in keyof T]: T[K] extends Record<string | number, any>
+    ? `${K & string}.${keyof T[K] & (string | number)}`
+    : never;
+}[keyof T];

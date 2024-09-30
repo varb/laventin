@@ -27,7 +27,7 @@ function HomePage() {
         <LatestRelease trackInfo={latestRelease} />
 
         <Box mb={1} mt={5}>
-          <Typography.H2>Discography</Typography.H2>
+          <Typography.H2 foreground="primary.main">Discography</Typography.H2>
         </Box>
       </Layout.PageWrap>
 

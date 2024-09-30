@@ -83,6 +83,8 @@ export type EffectStyles = {
   };
 };
 
+export type ThemeColorPath = GetNestedKeys<DefaultThemeColors>;
+
 declare module "styled-components" {
   export interface DefaultTheme {
     indents: {
