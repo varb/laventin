@@ -46,8 +46,6 @@ export const ModalProvider: FC<{ children: ReactNode }> = ({ children }) => {
     [openModal, closeModal]
   );
 
-  console.log("ModalProvider", modal);
-
   return (
     <ModalContext.Provider value={providerValue}>
       {children}
