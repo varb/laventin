@@ -30,7 +30,7 @@ export default function Footer() {
         </Stack>
       )}
 
-      <Typography.Label>
+      <Typography.Label foreground="gray.600">
         Designed &amp; developed by me:{" "}
         <Typography.TextLink href="https://varb.me" target="_blank">
           varb.me
