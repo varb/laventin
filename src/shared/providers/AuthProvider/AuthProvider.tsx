@@ -20,7 +20,6 @@ export const AuthContext = createContext<UserContext>({
   signOut: async () => {},
 });
 
-export const AuthConsumer = AuthContext.Consumer;
 export const useAuth = () => useContext(AuthContext);
 
 export function AuthProvider({ children }: AuthProviderProps) {
