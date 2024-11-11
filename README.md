@@ -8,4 +8,18 @@ Users are given the opportunity to view the entire discography, and link to a st
 - Ability to view the latest release and a list of all songs
 - Ability for the administrator to add, modify and delete tracks
 
+## Stack
+### Client
+- React
+- React Helmet
+- React Hook Form
+- React Router
+- Firebase
+- Styled Components
+- NanoID
+- day.js
+### Development
+- TypeScript
+- Vite.js
+
 [shields-laventin]: https://img.shields.io/badge/laventin-DE4BB8?style=for-the-badge
