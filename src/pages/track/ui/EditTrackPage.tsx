@@ -6,6 +6,7 @@ import Layout from "shared/ui/Layout";
 import Stack from "shared/ui/Stack";
 import Typography from "shared/ui/Typography";
 import { RouteNames } from "shared/model/route-names";
+import ModalProvider from "shared/providers/ModalProvider";
 import { useTrackInfo } from "../lib/useTrackInfo";
 
 export default function EditTrackPage() {
@@ -27,7 +28,9 @@ export default function EditTrackPage() {
           <Typography.H1>Edit Track</Typography.H1>
           {loading && "Loading..."}
           {trackInfo && (
-            <EditTrackForm trackInfo={trackInfo} onSubmit={onSubmit} />
+            <ModalProvider>
+              <EditTrackForm trackInfo={trackInfo} onSubmit={onSubmit} />
+            </ModalProvider>
           )}
         </Stack>
       </Layout.PageWrap>

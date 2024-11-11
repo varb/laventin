@@ -28,8 +28,6 @@ export default function TrackPage() {
   const { user } = useAuth();
   const { pathname } = useLocation();
 
-  console.log("trackInfo", id, trackInfo);
-
   if (trackInfo === null) {
     // return <Navigate replace to="/" />;
     return null;
